@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Vali Admin</title>
+    <title>American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -19,7 +19,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.php">Vali</a>
+      <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -131,12 +131,12 @@
               <section class="invoice">
                 <div class="row">
                   <div class="col-xs-12">
-                    <h2 class="page-header"><i class="fa fa-globe"></i> Vali<small class="pull-right">Date: 01/01/2016</small></h2>
+                    <h2 class="page-header"><i class="fa fa-globe"></i> American Torres<small class="pull-right">Date: 01/01/2016</small></h2>
                   </div>
                 </div>
                 <div class="row invoice-info">
                   <div class="col-xs-4">From
-                    <address><strong>Vali Ltd.</strong><br>518 Akshar Avenue<br>Gandhi Marg<br>New Delhi<br>Email: hello@vali.com</address>
+                    <address><strong>American Torres Ltd.</strong><br>518 Akshar Avenue<br>Gandhi Marg<br>New Delhi<br>Email: hello@American Torres.com</address>
                   </div>
                   <div class="col-xs-4">To
                     <address><strong>John Doe</strong><br>            795 Folsom Ave, Suite 600<br>            San Francisco, CA 94107<br>            Phone: (555) 539-1037<br>            Email: john.doe@example.com</address>

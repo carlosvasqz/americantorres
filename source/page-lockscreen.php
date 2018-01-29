@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Vali Admin</title>
+    <title>American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -22,7 +22,7 @@
     </section>
     <section class="lockscreen-content">
       <div class="logo">
-        <h1>Vali</h1>
+        <h1>American Torres</h1>
       </div>
       <div class="lock-box"><img class="img-circle user-image" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
         <h4 class="text-center user-name">John Doe</h4>
