@@ -1,3 +1,6 @@
+<?php
+include ('constructor.php');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,7 +28,7 @@
           <!-- Navbar Right Menu-->
           <div class="navbar-custom-menu">
             <ul class="top-nav">
-              <!--Notification Menu-->
+              <!--Notification Menu
               <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
                 <ul class="dropdown-menu">
                   <li class="not-head">You have 4 new notifications.</li>
@@ -38,12 +41,13 @@
                   <li class="not-footer"><a href="#">See all notifications.</a></li>
                 </ul>
               </li>
+              -->
               <!-- User Menu-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu">
-                  <li><a href="page-user.php"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-                  <li><a href="page-user.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                  <li><a href="page-login.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                  <!--<li><a href="page-user.php"><i class="fa fa-cog fa-lg"></i> Settings</a></li>-->
+                  <li><a href="page-user.php"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+                  <li><a href="#" class="alert" style="margin:0px;"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesi&oacute;n</a></li>
                 </ul>
               </li>
             </ul>
@@ -51,67 +55,9 @@
         </nav>
       </header>
       <!-- Side-Nav-->
-      <aside class="main-sidebar hidden-print">
-        <section class="sidebar">
-          <div class="user-panel">
-            <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
-            <div class="pull-left info">
-              <p>John Doe</p>
-              <p class="designation">Frontend Developer</p>
-            </div>
-          </div>
-          <!-- Sidebar Menu-->
-          <ul class="sidebar-menu">
-            <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>UI Elements</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i> Bootstrap Elements</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i> Font Icons</a></li>
-                <li><a href="ui-cards.php"><i class="fa fa-circle-o"></i> Cards</a></li>
-                <li><a href="widgets.php"><i class="fa fa-circle-o"></i> Widgets</a></li>
-              </ul>
-            </li>
-            <li><a href="charts.php"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="form-components.php"><i class="fa fa-circle-o"></i> Form Components</a></li>
-                <li><a href="form-custom.php"><i class="fa fa-circle-o"></i> Custom Components</a></li>
-                <li><a href="form-samples.php"><i class="fa fa-circle-o"></i> Form Samples</a></li>
-                <li><a href="form-notifications.php"><i class="fa fa-circle-o"></i> Form Notifications</a></li>
-              </ul>
-            </li>
-            <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Tables</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="table-basic.php"><i class="fa fa-circle-o"></i> Basic Tables</a></li>
-                <li><a href="table-data-table.php"><i class="fa fa-circle-o"></i> Data Tables</a></li>
-              </ul>
-            </li>
-            <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Pages</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                <li><a href="page-login.php"><i class="fa fa-circle-o"></i> Login Page</a></li>
-                <li><a href="page-lockscreen.php"><i class="fa fa-circle-o"></i> Lockscreen Page</a></li>
-                <li><a href="page-user.php"><i class="fa fa-circle-o"></i> User Page</a></li>
-                <li><a href="page-invoice.php"><i class="fa fa-circle-o"></i> Invoice Page</a></li>
-                <li><a href="page-calendar.php"><i class="fa fa-circle-o"></i> Calendar Page</a></li>
-                <li><a href="page-mailbox.php"><i class="fa fa-circle-o"></i> Mailbox</a></li>
-                <li><a href="page-error.php"><i class="fa fa-circle-o"></i> Error Page</a></li>
-              </ul>
-            </li>
-            <li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level One</a></li>
-                <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i><span> Level One</span><i class="fa fa-angle-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span> Level Two</span></a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-      </aside>
+     <?PHP
+     menu();
+     ?>
       <div class="content-wrapper">
         <div class="page-title">
           <div>
