@@ -41,7 +41,7 @@ include ('constructor.php');
                   <li class="not-footer"><a href="#">See all notifications.</a></li>
                 </ul>
               </li>
-              -->
+              
               <!-- User Menu-->
               <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu">
