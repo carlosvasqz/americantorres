@@ -26,24 +26,24 @@
           <div class="navbar-custom-menu">
             <ul class="top-nav">
               <!--Notification Menu-->
-              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell-o fa-lg"></i></a>
                 <ul class="dropdown-menu">
                   <li class="not-head">You have 4 new notifications.</li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block">2min ago</span></div></a></li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-danger"></i><i class="fas fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Server Not Working</span><span class="text-muted block">2min ago</span></div></a></li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-success"></i><i class="fas fa-money fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
                   <li class="not-footer"><a href="#">See all notifications.</a></li>
                 </ul>
               </li>
               <!-- User Menu-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu">
-                  <li><a href="page-user.php"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-                  <li><a href="page-user.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                  <li><a href="page-login.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                  <li><a href="page-user.php"><i class="fas fa-cog fa-lg"></i> Settings</a></li>
+                  <li><a href="page-user.php"><i class="fas fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="page-login.php"><i class="fas fa-sign-out fa-lg"></i> Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -62,49 +62,49 @@
           </div>
           <!-- Sidebar Menu-->
           <ul class="sidebar-menu">
-            <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>UI Elements</span><i class="fa fa-angle-right"></i></a>
+            <li class="active"><a href="index.php"><i class="fas fa-dashboard"></i><span>Dashboard</span></a></li>
+            <li class="treeview"><a href="#"><i class="fas fa-laptop"></i><span>UI Elements</span><i class="fas fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i> Bootstrap Elements</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i> Font Icons</a></li>
-                <li><a href="ui-cards.php"><i class="fa fa-circle-o"></i> Cards</a></li>
-                <li><a href="widgets.php"><i class="fa fa-circle-o"></i> Widgets</a></li>
+                <li><a href="bootstrap-components.php"><i class="fas fa-circle-o"></i> Bootstrap Elements</a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fas fa-circle-o"></i> Font Icons</a></li>
+                <li><a href="ui-cards.php"><i class="fas fa-circle-o"></i> Cards</a></li>
+                <li><a href="widgets.php"><i class="fas fa-circle-o"></i> Widgets</a></li>
               </ul>
             </li>
-            <li><a href="charts.php"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
+            <li><a href="charts.php"><i class="fas fa-pie-chart"></i><span>Charts</span></a></li>
+            <li class="treeview"><a href="#"><i class="fas fa-edit"></i><span>Forms</span><i class="fas fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="form-components.php"><i class="fa fa-circle-o"></i> Form Components</a></li>
-                <li><a href="form-custom.php"><i class="fa fa-circle-o"></i> Custom Components</a></li>
-                <li><a href="form-samples.php"><i class="fa fa-circle-o"></i> Form Samples</a></li>
-                <li><a href="form-notifications.php"><i class="fa fa-circle-o"></i> Form Notifications</a></li>
+                <li><a href="form-components.php"><i class="fas fa-circle-o"></i> Form Components</a></li>
+                <li><a href="form-custom.php"><i class="fas fa-circle-o"></i> Custom Components</a></li>
+                <li><a href="form-samples.php"><i class="fas fa-circle-o"></i> Form Samples</a></li>
+                <li><a href="form-notifications.php"><i class="fas fa-circle-o"></i> Form Notifications</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Tables</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fas fa-th-list"></i><span>Tables</span><i class="fas fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="table-basic.php"><i class="fa fa-circle-o"></i> Basic Tables</a></li>
-                <li><a href="table-data-table.php"><i class="fa fa-circle-o"></i> Data Tables</a></li>
+                <li><a href="table-basic.php"><i class="fas fa-circle-o"></i> Basic Tables</a></li>
+                <li><a href="table-data-table.php"><i class="fas fa-circle-o"></i> Data Tables</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Pages</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fas fa-file-text"></i><span>Pages</span><i class="fas fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                <li><a href="page-login.php"><i class="fa fa-circle-o"></i> Login Page</a></li>
-                <li><a href="page-lockscreen.php"><i class="fa fa-circle-o"></i> Lockscreen Page</a></li>
-                <li><a href="page-user.php"><i class="fa fa-circle-o"></i> User Page</a></li>
-                <li><a href="page-invoice.php"><i class="fa fa-circle-o"></i> Invoice Page</a></li>
-                <li><a href="page-calendar.php"><i class="fa fa-circle-o"></i> Calendar Page</a></li>
-                <li><a href="page-mailbox.php"><i class="fa fa-circle-o"></i> Mailbox</a></li>
-                <li><a href="page-error.php"><i class="fa fa-circle-o"></i> Error Page</a></li>
+                <li><a href="blank-page.php"><i class="fas fa-circle-o"></i> Blank Page</a></li>
+                <li><a href="page-login.php"><i class="fas fa-circle-o"></i> Login Page</a></li>
+                <li><a href="page-lockscreen.php"><i class="fas fa-circle-o"></i> Lockscreen Page</a></li>
+                <li><a href="page-user.php"><i class="fas fa-circle-o"></i> User Page</a></li>
+                <li><a href="page-invoice.php"><i class="fas fa-circle-o"></i> Invoice Page</a></li>
+                <li><a href="page-calendar.php"><i class="fas fa-circle-o"></i> Calendar Page</a></li>
+                <li><a href="page-mailbox.php"><i class="fas fa-circle-o"></i> Mailbox</a></li>
+                <li><a href="page-error.php"><i class="fas fa-circle-o"></i> Error Page</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fas fa-share"></i><span>Multilevel Menu</span><i class="fas fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level One</a></li>
-                <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i><span> Level One</span><i class="fa fa-angle-right"></i></a>
+                <li><a href="blank-page.php"><i class="fas fa-circle-o"></i> Level One</a></li>
+                <li class="treeview"><a href="#"><i class="fas fa-circle-o"></i><span> Level One</span><i class="fas fa-angle-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span> Level Two</span></a></li>
+                    <li><a href="blank-page.php"><i class="fas fa-circle-o"></i> Level Two</a></li>
+                    <li><a href="#"><i class="fas fa-circle-o"></i><span> Level Two</span></a></li>
                   </ul>
                 </li>
               </ul>
@@ -146,9 +146,9 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,	quis tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <ul class="post-utility">
-                      <li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
-                      <li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>
-                      <li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
+                      <li class="likes"><a href="#"><i class="fas fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
+                      <li class="shares"><a href="#"><i class="fas fa-fw fa-lg fa-share"></i>Share</a></li>
+                      <li class="comments"><i class="fas fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
                     </ul>
                   </div>
                   <div class="post">
@@ -162,9 +162,9 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,	quis tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <ul class="post-utility">
-                      <li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
-                      <li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>
-                      <li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
+                      <li class="likes"><a href="#"><i class="fas fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>
+                      <li class="shares"><a href="#"><i class="fas fa-fw fa-lg fa-share"></i>Share</a></li>
+                      <li class="comments"><i class="fas fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>
                     </ul>
                   </div>
                 </div>
@@ -206,7 +206,7 @@
                     </div>
                     <div class="row mb-10">
                       <div class="col-md-12">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                        <button class="btn btn-primary" type="button"><i class="fas fa-fw fa-lg fa-check-circle"></i> Save</button>
                       </div>
                     </div>
                   </form>

@@ -28,26 +28,26 @@ include ('constructor.php');
           <!-- Navbar Right Menu-->
           <div class="navbar-custom-menu">
             <ul class="top-nav">
-              <!--Notification Menu
-              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+              <!--Notification Menu-->
+              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell-o fa-lg"></i></a>
                 <ul class="dropdown-menu">
                   <li class="not-head">You have 4 new notifications.</li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-primary"></i><i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block">2min ago</span></div></a></li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-danger"></i><i class="fas fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Server Not Working</span><span class="text-muted block">2min ago</span></div></a></li>
-                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                  <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x text-success"></i><i class="fas fa-money fa-stack-1x fa-inverse"></i></span></span>
                       <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
                   <li class="not-footer"><a href="#">See all notifications.</a></li>
                 </ul>
               </li>
               -->
               <!-- User Menu-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle fa-lg"></i></a>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu">
-                  <!--<li><a href="page-user.php"><i class="fa fa-cog fa-lg"></i> Settings</a></li>-->
-                  <li><a href="page-user.php"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
-                  <li><a href="#" class="alert" style="margin:0px;"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesi&oacute;n</a></li>
+                  <!--<li><a href="page-user.php"><i class="fas fa-cog fa-lg"></i> Settings</a></li>-->
+                  <li><a href="page-user.php"><i class="fas fa-user fa-lg"></i> Perfil</a></li>
+                  <li><a href="#" class="alert" style="margin:0px;"><i class="fas fa-sign-out fa-lg"></i> Cerrar Sesi&oacute;n</a></li>
                 </ul>
               </li>
             </ul>
@@ -61,12 +61,12 @@ include ('constructor.php');
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <h1><i class="fas fa-dashboard"></i> Dashboard</h1>
             <p>A free and modular admin template</p>
           </div>
           <div>
             <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
+              <li><i class="fas fa-home fa-lg"></i></li>
               <li><a href="#">Dashboard</a></li>
             </ul>
           </div>
@@ -78,7 +78,7 @@ include ('constructor.php');
               <p>American Torres is a free and responsive dashboard theme built with Bootstrap, Pug.js (templating) and SASS. It's fully customizable and modular. You don't need to add the code, you will not use.</p>
               <p>The issue with the most admin themes out there is that if you will see their source code there are a hell lot of external CSS and javascript files in there. And if you try to remove a CSS or Javascript file some things stops working.</p>
               <p>That's why I made American Torres. Which is a light weight yet expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the <a href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank">documentation</a> about customizing the theme.</p>
-              <p class="mt-40 mb-20"><a class="btn btn-primary icon-btn mr-10" href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info icon-btn mr-10" href="https://github.com/pratikborsadiya/American Torres-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success icon-btn" href="https://github.com/pratikborsadiya/American Torres-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
+              <p class="mt-40 mb-20"><a class="btn btn-primary icon-btn mr-10" href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank"><i class="fas fa-file"></i>Docs</a><a class="btn btn-info icon-btn mr-10" href="https://github.com/pratikborsadiya/American Torres-admin" target="_blank"><i class="fas fa-github"></i>GitHub</a><a class="btn btn-success icon-btn" href="https://github.com/pratikborsadiya/American Torres-admin/archive/master.zip" target="_blank"><i class="fas fa-download"></i>Download</a></p>
             </div>
           </div>
           <div class="col-md-6">

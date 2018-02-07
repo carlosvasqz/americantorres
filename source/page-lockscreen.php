@@ -33,7 +33,7 @@
             <input class="form-control" type="password" placeholder="Password" autofocus>
           </div>
           <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block" type="submit">UNLOCK <i class="fa fa-unlock fa-lg"></i></button>
+            <button class="btn btn-primary btn-block" type="submit">UNLOCK <i class="fas fa-unlock fa-lg"></i></button>
           </div>
         </form>
         <p><a href="page-login.php">Not John ? Login Here.</a></p>
