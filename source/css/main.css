@@ -13992,7 +13992,7 @@ be a descendant of the grid when it is being dragged.
   background-color: transparent;
   background-image: none;
   padding: 11px 15px;
-  font-family: fontAwesome;
+  font-family: 'FontAwesome';
   position: relative;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
