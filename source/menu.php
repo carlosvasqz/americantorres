@@ -20,7 +20,7 @@ function menuGeneral() {
             </li>           
            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i>Consultar Articulo</a></li>
+                <li><a href="consultar_articulo.php"><i class="fa fa-circle-o"></i>Consultar Articulo</a></li>
                 <li><a href="ui-cards.php"><i class="fa fa-circle-o"></i>Modificar Articulo</a></li>
                 <li><a href="widgets.php"><i class="fa fa-circle-o"></i> Catalago de Articulos</a></li>
               </ul>
