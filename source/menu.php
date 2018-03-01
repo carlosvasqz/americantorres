@@ -14,8 +14,8 @@ function menuGeneral() {
           <<ul class="sidebar-menu">
             <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Abastecimiento</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
+                <li><a href="registrar_contenedor.php"><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
+                <li><a href="registrar_articulo.php" target="_blank"><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
               </ul>
             </li>           
            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
