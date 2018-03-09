@@ -2140,6 +2140,21 @@ input[type="search"] {
   margin-bottom: 10px;
 }
 
+.checkbox1{
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.checkbox1 label{
+ min-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
 .radio label,
 .checkbox label {
   min-height: 20px;
