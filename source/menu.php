@@ -6,6 +6,7 @@ function menuGeneral() {
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
+            <title>American Torres</title>
             <div class="pull-left info">
               <p>John Doe</p>
               <p class="designation">Frontend Developer</p>
@@ -15,21 +16,21 @@ function menuGeneral() {
           <<ul class="sidebar-menu">
             <li class="treeview"><a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Abastecimiento</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="registrar_contenedor.php" ><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
-                <li><a href="registrar_articulo.php" ><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
+                <li><a href="registrar_contenedor.php" ><i class="fa fa-truck" aria-hidden="true"></i>Registrar Contenedor</a></li>
+                <li><a href="registrar_articulo.php" ><i class="fa fa-plus" aria-hidden="true"></i>Registrar Articulo</a></li>
               </ul>
             </li>           
            <li class="treeview"><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="consultar_articulo.php"><i class="fa fa-circle-o"></i>Consultar Articulo</a></li>
-                <li><a href="ui-cards.php"><i class="fa fa-circle-o"></i>Modificar Articulo</a></li>
-                <li><a href="widgets.php"><i class="fa fa-circle-o"></i> Catalago de Articulos</a></li>
+                <li><a href="consultar_articulo.php"><i class="fa fa-search" aria-hidden="true"></i>Consultar Articulo</a></li>
+                <li><a href="ui-cards.php"><i class="fa fa-refresh" aria-hidden="true"></i>Modificar Articulo</a></li>
+                <li><a href="widgets.php"><i class="fa fa-database" aria-hidden="true"></i> Catalago de Articulos</a></li>
               </ul>
             </li>
            <li class="treeview"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i><span>Control de Ventas</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i>Operaciones Financieras</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i>Cierre de Caja</a></li>
+                <li><a href="bootstrap-components.php"><i class="fa fa-usd" aria-hidden="true"></i>Operaciones Financieras</a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Cierre de Caja</a></li>
               </ul>
             </li> 
              <li class="treeview"><a href="#"><i class="fa fa-money" aria-hidden="true"></i><span>Finazas</span><i class="fa fa-angle-right"></i></a>
