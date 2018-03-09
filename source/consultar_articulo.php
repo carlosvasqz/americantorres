@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="images/paper-airplane.png" />     <title>Admin Panel</title>
+    <link rel="icon" type="image/png" href="images/us.png" />    <title>American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -84,28 +84,82 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Codigo de articulo</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="codigo_contenedor" id="codigo_contenedor" placeholder="Ingresar codigo de articulo">
+                      <input class="form-control" type="text" name="codigo_articulo" id="codigo_articulo" placeholder="Ingresar codigo de articulo">
                     </div>
-                </div>
-                 
-              
-              
+                  </div>        
 
-               
-
-                  <div class="form-group">
-                   
-                    
+                </form>
+              </div>
+              
              <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
+                <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
             </div>
           </div>
         </div>
+
+             <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-title">
+               <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal" id="guardar_articulo">
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Descripcion de articulo</label>
+                    <div class="col-md-8">
+                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder="Ingresar descripcion de articulo"></textarea>
+                    </div>
+                  </div>  
+
+
+               <div class="form-group">
+                    <label class="control-label col-md-3">Precio</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" readonly="" name="precio_articulo" id="precio_articulo" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Cantidad</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="Ingresar cantidad de disponibles">
+                  </div>
+                </div>
+
+                     <div class="form-group">
+                      <label class="control-label col-md-3">  Esta disponible el articulo: </label>
+                    <div class="col-md-8" >
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox" disabled name="heck_si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox"  disabled="" name=" check_no">
+                          No
+                        </label>
+                      </div>
+                      </div>
+                    </div>     
+
+                </form>
+              </div>
+              
+            
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    
     <!-- Javascripts-->
       <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
