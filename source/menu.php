@@ -1,6 +1,7 @@
  <?php
 function menuGeneral() {
  ?>
+ <meta charset="utf-8">
  <aside class="main-sidebar hidden-print">
         <section class="sidebar">
           <div class="user-panel">
@@ -14,8 +15,8 @@ function menuGeneral() {
           <<ul class="sidebar-menu">
             <li class="treeview"><a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Abastecimiento</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="registrar_contenedor.php"><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
-                <li><a href="registrar_articulo.php" target="_blank"><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
+                <li><a href="registrar_contenedor.php" ><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
+                <li><a href="registrar_articulo.php" ><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
               </ul>
             </li>           
            <li class="treeview"><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
