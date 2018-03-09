@@ -82,10 +82,11 @@
               <div class="card-body">
                 <form class="form-horizontal" id="guardar_cargo">
                   <div class="form-group">
-                    <label class="control-label col-md-3">Codigo de contenedor</label>
+                    <label class="control-label col-md-3">Codigo de articulo</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="codigo_contenedor" id="codigo_contenedor" placeholder="Ingresar codigo de contenedor">
+                      <input class="form-control" type="text" name="codigo_contenedor" id="codigo_contenedor" placeholder="Ingresar codigo de articulo">
                     </div>
+                </div>
                  
               
               
@@ -96,7 +97,7 @@
                    
                     
              <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
+                <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
