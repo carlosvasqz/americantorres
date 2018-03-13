@@ -1,6 +1,8 @@
 <?php
   include('constructor.php');
-   {      
+  include ('bd/conexion.php');
+  #session_start();
+  if (isset($_SESSION['username'])&&($_SESSION['type'])) {      
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="images/us.png" />     <title>American Torres</title>
+    <link rel="icon" type="image/png" href="images/paper-airplane.png" />     <title>Registrar Articulo | American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -23,7 +25,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.php">Admin Panel</a>
+      <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -48,6 +50,7 @@
                 <ul class="dropdown-menu settings-menu">
                   <!--<li><a href="page-user.php"><i class="fa fa-cog fa-lg"></i> Settings</a></li>-->
                   <li><a href="page-user.php"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+                  <li><a href="page-lockscreen.php"><i class="fa fa-user fa-lg"></i> Bloquear</a></li>
                   <li><a href="#" class="alert" style="margin:0px;"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesi&oacute;n</a></li>
                 </ul>
               </li>
@@ -62,14 +65,14 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-plus-square"></i> Registrar nuevo articulo</h1>
+            <h1><i class="fa fa-plus-square"></i> Registrar articulo</h1>
             <p>Agregar nuevo articulo</p>
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-institution fa-lg"></i></li>
-              <li>Articulos</li>
-              <li><a href="#"> Agregar Nuevo</a></li>
+              <li>Abastecimiento</li>
+              <li><a href="#">Registrar Articulo</a></li>
             </ul>
           </div>
         </div>
@@ -153,6 +156,30 @@
      <script src="js/tips/cargo_acciones.js"></script>
     <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
+      <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript">
+      $('.alert').click(function(){
+      	swal({
+      		title: "Esta seguro?",
+      		text: "Esta opcion cerrara la sesion actual",
+      		type: "warning",
+      		showCancelButton: true,
+      		confirmButtonText: "Si, salir",
+      		cancelButtonText: "No, mantener conectado",
+      		closeOnConfirm: true,
+      		closeOnCancel: true
+      	}, function(isConfirm) {
+      		if (isConfirm) {
+            $(location).attr('href', 'page-logout.php');
+            //$('#alert').html.attr('href', 'logout.php');
+      			//swal("Deleted!", "Your imaginary file has been deleted.", "success");
+      		} else {
+            //return false;
+      			//swal("Cancelled", "Your imaginary file is safe :)", "error");
+      		}
+      	});
+      });
+    </script>
 
 <!--    <script type="text/javascript">
       $('#sl').click(function(){
@@ -197,9 +224,7 @@
   </body>
 </html>
 <?php
-    }
-   //lse {
-   //     header('location: page_denegado.php');
-   // }
-
+  }else{
+    header('location: page-error.php');
+  }
 ?>

@@ -19,8 +19,8 @@
   <body>
     <div class="page-error">
       <h1><i class="fa fa-exclamation-circle"></i> Error 404</h1>
-      <p>The page you have requested is not found.</p>
-      <p><a href="javascript:window.history.back();">Go back to previous page</a></p>
+      <p>Lo sentimos, la pagina que ha solicitado necesita autenticación.</p>
+      <p><a href="page-login.php">Iniciar Sesión</a></p>
     </div>
   </body>
   <script src="js/jquery-2.1.4.min.js"></script>

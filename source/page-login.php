@@ -1,3 +1,10 @@
+<?php
+  include('/bd/conexion.php');
+  //session_start();
+  if (isset($_SESSION['username'])&&($_SESSION['type'])) { 
+    header('location: index.php');       
+  }else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -26,41 +33,30 @@
       </div>
       <div class="login-box">
         <form class="login-form" action="index.php">
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>INICIAR SESIÓN</h3>
           <div class="form-group">
-            <label class="control-label">USERNAME</label>
-            <input class="form-control" type="text" placeholder="Email" autofocus>
+            <label class="control-label">USUARIO</label>
+            <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Usuario" autofocus>
           </div>
           <div class="form-group">
-            <label class="control-label">PASSWORD</label>
-            <input class="form-control" type="password" placeholder="Password">
+            <label class="control-label">CONTRASEÑA</label>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña ">
           </div>
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">
-                <label class="semibold-text">
+                <!-- <label class="semibold-text">
                   <input type="checkbox"><span class="label-text">Stay Signed in</span>
-                </label>
+                </label> -->
               </div>
-              <p class="semibold-text mb-0"><a data-toggle="flip">Forgot Password ?</a></p>
+              <!-- <p class="semibold-text mb-0"><a data-toggle="flip">Forgot Password ?</a></p> -->
             </div>
           </div>
           <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+            <button class="btn btn-primary btn-block" id="acceder"><i class="fa fa-sign-in fa-lg fa-fw"></i>ACCEDER</button>
           </div>
-        </form>
-        <form class="forget-form" action="index.php">
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
-          <div class="form-group">
-            <label class="control-label">EMAIL</label>
-            <input class="form-control" type="text" placeholder="Email">
-          </div>
-          <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>RESET</button>
-          </div>
-          <div class="form-group mt-20">
-            <p class="semibold-text mb-0"><a data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> Back to Login</a></p>
-          </div>
+          <br />
+          <div id='tip' allign="center"></div>
         </form>
       </div>
     </section>
@@ -69,4 +65,9 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
+  <!-- Tips -->
+  <script src="js/tips/login.js"></script>
 </html>
+<?php
+    }
+?>
