@@ -109,20 +109,35 @@
                     <label class="control-label col-md-3">Cantidad</label>
                     <div class="col-md-8">
                       <input class="form-control" type="text" name="cantidad_articulo" id="cantidad_articulo" placeholder="Ingresar cantidad de disponibles">
+                  </div>
+                </div>
+
+                     <div class="form-group">
+                      <label class="control-label col-md-3">  Esta disponible el articulo: </label>
+                    <div class="col-md-8" >
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox" name="heck_si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox" name=" check_no">
+                          No
+                        </label>
+                      </div>
+                      </div>
                     </div>
 
-                    <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="control-label col-md-3">Si</label>
-                  <input class="form-control" type="checkbox" name="diponible_si" id="diponible_si"> 
-                  <label class="control-label col-md-3">No</label>
-                  <input class="form-control" type="checkbox" name="disponible_no" id="diponible_si">
-                    </div>
+                     
+
+
                   
 
                 </form>
               </div>
-              </div>
+              
              <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 &nbsp;&nbsp;&nbsp;

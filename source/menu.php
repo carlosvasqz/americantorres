@@ -2,10 +2,12 @@
  session_start();
 function menuGeneral() {
  ?>
+ <meta charset="utf-8">
  <aside class="main-sidebar hidden-print">
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
+            <title>American Torres</title>
             <div class="pull-left info">
             <?php
               echo "
