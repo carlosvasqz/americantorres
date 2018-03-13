@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-03-2018 a las 18:05:11
+-- Tiempo de generación: 12-03-2018 a las 21:10:28
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.11
 
@@ -91,6 +91,7 @@ CREATE TABLE `usuarios` (
   `Id_Usuario` varchar(4) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `Contrasenia` varchar(100) NOT NULL,
+  `Tipo` varchar(20) NOT NULL,
   `Activo` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -98,8 +99,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id_Usuario`, `Nombre`, `Contrasenia`, `Activo`) VALUES
-('U-01', 'admin', 'admin', '1');
+INSERT INTO `usuarios` (`Id_Usuario`, `Nombre`, `Contrasenia`, `Tipo`, `Activo`) VALUES
+('U-01', 'admin', 'admin', 'Administrador', '1');
 
 -- --------------------------------------------------------
 
