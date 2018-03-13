@@ -23,7 +23,7 @@ function menuGeneral() {
            <li class="treeview"><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="consultar_articulo.php"><i class="fa fa-search" aria-hidden="true"></i>Consultar Articulo</a></li>
-                <li><a href="ui-cards.php"><i class="fa fa-refresh" aria-hidden="true"></i>Modificar Articulo</a></li>
+                <li><a href="modificar_articulo.php"><i class="fa fa-refresh" aria-hidden="true"></i>Modificar Articulo</a></li>
                 <li><a href="widgets.php"><i class="fa fa-database" aria-hidden="true"></i> Catalago de Articulos</a></li>
               </ul>
             </li>
@@ -35,10 +35,10 @@ function menuGeneral() {
             </li> 
              <li class="treeview"><a href="#"><i class="fa fa-money" aria-hidden="true"></i><span>Finazas</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="bootstrap-components.php"><i class="fa fa-circle-o"></i>Historial de Inversiones</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i>Historial de Ventas </a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i>Consultar Cierre Diario</a></li>
-                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i>Consulta General Mensual</a></li>
+                <li><a href="bootstrap-components.php"><i class="fa fa-history" aria-hidden="true"></i>Historial de Inversiones</a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-history" aria-hidden="true"></i>Historial de Ventas </a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Consultar Cierre Diario</a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Consulta General Mensual</a></li>
               </ul>
             </li> 
           </a>
