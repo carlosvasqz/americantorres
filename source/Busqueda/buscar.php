@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root", "", "tienda");
+$mysqli = new mysqli("localhost","root", "", "americantorres");
 
 $salida = "";
 $query = "SELECT * FROM articulos ORDER By Id_Articulo";
@@ -7,7 +7,7 @@ $query = "SELECT * FROM articulos ORDER By Id_Articulo";
 if(isset($_POST['consulta'])){
 	$q = $mysqli->real_escape_string($_POST['consulta']);
 
-	$query = "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Disponible FROM articulos WHERE Id_Articulo = '".$q."' OR Descripcion LIKE '%".$q."%'";
+	$query = "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Disponible, Estado FROM articulos WHERE Id_Articulo = '".$q."' OR Descripcion LIKE '%".$q."%'";
 }
 
 $resultado = $mysqli->query($query);
@@ -21,6 +21,7 @@ if ($resultado->num_rows > 0) {
 				<td>Precio</td>
 				<td>Cantidad</td>
 				<td>Disponible</td>
+				<td>Estado</td>
 				</tr>
 				</thead>
 				<tbody>";
@@ -32,6 +33,7 @@ if ($resultado->num_rows > 0) {
 							<td>".$fila['Precio']."</td>
 							<td>".$fila['Cantidad']."</td>
 							<td>".$fila['Disponible']."</td>
+							<td>".$fila['Estado']."</td>
 							</tr>";
 
 				}
