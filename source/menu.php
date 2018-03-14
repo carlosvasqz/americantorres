@@ -18,34 +18,28 @@ function menuGeneral() {
             </div>
           </div>
           <!-- Sidebar Menu-->
-          <ul class="sidebar-menu">
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Abastecimiento</span><i class="fa fa-angle-right"></i></a>
+            <ul class="sidebar-menu">
+            <li class="treeview"><a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Abastecimiento</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="ab_registrar_contenedor.php"><i class="fa fa-circle-o"></i>Registrar Contenedor</a></li>
-                <li><a href="ab_registrar_articulo.php"><i class="fa fa-circle-o"></i>Registrar Articulo</a></li>
+                <li><a href="ab_registrar_contenedor.php" ><i class="fa fa-truck" aria-hidden="true"></i>Registrar Contenedor</a></li>
+                <li><a href="ab_registrar_articulo.php" ><i class="fa fa-plus" aria-hidden="true"></i>Registrar Articulo</a></li>
               </ul>
             </li>           
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
+           <li class="treeview"><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Control de Inventario</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-<<<<<<< HEAD
-                <li><a href="consultar_articulo.php"><i class="fa fa-search" aria-hidden="true"></i>Consultar Articulo</a></li>
-                <li><a href="modificar_articulo.php"><i class="fa fa-refresh" aria-hidden="true"></i>Modificar Articulo</a></li>
+                <li><a href="ci_consultar_articulo.php"><i class="fa fa-search" aria-hidden="true"></i>Consultar Articulo</a></li>
+                <li><a href="ci_modificar_articulo.php"><i class="fa fa-refresh" aria-hidden="true"></i>Modificar Articulo</a></li>
                 <li><a href="widgets.php"><i class="fa fa-database" aria-hidden="true"></i> Catalago de Articulos</a></li>
-=======
-                <li><a href="ci_consultar_articulo.php"><i class="fa fa-circle-o"></i>Consultar Articulo</a></li>
-                <li><a href="ci_modificar_articulo.php"><i class="fa fa-circle-o"></i>Modificar Articulo</a></li>
-                <li><a href="ci_catalogo.php"><i class="fa fa-circle-o"></i>Catalago de Articulos</a></li>
->>>>>>> 3a270a6f8ff9590acae50d20aa9c516797b27ab0
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Control de Ventas</span><i class="fa fa-angle-right"></i></a>
+           <li class="treeview"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i><span>Control de Ventas</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="cv_vender.php"><i class="fa fa-circle-o"></i>Registrar Venta</a></li>
+                <li><a href="cv_vender.php"><i class="fa fa-usd" aria-hidden="true"></i>Control Ventas</a></li>
+                <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Cierre de Caja</a></li>
               </ul>
             </li> 
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Finanzas</span><i class="fa fa-angle-right"></i></a>
+             <li class="treeview"><a href="#"><i class="fa fa-money" aria-hidden="true"></i><span>Finazas</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-<<<<<<< HEAD
                 <li><a href="bootstrap-components.php"><i class="fa fa-history" aria-hidden="true"></i>Historial de Inversiones</a></li>
                 <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-history" aria-hidden="true"></i>Historial de Ventas </a></li>
                 <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Consultar Cierre Diario</a></li>
@@ -65,45 +59,34 @@ function menuGeneral() {
               <ul class="treeview-menu">
                 <li><a href="table-basic.php"><i class="fa fa-circle-o"></i> Basic Tables</a></li>
                 <li><a href="table-data-table.php"><i class="fa fa-circle-o"></i> Data Tables</a></li>
-=======
-                <li class="treeview"><a href="#"><i class="fa fa-dollar"></i><span>Acciones</span><i class="fa fa-angle-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="of_cierre_diario.php"><i class="fa fa-circle-o"></i>Cierre de Caja (Diario)</a></li>
-                    <li><a href="of_cierre_mensual.php"><i class="fa fa-circle-o"></i>Cierre de Caja (Mensual)</a></li>
-                  </ul>
-                </li>
-                <li class="treeview"><a href="#"><i class="fa fa-dollar"></i><span>Consultas</span><i class="fa fa-angle-right"></i></a>
-                  <ul class="treeview-menu">
-                  <li><a href="of_consultar_cierre_diario.php"><i class="fa fa-circle-o"></i>Consultar Cierre Diario</a></li>
-                  <li><a href="of_consultar_cierre_mensual.php"><i class="fa fa-circle-o"></i>Consultar Cierre Mensual</a></li>
-                  </ul>
-                </li>
-                <li class="treeview"><a href="#"><i class="fa fa-dollar"></i><span>Historiales</span><i class="fa fa-angle-right"></i></a>
-                  <ul class="treeview-menu">
-                  <li><a href="of_historial_inversion.php"><i class="fa fa-circle-o"></i>Historial de Inversiones</a></li>
-                  <li><a href="of_historial_ventas.php"><i class="fa fa-circle-o"></i>Historial de Ventas </a></li>
-                  </ul>
-                </li>
-                <li class="treeview"><a href="#"><i class="fa fa-dollar"></i><span>Reportes</span><i class="fa fa-angle-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="of_reporte_ventas.php"><i class="fa fa-circle-o"></i>Reporte de Ventas</a></li>
-                    <li><a href="of_reporte_general.php"><i class="fa fa-circle-o"></i>Reporte General</a></li>
-                  </ul>
-                </li>
->>>>>>> 3a270a6f8ff9590acae50d20aa9c516797b27ab0
-              </ul>
-            </li>  
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Configuracion</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="page-user.php"><i class="fa fa-circle-o"></i>Perfil</a></li>
               </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Sesion</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Pages</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#" class="alert" style="margin:0px;"><i class="fa fa-sign-out fa-lg"></i> Cerrar Sesi&oacute;n</a></li>
+                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+                <li><a href="page-login.php"><i class="fa fa-circle-o"></i> Login Page</a></li>
+                <li><a href="page-lockscreen.php"><i class="fa fa-circle-o"></i> Lockscreen Page</a></li>
+                <li><a href="page-user.php"><i class="fa fa-circle-o"></i> User Page</a></li>
+                <li><a href="page-invoice.php"><i class="fa fa-circle-o"></i> Invoice Page</a></li>
+                <li><a href="page-calendar.php"><i class="fa fa-circle-o"></i> Calendar Page</a></li>
+                <li><a href="page-mailbox.php"><i class="fa fa-circle-o"></i> Mailbox</a></li>
+                <li><a href="page-error.php"><i class="fa fa-circle-o"></i> Error Page</a></li>
               </ul>
-            </li> 
+            </li>
+            <li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level One</a></li>
+                <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i><span> Level One</span><i class="fa fa-angle-right"></i></a>
+                  <ul class="treeview-menu">
+                    <li><a href="blank-page.php"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span> Level Two</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+             -->
           </ul>
+       
         </section>
       </aside>
       <?php
