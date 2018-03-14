@@ -25,7 +25,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
+     <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -70,8 +70,8 @@
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-institution fa-lg"></i></li>
-              <li>Control de Inventario</li>
-              <li><a href="#"> Consultar Articulo</a></li>
+              <li>Aticulos</li>
+              <li><a href="#"> Cosultar Informaci&oacute;n de Articulo</a></li>
             </ul>
           </div>
         </div>
@@ -168,42 +168,53 @@
     
     <!-- Javascripts-->
       <script src="js/jquery-2.1.4.min.js"></script>
-<<<<<<< HEAD:source/consultar_articulo.php
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
   
     <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
-=======
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/plugins/pace.min.js"></script>
-      <script src="js/main.js"></script>
-      <script src="js/tips/cargo_acciones.js"></script>
-      <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
->>>>>>> 3a270a6f8ff9590acae50d20aa9c516797b27ab0:source/ci_consultar_articulo.php
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
-      <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-    <script type="text/javascript">
+
+<!--    <script type="text/javascript">
+      $('#sl').click(function(){
+        $('#tl').loadingBtn();
+        $('#tb').loadingBtn({ text : "Signing In"});
+      });
+      
+      $('#el').click(function(){
+        $('#tl').loadingBtnComplete();
+        $('#tb').loadingBtnComplete({ html : "Sign In"});
+      });
+      
+      $('.demoDate').datepicker({
+        format: "yyyy/mm/dd",
+        autoclose: true,
+        todayHighlight: true
+      });
+    </script>
+  -->
+    <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+   <script type="text/javascript">
       $('.alert').click(function(){
-      	swal({
-      		title: "Esta seguro?",
-      		text: "Esta opcion cerrara la sesion actual",
-      		type: "warning",
-      		showCancelButton: true,
-      		confirmButtonText: "Si, salir",
-      		cancelButtonText: "No, mantener conectado",
-      		closeOnConfirm: true,
-      		closeOnCancel: true
-      	}, function(isConfirm) {
-      		if (isConfirm) {
+        swal({
+          title: "Esta seguro?",
+          text: "Esta opcion cerrara la sesion actual",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, salir",
+          cancelButtonText: "No, mantener conectado",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        }, function(isConfirm) {
+          if (isConfirm) {
             $(location).attr('href', 'page-logout.php');
             //$('#alert').html.attr('href', 'logout.php');
-      			//swal("Deleted!", "Your imaginary file has been deleted.", "success");
-      		} else {
+            //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+          } else {
             //return false;
-      			//swal("Cancelled", "Your imaginary file is safe :)", "error");
-      		}
-      	});
+            //swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
       });
     </script>
 
@@ -250,7 +261,7 @@
   </body>
 </html>
 <?php
-  }else {
+  }else{
     header('location: page-error.php');
   }
 ?>
