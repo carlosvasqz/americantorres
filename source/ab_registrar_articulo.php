@@ -130,10 +130,15 @@
                       </div>
                     </div>
 
-                     
-
-
-                  
+                     <div class="form-group">
+                    <label class="control-label col-md-3">Estado</label>
+                    <div class="col-md-8">
+                      <select id="select" class="form-control">
+                        <option>Nuevo</option>
+                        <option>Usado</option>
+                      </select>
+                  </div>
+                </div>
 
                 </form>
               </div>

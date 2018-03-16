@@ -25,7 +25,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
+     <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -64,14 +64,14 @@
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-plus-square"></i> Consultar nuevo articulo</h1>
+            <h1><i class="fa fa-plus-square"></i> Consultar articulo</h1>
             <p>Consultar articulo</p>
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-institution fa-lg"></i></li>
-              <li>Control de Inventario</li>
-              <li><a href="#"> Consultar Articulo</a></li>
+              <li>Aticulos</li>
+              <li><a href="#"> Cosultar Informaci&oacute;n de Articulo</a></li>
             </ul>
           </div>
         </div>
@@ -84,37 +84,41 @@
               <div class="card-body">
                 <form class="form-horizontal" id="guardar_cargo">
                   <div class="form-group">
-                    <label class="control-label col-md-3">Codigo de articulo</label>
+                    <label for ="input_busqueda" class="control-label col-md-3">Codigo de articulo</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="codigo_articulo" id="codigo_articulo" placeholder="Ingresar codigo de articulo">
+                      <input class="form-control" type="text"  name="input_busqueda" id="input_busqueda" placeholder="">
                     </div>
                   </div>        
 
                 </form>
               </div>
               
-             <div class="card-footer" align="center">
+            <!-- <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
+            -->
             </div>
           </div>
         </div>
 
-             <div class="row">
+          <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="buscar">
               <div class="card-title">
-               <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
+              
               </div>
-              <div class="card-body">
-                <form class="form-horizontal" id="guardar_articulo">
+                          <div class="card-body">
+                <form class="form-horizontal">
+                  <div id="datos">
+                    
+                  </div>
 
-                  <div class="form-group">
+                 <!-- <div class="form-group">
                     <label class="control-label col-md-3">Descripcion de articulo</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder="Ingresar descripcion de articulo"></textarea>
+                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder=""></textarea>
                     </div>
                   </div>  
 
@@ -129,7 +133,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Cantidad</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="Ingresar cantidad de disponibles">
+                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="">
                   </div>
                 </div>
 
@@ -149,7 +153,7 @@
                         </label>
                       </div>
                       </div>
-                    </div>     
+                    </div>  -->   
 
                 </form>
               </div>
@@ -164,34 +168,53 @@
     
     <!-- Javascripts-->
       <script src="js/jquery-2.1.4.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/plugins/pace.min.js"></script>
-      <script src="js/main.js"></script>
-      <script src="js/tips/cargo_acciones.js"></script>
-      <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+  
+    <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
-      <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-    <script type="text/javascript">
+
+<!--    <script type="text/javascript">
+      $('#sl').click(function(){
+        $('#tl').loadingBtn();
+        $('#tb').loadingBtn({ text : "Signing In"});
+      });
+      
+      $('#el').click(function(){
+        $('#tl').loadingBtnComplete();
+        $('#tb').loadingBtnComplete({ html : "Sign In"});
+      });
+      
+      $('.demoDate').datepicker({
+        format: "yyyy/mm/dd",
+        autoclose: true,
+        todayHighlight: true
+      });
+    </script>
+  -->
+    <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+   <script type="text/javascript">
       $('.alert').click(function(){
-      	swal({
-      		title: "Esta seguro?",
-      		text: "Esta opcion cerrara la sesion actual",
-      		type: "warning",
-      		showCancelButton: true,
-      		confirmButtonText: "Si, salir",
-      		cancelButtonText: "No, mantener conectado",
-      		closeOnConfirm: true,
-      		closeOnCancel: true
-      	}, function(isConfirm) {
-      		if (isConfirm) {
+        swal({
+          title: "Esta seguro?",
+          text: "Esta opcion cerrara la sesion actual",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, salir",
+          cancelButtonText: "No, mantener conectado",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        }, function(isConfirm) {
+          if (isConfirm) {
             $(location).attr('href', 'page-logout.php');
             //$('#alert').html.attr('href', 'logout.php');
-      			//swal("Deleted!", "Your imaginary file has been deleted.", "success");
-      		} else {
+            //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+          } else {
             //return false;
-      			//swal("Cancelled", "Your imaginary file is safe :)", "error");
-      		}
-      	});
+            //swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
       });
     </script>
 
@@ -238,7 +261,7 @@
   </body>
 </html>
 <?php
-  }else {
+  }else{
     header('location: page-error.php');
   }
 ?>

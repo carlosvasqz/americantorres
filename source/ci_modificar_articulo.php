@@ -58,59 +58,147 @@
         </nav>
       </header>
       <!-- Side-Nav-->
-      <?php
-     menu();
-     ?>
+     <?php
+        menu();
+      ?>
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Modificar Articulo</h1>
-            <p>Modificar articulo existente</p>
+            <h1><i class="fa fa-plus-square"></i> Modificar informacion de articulo</h1>
+            <p>Modificar articulo</p>
           </div>
           <div>
-          <ul class="breadcrumb">
-            <li><i class="fa fa-institution fa-lg"></i></li>
-            <li>Control de Inventario</li>
-            <li><a href="#"> Modificar Articulo</a></li>
-          </ul>
+            <ul class="breadcrumb">
+              <li><i class="fa fa-institution fa-lg"></i></li>
+              <li>Articulo</li>
+              <li><a href="#"> Modificar existente</a></li>
+            </ul>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-title">
+               <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal" id="guardar_cargo">
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Codigo de articulo</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" name="codigo_articulo" id="codigo_articulo" placeholder="Ingresar codigo de articulo">
+                    </div>
+                  </div>        
+
+                </form>
+              </div>
+              
+             <div class="card-footer" align="center">
+                <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+             <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-title">
+               <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal" id="guardar_articulo">
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Descripcion de articulo</label>
+                    <div class="col-md-8">
+                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder=""></textarea>
+                    </div>
+                  </div>  
+
+
+               <div class="form-group">
+                    <label class="control-label col-md-3">Precio</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" readonly="" name="precio_articulo" id="precio_articulo" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Cantidad</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="">
+                  </div>
+                </div>
+
+                     <div class="form-group">
+                      <label class="control-label col-md-3">  Esta disponible el articulo: </label>
+                    <div class="col-md-8" >
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox" disabled name="heck_si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="checkbox1">
+                        <label>
+                          <input type="checkbox"  disabled="" name=" check_no">
+                          No
+                        </label>
+                      </div>
+                      </div>
+                    </div>   
+
+                     <div class="form-group">
+                    <label class="control-label col-md-3">Estado</label>
+                    <div class="col-md-8">
+                      <select id="select" disabled="" class="form-control">
+                        <option>Nuevo</option>
+                        <option>Usado</option>
+                      </select>
+                  </div>
+                </div>  
+
+                </form>
+              </div>
+              
+            
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    
     <!-- Javascripts-->
-    <script src="js/jquery-2.1.4.min.js"></script>
+     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){
-      	swal({
-      		title: "Esta seguro?",
-      		text: "Esta opcion cerrara la sesion actual",
-      		type: "warning",
-      		showCancelButton: true,
-      		confirmButtonText: "Si, salir",
-      		cancelButtonText: "No, mantener conectado",
-      		closeOnConfirm: true,
-      		closeOnCancel: true
-      	}, function(isConfirm) {
-      		if (isConfirm) {
+        swal({
+          title: "Esta seguro?",
+          text: "Esta opcion cerrara la sesion actual",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, salir",
+          cancelButtonText: "No, mantener conectado",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        }, function(isConfirm) {
+          if (isConfirm) {
             $(location).attr('href', 'page-logout.php');
             //$('#alert').html.attr('href', 'logout.php');
-      			//swal("Deleted!", "Your imaginary file has been deleted.", "success");
-      		} else {
+            //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+          } else {
             //return false;
-      			//swal("Cancelled", "Your imaginary file is safe :)", "error");
-      		}
-      	});
+            //swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
       });
     </script>
   </body>
