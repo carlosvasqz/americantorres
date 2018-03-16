@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="images/paper-airplane.png" />     <title>Registrar Articulo | American Torres</title>
+    <link rel="icon" type="image/png" href="images/us.png" />     <title>Registrar Articulo | American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')

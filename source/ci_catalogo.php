@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">     <!-- <link rel="stylesheet" type="text/css" href="css/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css"> -->
+    <link rel="icon" type="image/png" href="images/us.png" />
     <title>Catalogo | American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
@@ -75,19 +76,143 @@
           </div>
         </div>
         <div class="row">
+
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-title">
+                <h3 class="card-title" align="center">Filtrar vista</h3>
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal" method="GET" form="" id="form_filtrar">
+                  <div class="form-group">
+                    <label class="control-label col-md-2">Filtrar por</label>
+                    <div class="col-md-4">
+                    <select class="form-control" name="campo" id="campo">
+                      <option value="Ninguno" selected>-- Ninguno --</option>
+                      <option value="Id_Articulo">Codigo de Articulo</option>
+                      <option value="Descripcion">Descripcion</option>
+                      <option value="Precio">Precio</option>
+                      <option value="Cantidad">Cantidad</option>
+                      <option value="Id_Contenedor">Contenedor</option>
+                      <option value="Id_Categoria">Categoria</option>
+                          <!-- <?php
+                          //if ($estado=='Activo') {
+                            //echo '<option value="Activo" selected>Activo</option>';
+                            //echo '<option value="Inactivo">Inactivo</option>';
+                          //}else{
+                            //echo '<option value="Activo" >Activo</option>';
+                            //echo '<option value="Inactivo" selected>Inactivo</option>';
+                          //}
+                          ?> -->
+                        </select>
+                    </div>
+                    <label class="control-label col-md-1">Campo</label>
+                    <div class="col-md-4">
+                      <input class="form-control" type="text" id="texto" name="texto" value="" placeholder="Texto de filtro" >
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
+          
+          <?php 
+            $queryListaCatalogo=mysqli_query($db, "SELECT * FROM articulos WHERE Disponible='S'") or die(mysqli_error());
+            while ($rowCatalogo=mysqli_fetch_array($queryListaCatalogo)) {
+              if ($rowCatalogo['Disponible']=="S") {
+                $disponible = "Si";
+              } else {
+                $disponible = "No";
+              }
+              $queryCategoria=mysqli_query($db, "SELECT categorias.Nombre FROM categorias INNER JOIN articulos ON categorias.Id_Categoria = articulos.Id_Categoria WHERE articulos.Id_Categoria=".$rowCatalogo['Id_Categoria']."") or die(mysqli_error());
+              $rowCategoria=mysqli_fetch_array($queryCategoria);
+              echo '
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-title-w-btn">
+                    <h3 class="title">'.$rowCatalogo['Id_Articulo'].'</h3>
+                    <p><a class="btn btn-primary icon-btn" data-toggle="modal" data-target="#'.$rowCatalogo['Id_Articulo'].'"><i class="fa fa-plus"></i>Ver</a></p>
+                  </div>
+                  <div class="card-body">
+                    <!-- <div class="pull-left image"><img class="img-circle" src="images/us.png" alt="User Image" style="width:120px;height:120px;" ></div> -->
+                    '.$rowCatalogo['Descripcion'].'.<br>
+                      <b>Precio:</b> L.'.$rowCatalogo['Precio'].'<br>
+                      <b>Cantidad:</b> '.$rowCatalogo['Cantidad'].'<br>
+                      <b>Estado:</b> '.$rowCatalogo['Estado'].'
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Dialog ====================================================================================================================== -->
+              <!-- Default Size -->
+              <div class="modal fade" id="'.$rowCatalogo['Id_Articulo'].'" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h4 class="modal-title" id="defaultModalLabel">Detalles de articulo</h4>
+                          </div>
+                          <div class="modal-body">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Campo</th>
+                                  <th>Detalle</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><b>Codigo de articulo:</b></td>
+                                  <td>'.$rowCatalogo['Id_Articulo'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Descripcion:</b></td>
+                                  <td>'.$rowCatalogo['Descripcion'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Precio:</b></td>
+                                  <td>L. '.$rowCatalogo['Precio'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Cantidad:</b></td>
+                                  <td>'.$rowCatalogo['Cantidad'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Disponible:</b></td>
+                                  <td>'.$disponible.'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Contenedor:</b></td>
+                                  <td>'.$rowCatalogo['Id_Contenedor'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Categoria:</b></td>
+                                  <td>'.$rowCategoria['Nombre'].'</td>
+                                </tr>
+                                <tr>
+                                  <td><b>Estado:</b></td>
+                                  <td>'.$rowCatalogo['Estado'].'</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                              <!-- <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button> -->
+                              <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              ';  
+            }
+          ?>
         </div>
-      </div>
     </div>
     <!-- Javascripts-->
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/modals.js"></script>
+    <!-- <script src="js/tips/catalogo.js"></script> -->
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){
@@ -117,5 +242,5 @@
 <?php
   }else {
     header('location: page-error.php');
-  }
+  } 
 ?>

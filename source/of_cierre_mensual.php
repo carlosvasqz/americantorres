@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">     <!-- <link rel="stylesheet" type="text/css" href="css/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css"> -->
+    <link rel="icon" type="image/png" href="images/us.png" />
     <title>Cierre de Caja (Mensual) | American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
