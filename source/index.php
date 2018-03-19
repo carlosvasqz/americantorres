@@ -118,7 +118,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <h3 class="card-title">Trafico de ventas</h3>
+              <h4 class="card-title">Ventas de esta semana</h4>
               <div class="embed-responsive embed-responsive-16by9">
                 <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
               </div>
@@ -127,8 +127,12 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body text-center text-primary">
-                <span class="text-muted">VENTAS</span>
-                <h1>L.35,433.45</h1>
+                <span class="text-muted">TOTAL VENTAS</span>
+                <h1><?php 
+                          $queryTotalVentas=mysqli_query($db, "SELECT SUM(Precio) AS Total_Ventas FROM detalles_ventas") or die(mysqli_error());
+                          $rowTotalVentas=mysqli_fetch_array($queryTotalVentas);
+                          echo 'L. '.$rowTotalVentas['Total_Ventas'];  
+                    ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
             </div>
@@ -136,8 +140,18 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body text-center text-primary">
-                <span class="text-muted">MAYOR VENTA</span>
-                <h1>L.8,750.45</h1>
+                <span class="text-muted">TOTAL VENTAS HOY </span>
+                <h1><?php 
+                          $hoy = getdate();
+                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                          $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
+                          if ($rowVentasHoy['Ventas_Hoy']=="") {
+                            echo 'L. 0.00';
+                          } else {
+                            echo 'L. '.$rowVentasHoy['Ventas_Hoy'];
+                          }
+                    ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
             </div>
@@ -145,8 +159,14 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body text-center text-primary">
-                <span class="text-muted">DEVOLUCIONES</span>
-                <h1>5</h1>
+                <span class="text-muted">VENTAS HOY</span>
+                <h1><?php 
+                          $hoy = getdate();
+                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                          $queryVentasHoy=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
+                          echo $rowVentasHoy['Num_Ventas_Hoy'];
+                    ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
             </div>
@@ -187,27 +207,7 @@
       });
     </script>
     <script type="text/javascript" src="js/plugins/chart.js"></script>
-    <script type="text/javascript">
-      var data = {
-      	labels: ["6:00am", "9:00am", "12:00m", "3:00pm", "6:00pm"],
-      	datasets: [      	
-      		{
-      			label: "Ventas del dia",
-      			fillColor: "rgba(151,187,205,0.2)",
-      			strokeColor: "rgba(151,187,205,1)",
-      			pointColor: "rgba(151,187,205,1)",
-      			pointStrokeColor: "#fff",
-      			pointHighlightFill: "#fff",
-      			pointHighlightStroke: "rgba(151,187,205,1)",
-      			data: [280, 480, 400, 190, 450]
-      		}
-      	]
-      };
-      
-      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-      var lineChart = new Chart(ctxl).Line(data);
-
-    </script>
+    <script type="text/javascript" src="js/tips/grafico_index.js"></script>
   </body>
 </html>
 <?php
