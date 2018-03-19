@@ -75,15 +75,15 @@
           </ul>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="row">
 
-          <div class="col-md-12">
+          <div class="col-md-12" id="filtrarVista">
             <div class="card">
               <div class="card-title">
-                <h3 class="card-title" align="center">Filtrar vista</h3>
+                <h3 class="card-title" align="center">Filtrar articulos</h3>
               </div>
               <div class="card-body">
-                <form class="form-horizontal" method="GET" form="" id="form_filtrar">
+                <form class="form-horizontal">
                   <div class="form-group">
                     <label class="control-label col-md-2">Filtrar por</label>
                     <div class="col-md-4">
@@ -93,22 +93,13 @@
                       <option value="Descripcion">Descripcion</option>
                       <option value="Precio">Precio</option>
                       <option value="Cantidad">Cantidad</option>
-                      <option value="Id_Contenedor">Contenedor</option>
-                      <option value="Id_Categoria">Categoria</option>
-                          <!-- <?php
-                          //if ($estado=='Activo') {
-                            //echo '<option value="Activo" selected>Activo</option>';
-                            //echo '<option value="Inactivo">Inactivo</option>';
-                          //}else{
-                            //echo '<option value="Activo" >Activo</option>';
-                            //echo '<option value="Inactivo" selected>Inactivo</option>';
-                          //}
-                          ?> -->
-                        </select>
+                      <!-- <option value="Id_Contenedor">Contenedor</option>
+                      <option value="Id_Categoria">Categoria</option> -->
+                    </select>
                     </div>
-                    <label class="control-label col-md-1">Campo</label>
+                    <label class="control-label col-md-1">Texto</label>
                     <div class="col-md-4">
-                      <input class="form-control" type="text" id="texto" name="texto" value="" placeholder="Texto de filtro" >
+                      <input class="form-control" type="text" id="texto" name="texto" value="" placeholder="Texto de filtro" />
                     </div>
                   </div>
                 </form>
@@ -117,7 +108,7 @@
           </div>
           
           <?php 
-            $queryListaCatalogo=mysqli_query($db, "SELECT * FROM articulos WHERE Disponible='S'") or die(mysqli_error());
+          /*  $queryListaCatalogo=mysqli_query($db, "SELECT * FROM articulos WHERE Disponible='S'") or die(mysqli_error());
             while ($rowCatalogo=mysqli_fetch_array($queryListaCatalogo)) {
               if ($rowCatalogo['Disponible']=="S") {
                 $disponible = "Si";
@@ -202,8 +193,9 @@
                   </div>
               </div>
               ';  
-            }
+            }*/
           ?>
+
         </div>
     </div>
     <!-- Javascripts-->
@@ -212,7 +204,7 @@
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/modals.js"></script>
-    <!-- <script src="js/tips/catalogo.js"></script> -->
+    <script type="text/javascript" src="js/tips/catalogo.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){

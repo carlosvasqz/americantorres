@@ -1,50 +1,294 @@
 jQuery(document).ready(function (){
 
-        $('#campo').on('change', function() {
-            var data = "campo=" + $('#campo').val() + "&texto=" + this.value;
+    function obtenerDatos() {
+        var campo = $('#campo').val();
+        var texto = $('#texto').val();
+        var data = "campo=" + campo + "&texto=" + texto;
+        //alert(data);
+        $('div').remove('.col-md-3');
+        $('div').remove('.modal');
+        $('div').remove('#cardSinResultados');
+        if (seleccionarConsulta(campo, texto)==1) {
             //alert(data);
-            $.ajax({
-                type: "POST",
-                url: "ci_catalogo_cantidad.php",
-                data: data,
-                dataType: "json",
-            })
-             .done(function( data, textStatus, jqXHR ){
-                if (data) {
-                    for (var index = 1; index <= data.Cantidad; index++) {
-                        var data2 = "campo=" + data.Campo + "&texto=" + data.Texto + "&row=" + (index-1);
-                        $.ajax({
-                            type: "POST",
-                            url: "ci_catalogo_datos.php",
-                            data: data2,
-                            dataType: "json",
-                        })
-                         .done(function( data, textStatus, jqXHR ){
-                            if (data2) {
-                                
-                                $('#tip_cargo').val(data.Nom_Cargo).value;
-                                $('#cod_dep').val(data.Cod_Dep).value;
-                                $('#departamento').val(data.Nom_Dep).value;
-                                $('#cod_cargo').val(data.Cod_Cargo).value;
-                                $('#cargo').val(data.Nom_Cargo).value;
-                                $('#id_empleado').val(data.Id_Empleado).value;
-                                $('#empleado').val(data.Nom_Empleado).value;
-                                $('#sueldo_base').val(data.Sueldo_Base).value;
-                                $('#dedIHSSPorc').html('Deduccion IHSS (' + data.Ded_IHSS + ')');
-                                $('#dedEspPorc').html('Deduccion Especial (' + data.Ded_Especiales + ')');
-                                var sueldo_base = data.Sueldo_Base;
-                                var ded_IHSS = data.Ded_IHSS;
-                                var ded_Esp = data.Ded_Especiales;
-                                calculo(sueldo_base, ded_IHSS, ded_Esp);
-                                $('#sueldo_neto').val(data.Sueldo_Neto).value;
+                $.ajax({
+                    type: "POST",
+                    url: "ci_catalogo_datos_full.php",
+                    data: data,
+                    dataType: "json",
+                })
+                .done(function( data, textStatus, jqXHR ){
+                    //alert(".done - data.exito=" + data.exito + " mensaje="+data.datos.mensaje+" articulo="+data.datos.articulo.Id_Articulo);
+                    if (data.exito) {
+                        //console.log(data);
+                        var card = "";
+                        var modal = "";
+                        $.each(data.datos.articulo, function( key, value ) {
+                            //alert(data.datos.articulo.id);
+                            card += "<div class='col-md-3'>" +
+                                "<div class='card'>" +
+                                    "<div class='card-title-w-btn'>" +
+                                        "<h3 class='title'>" + value['Id_Articulo'] + "</h3>" +
+                                        "<p><a class='btn btn-primary icon-btn' data-toggle='modal' data-target='#" + value['Id_Articulo'] + "'><i class='fa fa-plus'></i>Ver</a></p>" +
+                                    "</div>" +
+                                    "<div class='card-body'>" +
+                                        value['Descripcion_Art'] + "<br />" +
+                                        "<b>Precio:</b> L." + value['Precio_Art'] + "<br>" +
+                                        "<b>Cantidad:</b> " + value['Cantidad_Art']+"<br>" +
+                                        "<b>Estado:</b> " + value['Estado_Art'] +
+                                    "</div>"+
+                                "</div>"+
+                            "</div>";
+                            var Disponible_Art = "";
+                            if (value['Disponible_Art']=='S') {
+                                Disponible_Art = 'Si';
+                            } else {
+                                Disponible_Art = 'No';
                             }
-                         });
-
+                            modal += "" +
+                            //"<!-- Modal Dialog ====================================================================================================================== -->" +
+                            //"<!-- Default Size -->" +
+                            "<div class='modal fade' id=" + value['Id_Articulo'] + " tabindex='-1' role='dialog'>" +
+                                "<div class='modal-dialog' role='document'>" +
+                                    "<div class='modal-content'>" +
+                                        "<div class='modal-header'>" +
+                                            "<h4 class='modal-title' id='defaultModalLabel'>Detalles de articulo</h4>" +
+                                        "</div>" +
+                                        "<div class='modal-body'>" +
+                                        "<table class='table table-hover'>"+
+                                            "<thead>" +
+                                            "<tr>" +
+                                                "<th>Campo</th>" +
+                                                "<th>Detalle</th>" +
+                                            "</tr>" +
+                                            "</thead>" +
+                                            "<tbody>" +
+                                            "<tr>" +
+                                                "<td><b>Codigo de articulo:</b></td>" +
+                                                "<td>" + value['Id_Articulo'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Descripcion:</b></td>" +
+                                                "<td>" + value['Descripcion_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Precio:</b></td>" +
+                                                "<td>L. " + value['Precio_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Cantidad:</b></td>" +
+                                                "<td>" + value['Cantidad_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Disponible:</b></td>" +
+                                                "<td>" + Disponible_Art + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Contenedor:</b></td>" +
+                                                "<td>" + value['Id_Contenedor'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Categoria:</b></td>" +
+                                                "<td>" + value['Nombre_Cat'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Estado:</b></td>" +
+                                                "<td>" + value['Estado_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "</tbody>" +
+                                        "</table>" +
+                                        "</div>" +
+                                        "<div class='modal-footer'>" +
+                                            "<button type='button' class='btn btn-link waves-effect' data-dismiss='modal'>CERRAR</button>" +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+                        });
+    
+                        $( "#row" ).append(card+modal);
+    
+                    }else{
+                        //alert(data.exito);
+                        var sinResultados = ""+
+                        "<div class='col-md-12' id='cardSinResultados'>" +
+                            "<div class='card'>" +
+                                "<div class='card-body text-center text-primary'>" +
+                                    "<h4>No se han encontrado resultados</h4>"
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
+    
+                        $( "#row" ).append(sinResultados);
                     }
-                }
-             });
-            //return false;
-        });
+                })
+                .fail(function( data, textStatus, jqXHR ){
+                    alert(".fail - data.exito=" + data.exito + " query=1");
+                });
+        }
+        if (seleccionarConsulta(campo, texto)==2) {
+            //alert(data);
+                $.ajax({
+                    type: "POST",
+                    url: "ci_catalogo_datos_query.php",
+                    data: data,
+                    dataType: "json",
+                })
+                .done(function( data, textStatus, jqXHR ){
+                    //alert(".done - data.exito=" + data.exito);
+                    if (data.exito==true) {
+                        //console.log(data);
+                        var card = "";
+                        var modal = "";
+                        $.each(data.datos.articulo, function( key, value ) {
+                            //alert(data.datos.articulo.id);
+                            card += "<div class='col-md-3'>" +
+                                "<div class='card'>" +
+                                    "<div class='card-title-w-btn'>" +
+                                        "<h3 class='title'>" + value['Id_Articulo'] + "</h3>" +
+                                        "<p><a class='btn btn-primary icon-btn' data-toggle='modal' data-target='#" + value['Id_Articulo'] + "'><i class='fa fa-plus'></i>Ver</a></p>" +
+                                    "</div>" +
+                                    "<div class='card-body'>" +
+                                        value['Descripcion_Art'] + "<br />" +
+                                        "<b>Precio:</b> L." + value['Precio_Art'] + "<br>" +
+                                        "<b>Cantidad:</b> " + value['Cantidad_Art']+"<br>" +
+                                        "<b>Estado:</b> " + value['Estado_Art'] +
+                                    "</div>"+
+                                "</div>"+
+                            "</div>";
+                            var Disponible_Art = "";
+                            if (value['Disponible_Art']=='S') {
+                                Disponible_Art = 'Si';
+                            } else {
+                                Disponible_Art = 'No';
+                            }
+                            modal += "" +
+                            //"<!-- Modal Dialog ====================================================================================================================== -->" +
+                            //"<!-- Default Size -->" +
+                            "<div class='modal fade' id=" + value['Id_Articulo'] + " tabindex='-1' role='dialog'>" +
+                                "<div class='modal-dialog' role='document'>" +
+                                    "<div class='modal-content'>" +
+                                        "<div class='modal-header'>" +
+                                            "<h4 class='modal-title' id='defaultModalLabel'>Detalles de articulo</h4>" +
+                                        "</div>" +
+                                        "<div class='modal-body'>" +
+                                        "<table class='table table-hover'>"+
+                                            "<thead>" +
+                                            "<tr>" +
+                                                "<th>Campo</th>" +
+                                                "<th>Detalle</th>" +
+                                            "</tr>" +
+                                            "</thead>" +
+                                            "<tbody>" +
+                                            "<tr>" +
+                                                "<td><b>Codigo de articulo:</b></td>" +
+                                                "<td>" + value['Id_Articulo'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Descripcion:</b></td>" +
+                                                "<td>" + value['Descripcion_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Precio:</b></td>" +
+                                                "<td>L. " + value['Precio_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Cantidad:</b></td>" +
+                                                "<td>" + value['Cantidad_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Disponible:</b></td>" +
+                                                "<td>" + Disponible_Art + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Contenedor:</b></td>" +
+                                                "<td>" + value['Id_Contenedor'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Categoria:</b></td>" +
+                                                "<td>" + value['Nombre_Cat'] + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                                "<td><b>Estado:</b></td>" +
+                                                "<td>" + value['Estado_Art'] + "</td>" +
+                                            "</tr>" +
+                                            "</tbody>" +
+                                        "</table>" +
+                                        "</div>" +
+                                        "<div class='modal-footer'>" +
+                                            "<button type='button' class='btn btn-link waves-effect' data-dismiss='modal'>CERRAR</button>" +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+                        });
+    
+                        $( "#row" ).append(card+modal);
+    
+                    }else{
+                        //alert(data.exito);
+                        var sinResultados = ""+
+                        "<div class='col-md-12' id='cardSinResultados'>" +
+                            "<div class='card'>" +
+                                "<div class='card-body text-center text-primary'>" +
+                                    "<h4>No se han encontrado resultados</h4>"
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
+    
+                        $( "#row" ).append(sinResultados);
+                    }
+                })
+                .fail(function( data, textStatus, jqXHR ){
+                    alert(".fail - data.exito=" + data.exito + " query=2");
+                });
+        }
+        
+         //return false;
+    }
+    
+    function seleccionarConsulta(campo, texto) {
+        if (campo!=='Ninguno') {
+            if (texto!=='') {
+                return 2;
+            } else {
+                return 1;
+            }
+        } else {
+            return 1;
+        }
+    }
+
+    obtenerDatos();
+
+    $("#campo").on('change', function(){
+        if (this.value=="Ninguno") {
+            $("#texto").val("").value;
+            obtenerDatos();
+        }else{
+            $("#texto").val("").value;
+        }
+    });
+
+    $("#texto").keyup( function(){
+        if ($("#campo").val()!=="Ninguno") {
+            obtenerDatos();
+        }
+    });
+
+        // $('#texto').on('change', function() {
+        //     //this.preventDefault();
+        //     var campo = $('#campo').val();
+        //     var texto = this.value;
+        //     if (campo!=='Ninguno') {
+        //         if (texto!=='') {
+        //             recuperarDatos(campo, texto, 2);   
+        //         }
+        //     }
+        //     else {
+        //         recuperarDatos(campo, texto, 1);
+        //     }    
+        //     //return false;
+        // });
     
         $('#codigo_historial_modificar').on('change', function() {
             var data = "Id_Pago=" + this.value;
@@ -604,3 +848,5 @@ jQuery(document).ready(function (){
         var sueldo_neto_nuevo = (sueldo_base - dedIHSS - dedEsp ) + pago_extra;
         $("#sueldo_neto").val(sueldo_neto_nuevo.toFixed(2)).value;
     }
+
+    
