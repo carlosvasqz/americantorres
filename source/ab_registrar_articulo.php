@@ -102,7 +102,7 @@
                <div class="form-group">
                     <label class="control-label col-md-3">Precio</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="number" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
+                      <input class="form-control" type="money" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
                     </div>
                   </div>
 
@@ -121,10 +121,20 @@
                   </div>
                 </div>
 
-                 <div class="form-group">
+                
+                     <div class="form-group">
                     <label class="control-label col-md-3">Categoria</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="categoria_articulo" id="categoria_articulo" placeholder="Ingresar categoria de articulo">
+                      <select name="categoria_articulo" id="categoria_articulo"  class="form-control" >
+
+                        <?php 
+                          $queryListaDep=mysqli_query($db, "SELECT * FROM categorias") or die(mysqli_error());
+                          while ($rowDep=mysqli_fetch_array($queryListaDep)) {
+                            echo '<option value="'.$rowDep['Id_Categoria'].'">'.$rowDep['Nombre'].'</option>';  
+                          }
+                        ?>
+                     
+                      </select>
                   </div>
                 </div>
                       
