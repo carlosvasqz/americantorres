@@ -118,7 +118,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Procedencia</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" rows="4" name="procencia_contenedor" id="procedencia_contenedor" placeholder="Ingresar lugar de procedencia de contenedor"></textarea>
+                      <textarea class="form-control" rows="4" name="procedencia_contenedor" id="procedencia_contenedor" placeholder="Ingresar lugar de procedencia de contenedor"></textarea>
 
                 </form>
               </div>
@@ -138,7 +138,7 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/plugins/pace.min.js"></script>
       <script src="js/main.js"></script>
-      <script src="js/tips/cargo_acciones.js"></script>
+      <script src="js/tips/contenedor_acciones.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
       <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
