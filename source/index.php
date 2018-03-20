@@ -16,6 +16,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css"> -->
+    <link rel="icon" type="image/png" href="images/us.png" />
     <title>American Torres</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
@@ -77,22 +78,77 @@
             </ul>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
+         <div class="row">
+         <!-- <div class="col-md-3"><a href="ab_registrar_contenedor.php">
             <div class="card">
-              <h3 class="card-title">Getting Started</h3>
-              <p>American Torres is a free and responsive dashboard theme built with Bootstrap, Pug.js (templating) and SASS. It's fully customizable and modular. You don't need to add the code, you will not use.</p>
-              <p>The issue with the most admin themes out there is that if you will see their source code there are a hell lot of external CSS and javascript files in there. And if you try to remove a CSS or Javascript file some things stops working.</p>
-              <p>That's why I made American Torres. Which is a light weight yet expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the <a href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank">documentation</a> about customizing the theme.</p>
-              <p class="mt-40 mb-20"><a class="btn btn-primary icon-btn mr-10" href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info icon-btn mr-10" href="https://github.com/pratikborsadiya/American Torres-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success icon-btn" href="https://github.com/pratikborsadiya/American Torres-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
+              <div class="card-body text-center">
+                <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i>
+              </div>  
+            </div></a>
+          </div> -->
+          <div class="col-md-3"><a href="ab_registrar_contenedor.php">
+            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+              <div class="info">
+                <h4>Registrar contenedor</h4>
+              </div>
+            </div></a>
+          </div>
+          <div class="col-md-3"><a href="ab_registrar_articulo.php">
+            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+              <div class="info">
+                <h4>Registrar articulo</h4>
+              </div>
+            </div></a>
+          </div>
+          <div class="col-md-3"><a href="ci_catalogo.php">
+            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+              <div class="info">
+                <h4>Catalogo</h4>
+              </div>
+            </div></a>
+          </div>
+          <div class="col-md-3"><a href="cv_vender.php">
+            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+              <div class="info">
+                <h4>Registrar venta</h4>
+              </div>
+            </div></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <h3 class="card-title">Trafico de ventas</h3>
+              <div class="embed-responsive embed-responsive-16by9">
+                <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="card">
-              <h3 class="card-title">Compatibility with frameworks</h3>
-              <p>This theme is not built for a specific framework or technology like Angular or React etc. But due to it's modular nature it's very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.</p>
-              <p>Go to <a href="http://pratikborsadiya.in/blog/American Torres-admin" target="_blank">documentation</a> for more details about integrating this theme with various frameworks.</p>
-              <p>The source code is available on GitHub. If anything is missing or weird please report it as an issue on <a href="https://github.com/pratikborsadiya/American Torres-admin" target="_blank">GitHub</a>. If you want to contribute to this theme pull requests are always welcome.</p>
+              <div class="card-body text-center text-primary">
+                <span class="text-muted">VENTAS</span>
+                <h1>L.35,433.45</h1>
+                <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
+              </div>  
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center text-primary">
+                <span class="text-muted">MAYOR VENTA</span>
+                <h1>L.8,750.45</h1>
+                <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
+              </div>  
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center text-primary">
+                <span class="text-muted">DEVOLUCIONES</span>
+                <h1>5</h1>
+                <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
+              </div>  
             </div>
           </div>
         </div>
@@ -104,6 +160,9 @@
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="js/plugins/fullcalendar.min.js"></script> 
     <script type="text/javascript">
       $('.alert').click(function(){
       	swal({
@@ -126,6 +185,28 @@
       		}
       	});
       });
+    </script>
+    <script type="text/javascript" src="js/plugins/chart.js"></script>
+    <script type="text/javascript">
+      var data = {
+      	labels: ["6:00am", "9:00am", "12:00m", "3:00pm", "6:00pm"],
+      	datasets: [      	
+      		{
+      			label: "Ventas del dia",
+      			fillColor: "rgba(151,187,205,0.2)",
+      			strokeColor: "rgba(151,187,205,1)",
+      			pointColor: "rgba(151,187,205,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(151,187,205,1)",
+      			data: [280, 480, 400, 190, 450]
+      		}
+      	]
+      };
+      
+      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+      var lineChart = new Chart(ctxl).Line(data);
+
     </script>
   </body>
 </html>
