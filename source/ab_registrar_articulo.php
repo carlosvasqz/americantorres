@@ -83,7 +83,8 @@
                <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
               </div>
               <div class="card-body">
-                <form class="form-horizontal" id="guardar_cargo">
+                <form class="form-horizontal" id="guardar_articulo">
+                  
                   <div class="form-group">
                     <label class="control-label col-md-3">Codigo de articulo</label>
                     <div class="col-md-8">
@@ -101,7 +102,7 @@
                <div class="form-group">
                     <label class="control-label col-md-3">Precio</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
+                      <input class="form-control" type="number" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
                     </div>
                   </div>
 
@@ -112,42 +113,64 @@
                   </div>
                 </div>
 
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Contenedor</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" name="contenedor_articulo" id="contenedor_articulo" placeholder="Ingresar numero de contenedor">
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                    <label class="control-label col-md-3">Categoria</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" name="categoria_articulo" id="categoria_articulo" placeholder="Ingresar categoria de articulo">
+                  </div>
+                </div>
+                      
                      <div class="form-group">
                       <label class="control-label col-md-3">  Esta disponible el articulo: </label>
                     <div class="col-md-8" >
                       <div class="checkbox1">
+
                         <label>
-                          <input type="checkbox" name="heck_si">
+                          <input type="radio" name="disponible" id="disponible" value="1" checked>
                           Si
+
                         </label>
                       </div>
                       <div class="checkbox1">
                         <label>
-                          <input type="checkbox" name=" check_no">
+                          <input type="radio" name="disponible" id="disponible" value="0">
                           No
                         </label>
                       </div>
+
+                      
+                  
                       </div>
+                      
                     </div>
 
                      <div class="form-group">
                     <label class="control-label col-md-3">Estado</label>
                     <div class="col-md-8">
-                      <select id="select" class="form-control">
-                        <option>Nuevo</option>
-                        <option>Usado</option>
+                      <select name="estado" id="estado"  class="form-control">
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Usado">Usado</option>
                       </select>
                   </div>
                 </div>
 
-                </form>
+                
               </div>
               
              <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
+                <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
+            </form>
             </div>
           </div>
         </div>
@@ -158,9 +181,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
-     <script src="js/tips/cargo_acciones.js"></script>
+     
     <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
+      <script type="text/javascript" src="js/tips/articulo_acciones.js"></script>
       <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){

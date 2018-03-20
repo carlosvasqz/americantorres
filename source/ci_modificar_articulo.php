@@ -81,7 +81,7 @@
                <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
               </div>
               <div class="card-body">
-                <form class="form-horizontal" id="guardar_cargo">
+                <form class="form-horizontal" id="guardar_articulo">
                   <div class="form-group">
                     <label class="control-label col-md-3">Codigo de articulo</label>
                     <div class="col-md-8">
