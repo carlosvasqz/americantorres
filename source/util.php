@@ -112,9 +112,9 @@
         
     }
 
-    function labelDay($numDiaSem, $i){
+    function labelDay($i){
         $hoy = getdate();
-        if ($hoy['wday']==$i) {
+        if (($hoy['wday']-1)==$i) {
             return "Hoy ".getNomDia($i);
         } else {
             return getNomDia($i);
