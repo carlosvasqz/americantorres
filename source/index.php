@@ -159,7 +159,7 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body text-center text-primary">
-                <span class="text-muted">VENTAS HOY</span>
+                <span class="text-muted">CANTIDAD VENTAS HOY</span>
                 <h1><?php 
                           $hoy = getdate();
                           $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
