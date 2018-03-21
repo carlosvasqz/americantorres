@@ -229,6 +229,10 @@
       	});
       });
     </script>
+    <script src="js/igorescobar-jQuery-Mask-Plugin/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+      //jQuery(document).ready(function (){$("#texto").mask("A-9999");});
+    </script>
   </body>
 </html>
 <?php
