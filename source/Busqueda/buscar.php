@@ -13,26 +13,32 @@ if(isset($_POST['consulta'])){
 $resultado = $mysqli->query($query);
 
 if ($resultado->num_rows > 0) {
-	$salida.="<table class='table'>
+	$salida.="<table class='table table-striped table-hover'>
 				<thead>
 				<tr>
-				<td>Codigo Articulo</td>
-				<td>Descripcion</td>
-				<td>Precio</td>
-				<td>Cantidad</td>
-				<td>Disponible</td>
-				<td>Estado</td>
+				<th>Codigo Articulo</th>
+				<th>Descripcion</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Disponible</th>
+				<th>Estado</th>
 				</tr>
 				</thead>
 				<tbody>";
 
 				while($fila = $resultado->fetch_assoc()){
+					$disponible = "";
+					if ($fila['Disponible']=="S") {
+						$disponible = "Si";
+					}else{
+						$disponible = "No";
+					}
 					$salida.="<tr>
 							<td>".$fila['Id_Articulo']."</td>
 							<td>".$fila['Descripcion']."</td>
-							<td>".$fila['Precio']."</td>
+							<td>L. ".$fila['Precio']."</td>
 							<td>".$fila['Cantidad']."</td>
-							<td>".$fila['Disponible']."</td>
+							<td>".$disponible."</td>
 							<td>".$fila['Estado']."</td>
 							</tr>";
 
