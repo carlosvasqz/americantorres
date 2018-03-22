@@ -84,9 +84,9 @@
               <div class="card-body">
                 <form class="form-horizontal" id="guardar_cargo">
                   <div class="form-group">
-                    <label for ="input_busqueda" class="control-label col-md-3">Codigo de articulo</label>
+                    <label for ="input_busqueda" class="control-label col-md-3">Campo de Filtro</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text"  name="input_busqueda" id="input_busqueda" placeholder="">
+                      <input class="form-control" type="text"  name="input_busqueda" id="input_busqueda" placeholder="ej. A-0001 &oacute; bicicleta">
                     </div>
                   </div>        
 
