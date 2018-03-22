@@ -212,6 +212,6 @@
 </html>
 <?php
     }else{
-        header('location: page-error.php');
+        header('location: page-login.php');
     }
 ?>
