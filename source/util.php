@@ -184,6 +184,13 @@
         return $fecha;
     }
 
+    function getNumVentas(){
+        include ('bd/conexion.php');
+        $queryNumVentas=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas FROM ventas") or die(mysqli_error());
+        $rowNumVentas=mysqli_fetch_array($queryNumVentas);
+        return $rowNumVentas['Num_Ventas'];
+    }
+
     // function setDatos(){
     //     $jsondata = array();
     //     $fechaDom = getFechaDom();
