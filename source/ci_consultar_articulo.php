@@ -70,13 +70,13 @@
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-institution fa-lg"></i></li>
-              <li>Aticulos</li>
-              <li><a href="#"> Cosultar Informaci&oacute;n de Articulo</a></li>
+              <li>Control de Inventario</li>
+              <li><a href="#"> Consultar Articulo</a></li>
             </ul>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="">
             <div class="card">
               <div class="card-title">
                <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
@@ -89,78 +89,31 @@
                       <input class="form-control" type="text"  name="input_busqueda" id="input_busqueda" placeholder="ej. A-0001 &oacute; bicicleta">
                     </div>
                   </div>        
-
                 </form>
               </div>
-              
-            <!-- <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
-                &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
-              </div>
-            -->
             </div>
           </div>
         </div>
 
-          <div class="row">
-          <div class="col-md-12">
-            <div class="buscar">
-              <div class="card-title">
-              
+        <div class="row">
+            <div class="card">
+              <div class="row">
+                <div class="card-title">
+                  <h4 class="card-title" align="center">Articulo(s) encontrados</h4>
+                </div>
               </div>
-                          <div class="card-body">
-                <form class="form-horizontal">
-                  <div id="datos">
-                    
-                  </div>
-
-                 <!-- <div class="form-group">
-                    <label class="control-label col-md-3">Descripcion de articulo</label>
-                    <div class="col-md-8">
-                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder=""></textarea>
-                    </div>
-                  </div>  
-
-
-               <div class="form-group">
-                    <label class="control-label col-md-3">Precio</label>
-                    <div class="col-md-8">
-                      <input class="form-control" type="text" readonly="" name="precio_articulo" id="precio_articulo" placeholder="">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-md-3">Cantidad</label>
-                    <div class="col-md-8">
-                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="">
+              <div class="row">
+                <div class="col-xs-12 table-responsive">
+                  <div class="card-body">
+                    <form class="form-horizontal">
+                      <div id="datos">                    
+                      </div>
+                    </form>
                   </div>
                 </div>
-
-                     <div class="form-group">
-                      <label class="control-label col-md-3">  Esta disponible el articulo: </label>
-                    <div class="col-md-8" >
-                      <div class="checkbox1">
-                        <label>
-                          <input type="checkbox" disabled name="heck_si">
-                          Si
-                        </label>
-                      </div>
-                      <div class="checkbox1">
-                        <label>
-                          <input type="checkbox"  disabled="" name=" check_no">
-                          No
-                        </label>
-                      </div>
-                      </div>
-                    </div>  -->   
-
-                </form>
               </div>
-              
-            
             </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -171,30 +124,11 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
-  
+    <script src="js/tips/consulta_rapida.js"></script>
     <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
-      <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
-
-<!--    <script type="text/javascript">
-      $('#sl').click(function(){
-        $('#tl').loadingBtn();
-        $('#tb').loadingBtn({ text : "Signing In"});
-      });
-      
-      $('#el').click(function(){
-        $('#tl').loadingBtnComplete();
-        $('#tb').loadingBtnComplete({ html : "Sign In"});
-      });
-      
-      $('.demoDate').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose: true,
-        todayHighlight: true
-      });
-    </script>
-  -->
+    <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-   <script type="text/javascript">
+    <script type="text/javascript">
       $('.alert').click(function(){
         swal({
           title: "Esta seguro?",
@@ -217,47 +151,6 @@
         });
       });
     </script>
-
-<!--    <script type="text/javascript">
-      $('#sl').click(function(){
-        $('#tl').loadingBtn();
-        $('#tb').loadingBtn({ text : "Signing In"});
-      });
-      
-      $('#el').click(function(){
-        $('#tl').loadingBtnComplete();
-        $('#tb').loadingBtnComplete({ html : "Sign In"});
-      });
-      
-      $('.demoDate').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose: true,
-        todayHighlight: true
-      });
-    </script>
-  -->
-    <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
-   <!-- <script type="text/javascript">
-      $('.alert').click(function(){
-        swal({
-          title: "Esta seguro?",
-          text: "Esta opcion cerrara la sesion actual",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Si, salir",
-          cancelButtonText: "No, mantener conectado",
-          closeOnConfirm: true,
-          closeOnCancel: true
-        }, function(isConfirm) {
-          if (isConfirm) {
-            $(location).attr('href', 'logout.php');
-          } else {
-            // Exit function
-          }
-        });
-      });
-    </script>
-  -->
   </body>
 </html>
 <?php
