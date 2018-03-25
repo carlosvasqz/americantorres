@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="page-error">
-      <h1><i class="fa fa-exclamation-circle"></i> Error 404</h1>
+      <h1><i class="fa fa-exclamation-circle"></i> Error 403</h1>
       <p>Lo sentimos, la pagina que ha solicitado necesita autenticación.</p>
       <p><a href="page-login.php">Iniciar Sesión</a></p>
     </div>
