@@ -155,7 +155,11 @@
 
     function labelDay($i){
         $hoy = getdate();
-        if (($hoy['wday']-1)==$i) {
+        $hoyWDay = $hoy['wday']-1;
+        if ($hoyWDay<=0) {
+            $hoyWDay = 0;
+        }
+        if ($hoyWDay==$i) {
             return "Hoy ".getNomDia($i);
         } else {
             return getNomDia($i);
@@ -189,6 +193,13 @@
         $queryNumVentas=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas FROM ventas") or die(mysqli_error());
         $rowNumVentas=mysqli_fetch_array($queryNumVentas);
         return $rowNumVentas['Num_Ventas'];
+    }
+
+    function getArticulo($id){
+        include ('bd/conexion.php');
+        $queryNumVentas=mysqli_query($db, "SELECT * FROM articulos WHERE Id_Articulo='$id'") or die(mysqli_error());
+        $rowNumVentas=mysqli_fetch_array($queryNumVentas);
+        return $rowNumVentas;
     }
 
     // function setDatos(){
