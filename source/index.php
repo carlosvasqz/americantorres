@@ -130,8 +130,12 @@
                 <span class="text-muted">TOTAL VENTAS</span>
                 <h1><?php 
                           $queryTotalVentas=mysqli_query($db, "SELECT SUM(Precio) AS Total_Ventas FROM detalles_ventas") or die(mysqli_error());
-                          $rowTotalVentas=mysqli_fetch_array($queryTotalVentas);
-                          echo 'L. '.$rowTotalVentas['Total_Ventas'];  
+                          $rowTotalVentas=mysqli_fetch_array($queryTotalVentas); 
+                          if ($rowTotalVentas['Total_Ventas']=="") {
+                            echo 'L. 0.00';
+                          } else {
+                            echo 'L. '.$rowTotalVentas['Total_Ventas']; 
+                          }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
