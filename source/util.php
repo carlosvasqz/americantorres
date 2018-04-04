@@ -155,7 +155,8 @@
 
     function labelDay($i){
         $hoy = getdate();
-        $hoyWDay = $hoy['wday']-1;
+        // $hoyWDay = $hoy['wday']-1;
+        $hoyWDay = $hoy['wday'];
         if ($hoyWDay<=0) {
             $hoyWDay = 0;
         }
@@ -221,4 +222,67 @@
     //         }
     //     }
     // }
+
+    function array_1d_to_2d($array1d, $width){
+        $length = count($array1d);    
+        $array2d = array();
+        $xn;
+        $yn;
+        for($i = 0; $i < $length; $i++){
+            $yn = floor($i/$width);
+            $xn = $i - $yn*$width;
+            $array2d[$yn][$xn] = $array1d[$i];
+        }
+        return $array2d;
+    } 
+
+    function array_2d_to_1d($array2d){
+        $height  = count($array2d);
+        $array1d = array(); 
+        $a = 0;
+        for($i = 0; $i < $height; $i++)
+        {
+            for($j = 0; $j < count($array2d, $i); $j++)
+            {
+                $array1d[$a++] = $array2d[$i][$j];
+            }
+        }
+        return $array1d;
+    }
+
+    function getIdUsser($nombre){
+        include ('bd/conexion.php');
+        $sql = "SELECT Id_Usuario FROM usuarios WHERE Nombre='$nombre'";
+        $queryUsser=mysqli_query($db, $sql) or die(mysqli_error());
+        return $rowUsserId=mysqli_fetch_array($queryUsser);
+    }
+
+    function getLastSell(){
+        include ('bd/conexion.php');
+        $sql = "SELECT MAX(Id_Venta) FROM ventas";
+        $queryLast=mysqli_query($db, $sql) or die(mysqli_error());
+        return $rowLastSell=mysqli_fetch_array($queryLast);
+    }
+
+    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales, $datosArts){
+        include ('bd/conexion.php');
+        $idUsuario = getIdUsser($nombreUsuario);
+        $descuento;
+        if ($totales[1]=="Valor") {
+            $descuento = $totales[2];
+        } else if ($totales[1]=="Porcentaje"){
+            $descuento = $totales[3]*($totales[2]/100);
+        }
+        $idVenta = getLastSell() + 1;
+        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, $fecha)";
+        $guardarDatos=mysqli_query($db, $sqlVenta) or die(mysqli_error());
+        // $rowRespuesta=mysqli_fetch_array($guardarDatos);
+        if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
+            
+            $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES ($idVenta, , , , )";
+        }else{
+
+        }
+        return true;
+    }
 ?>

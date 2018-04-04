@@ -3,7 +3,7 @@ $(buscar_datos());
 
 function buscar_datos(consulta){
 	$.ajax({
-		url:'ci_consulta_rapida_buscar.php',
+		url:'cv_vender_busqueda_rapida.php',
 		type: 'POST',
 		data: 'html',
 		data: {consulta: consulta},

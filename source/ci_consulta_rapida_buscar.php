@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root", "", "americantorres");
+$mysqli = new mysqli("localhost","root", "DexScorp", "americantorres");
 
 $salida = "";
 $query = "SELECT * FROM articulos ORDER By Id_Articulo";
@@ -46,7 +46,7 @@ if ($resultado->num_rows > 0) {
 
 				$salida.="</tbody></table>";
 }else{
-	$salida.="No se encontraron datos";
+	$salida.="<h5 class='text-center text-info'><i class='fa fa-info-circle'></i> No se encontraron datos</h5>";
 
 }
 
