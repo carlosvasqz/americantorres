@@ -28,10 +28,10 @@ if ($resultado->num_rows > 0) {
 
 				while($fila = $resultado->fetch_assoc()){
 					$disponible = "";
-					if ($fila['Disponible']=="S") {
-						$disponible = "Si";
+					if ($fila['Disponible']=='1') {
+						$disponible = "";
 					}else{
-						$disponible = "No";
+						$disponible = "";
 					}
 					$salida.="<tr>
 							<td>".$fila['Id_Articulo']."</td>
