@@ -75,28 +75,67 @@
             </ul>
           </div>
         </div>
-        <div class="row">
+         <?php 
+          $codigo_buscar=$_GET['codigo_buscar'];
+          if ($codigo_buscar==null) {
+              $codigo_articulo='';
+              $descripcion_articulo = '';
+              $precio_articulo = '';
+              $cantidad_articulo = '';
+              $contenedor_articulo = '';
+              $categoria_articulo = '';
+              $disponible = '';
+              $estado = '';
+            
+          } 
+          if ($codigo_buscar!=null) {
+            $queryObjeto = mysqli_query($db, "SELECT * FROM articulos WHERE Id_Articulo = '".$codigo_buscar."'") or die(mysqli_error());
+            if ($rowObjeto=mysqli_fetch_array($queryObjeto)) {
+              $codigo_articulo = $rowObjeto['Id_Articulo'];
+              $descripcion_articulo = $rowObjeto['Descripcion'];
+              $precio_articulo = $rowObjeto['Precio'];
+              $cantidad_articulo = $rowObjeto['Cantidad'];
+              $contenedor_articulo = $rowObjeto['Id_Contenedor'];
+              $categoria_articulo = $rowObjeto['Id_Categoria'];
+              $disponible = $rowObjeto['Disponible'];
+              $estado = $rowObjeto['Estado'];
+              
+            } else {
+              $codigo_articulo = '';
+              $descripcion_articulo = '';
+              $precio_articulo = '';
+              $cantidad_articulo = '';
+              $contenedor_articulo = '';
+              $categoria_articulo = '';
+              $disponible = '';
+              $estado = '';
+
+            }
+          }            
+        ?>
+
+    <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-title">
-               <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
+                <h3 class="card-title" align="center">Buscar articulo</h3>
               </div>
               <div class="card-body">
-                <form class="form-horizontal" id="guardar_articulo">
+                <form class="form-horizontal" method="GET" id="form_buscar" action="ci_modificar_articulo.php">
                   <div class="form-group">
-                    <label class="control-label col-md-3">Codigo de articulo</label>
+                    <label class="control-label col-md-3">Codigo articulo</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="codigo_articulo" id="codigo_articulo" placeholder="Ingresar codigo de articulo">
+                      <input class="form-control" type="text" id="codigo_buscar"  name="codigo_buscar" value="<?php echo $codigo_articulo;?>" placeholder="Ingresar codigo de articulo" >
                     </div>
-                  </div>        
-
-                </form>
+                  </div>
+                 </form>
               </div>
-              
-             <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_articulo" id="agregar" name="agregar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
+
+
+              <div class="card-footer" align="center">
+                <button class="btn btn-primary icon-btn" type="submit" form="form_buscar" id="buscar" name="buscar"><i class="fa fa-fw fa-lg fa-check-circle"></i>buscar</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
+                <button class="btn btn-default icon-btn" type="button" onclick="limpiarBuscar()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
             </div>
           </div>
@@ -114,7 +153,9 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Descripcion de articulo</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" rows="4" readonly="" name="descripcion_articulo" id="descripcion_articulo" placeholder=""></textarea>
+                      <textarea class="form-control" rows="4" name="descripcion_articulo" id="descripcion_articulo" placeholder="<?php echo $descripcion_articulo;?>"></textarea>
+
+                      <input type="hidden" id="codigo_articulo" value="<?php echo $codigo_articulo ?>">
                     </div>
                   </div>  
 
@@ -122,41 +163,94 @@
                <div class="form-group">
                     <label class="control-label col-md-3">Precio</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" readonly="" name="precio_articulo" id="precio_articulo" placeholder="">
+                      <input class="form-control" type="text" name="precio_articulo" id="precio_articulo" placeholder="<?php echo $precio_articulo;?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="control-label col-md-3">Cantidad</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" readonly="" name="cantidad_articulo" id="cantidad_articulo" placeholder="">
+                      <input class="form-control" type="text"  name="cantidad_articulo" id="cantidad_articulo" placeholder="<?php echo $cantidad_articulo;?>">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Contenedor</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" name="contenedor_articulo" id="contenedor_articulo"  placeholder="<?php echo $contenedor_articulo;?>">
                   </div>
                 </div>
 
                      <div class="form-group">
+                    <label class="control-label col-md-3">Categoria</label>
+                    <div class="col-md-8">
+                      <select name="categoria_articulo" id="categoria_articulo"  class="form-control" >
+
+                        <?php 
+                          $queryListaDep=mysqli_query($db, "SELECT * FROM categorias") or die(mysqli_error());
+                          while ($rowDep=mysqli_fetch_array($queryListaDep)) {
+                            echo '<option value="'.$rowDep['Id_Categoria'].'">'.$rowDep['Nombre'].'</option>';  
+                          }
+                        ?>
+                     
+                      </select>
+                  </div>
+                </div>
+
+                     <<div class="form-group">
                       <label class="control-label col-md-3">  Esta disponible el articulo: </label>
                     <div class="col-md-8" >
                       <div class="checkbox1">
-                        <label>
-                          <input type="checkbox" disabled name="heck_si">
-                          Si
-                        </label>
+                        <?php
+                       echo '<label>';
+                       if($disponible==1) {
+                        echo '<input type="radio" name="disponible" id="disponible" value="1" checked>';
+                        echo 'Si';
+                        echo '</label>';
+                        echo '</div>';
+
+                     echo '<div class="checkbox1">';
+                     echo '<label>';
+                     echo  '<input type="radio" name="disponible" id="disponible" value="0">';
+                     echo 'No';
+                     echo '</label>';
+
+                       }else{
+                       echo '<div class="checkbox1">';
+                       echo '<label>';
+                       echo '<input type="radio" name="disponible" id="disponible" value="1" >';
+                       echo 'Si';
+                       echo '</label>';
+                       echo '</div>';
+
+                     echo '<div class="checkbox1">';
+                     echo '<label>';
+                     echo  '<input type="radio" name="disponible" id="disponible" value="0" checked>';
+                     echo 'No';
+                     echo '</label>';
+                      }
+                        ?>
                       </div>
-                      <div class="checkbox1">
-                        <label>
-                          <input type="checkbox"  disabled="" name=" check_no">
-                          No
-                        </label>
+
+                      
+                  
                       </div>
-                      </div>
+                      
                     </div>   
 
                      <div class="form-group">
                     <label class="control-label col-md-3">Estado</label>
                     <div class="col-md-8">
-                      <select id="select" disabled="" class="form-control">
-                        <option>Nuevo</option>
-                        <option>Usado</option>
+                      <select id="select" class="form-control">
+                         <?php
+                        if ($estado=='Nuevo') {
+                          echo '<option value="Nuevo" selected>Nuevo</option>';
+                          echo '<option value="Usado">Usado</option>';
+                        }else{
+                          echo '<option value="Nuevo" >Nuevo</option>';
+                          echo '<option value="Usado" selected>Usado</option>';
+                        }
+                        ?>
                       </select>
                   </div>
                 </div>  
@@ -177,6 +271,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/tips/articulo_acciones.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){
