@@ -256,35 +256,48 @@
         include ('bd/conexion.php');
         $sql = "SELECT Id_Usuario FROM usuarios WHERE Nombre='$nombre'";
         $queryUsser=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowUsserId=mysqli_fetch_array($queryUsser);
+        $rowUsserId=mysqli_fetch_array($queryUsser);
+        return $rowUsserId['Id_Usuario'];
     }
 
     function getLastSell(){
         include ('bd/conexion.php');
-        $sql = "SELECT MAX(Id_Venta) FROM ventas";
+        $sql = "SELECT MAX(Id_Venta) AS UltimoId FROM ventas";
         $queryLast=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowLastSell=mysqli_fetch_array($queryLast);
+        $rowLastSell=mysqli_fetch_array($queryLast);
+        return $rowLastSell['UltimoId'];
     }
 
-    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales, $datosArts){
+    function guardarDetalles($values){
+        include ('bd/conexion.php');
+        $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES $values";
+        $guardarDatos=mysqli_query($db, $sqlDetalles) or die(mysqli_error());
+        return true;
+    }
+
+    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales){
         include ('bd/conexion.php');
         $idUsuario = getIdUsser($nombreUsuario);
         $descuento;
         if ($totales[1]=="Valor") {
             $descuento = $totales[2];
         } else if ($totales[1]=="Porcentaje"){
-            $descuento = $totales[3]*($totales[2]/100);
+            $descuento = $totales[0]*($totales[2]/100);
         }
         $idVenta = getLastSell() + 1;
-        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, $fecha)";
+        $fecha = trim($fecha);
+        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, '$fecha')";
         $guardarDatos=mysqli_query($db, $sqlVenta) or die(mysqli_error());
         // $rowRespuesta=mysqli_fetch_array($guardarDatos);
-        if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
-            
-            $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES ($idVenta, , , , )";
-        }else{
+        // if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
+            // guardarDetalles();
+        // }else{
 
-        }
-        return true;
+        // }
+        // if ($rowRespuesta){
+            return true;
+        // }else{
+        //     return false;
+        // }
     }
 ?>

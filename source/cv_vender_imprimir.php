@@ -44,7 +44,27 @@
           }
           $countArtRows1D = count($arr_artRows1D);
           $arrArtData2D = array_1d_to_2d($arr_artRows1D, 6);
-          guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData, $arrArtData2D);
+          
+          $values = "";
+          foreach($arrArtData2D as $count => $row){
+            $idVenta = getLastSell()+1;
+            $values = $values . "(" . $idVenta . ",";
+            for ($i=0; $i < 6; $i++) { 
+              if($i==1){
+                $values = $values . "'" . $arrArtData2D[$count][$i] . "',";
+              }else if($i==2||$i==4){
+              }else if ($i==5) {
+                $values = $values . $arrArtData2D[$count][$i];
+              }else{
+                $values = $values . $arrArtData2D[$count][$i] . ",";
+              }
+            }
+            $values = $values . "),";
+          }
+          $valuesLength = strlen($values);
+          $valuesSQL = substr($values, 0, $valuesLength-1);
+          guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData);
+          guardarDetalles($valuesSQL);
         ?>
         <div class="row">
 
