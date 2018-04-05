@@ -142,6 +142,7 @@
                             <?php echo $fechaHoyDB; ?>
                           </span>
                           <?php echo date("H:i:s");?>
+                          &nbsp;&nbsp;&nbsp;
                         </small>
                       </i>
                     </small>
