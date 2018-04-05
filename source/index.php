@@ -131,11 +131,15 @@
                 <h1><?php 
                           $queryTotalVentas=mysqli_query($db, "SELECT SUM(Precio) AS Total_Ventas FROM detalles_ventas") or die(mysqli_error());
                           $rowTotalVentas=mysqli_fetch_array($queryTotalVentas); 
-                          if ($rowTotalVentas['Total_Ventas']=="") {
-                            echo 'L. 0.00';
-                          } else {
-                            echo 'L. '.$rowTotalVentas['Total_Ventas']; 
-                          }
+                          $queryTotalDescuentos=mysqli_query($db, "SELECT SUM(Descuento) AS Total_Descuentos FROM ventas") or die(mysqli_error());
+                          $rowTotalDescuentos=mysqli_fetch_array($queryTotalDescuentos); 
+                          $totalVentas = $rowTotalVentas['Total_Ventas'] - $rowTotalDescuentos['Total_Descuentos'];
+                          $totalVentas = number_format($totalVentas, 2);
+                          // if ($totalVentas==0) {
+                          //   echo 'L. 0.00';
+                          // } else {
+                            echo 'L. '.$totalVentas; 
+                          // }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
@@ -151,11 +155,12 @@
                       $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
                       $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio)-Descuento AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
                       $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
-                      if ($rowVentasHoy['Ventas_Hoy']=="") {
-                        echo 'L. 0.00';
-                      } else {
-                        echo 'L. '.$rowVentasHoy['Ventas_Hoy'];
-                      }
+                      $ventasHoy = number_format($rowVentasHoy['Ventas_Hoy'], 2);
+                      // if ($rowVentasHoy['Ventas_Hoy']=="") {
+                      //   echo 'L. 0.00';
+                      // } else {
+                        echo 'L. '.$ventasHoy;
+                      // }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
