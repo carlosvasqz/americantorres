@@ -39,7 +39,7 @@ jQuery(document).ready(function (){
                                 "</div>"+
                             "</div>";
                             var Disponible_Art = "";
-                            if (value['Disponible_Art']=='S') {
+                            if (value['Disponible_Art']=='1') {
                                 Disponible_Art = 'Si';
                             } else {
                                 Disponible_Art = 'No';
@@ -156,7 +156,7 @@ jQuery(document).ready(function (){
                                 "</div>"+
                             "</div>";
                             var Disponible_Art = "";
-                            if (value['Disponible_Art']=='S') {
+                            if (value['Disponible_Art']=='1') {
                                 Disponible_Art = 'Si';
                             } else {
                                 Disponible_Art = 'No';
