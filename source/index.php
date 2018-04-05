@@ -146,15 +146,16 @@
               <div class="card-body text-center text-primary">
                 <span class="text-muted">TOTAL VENTAS HOY </span>
                 <h1><?php 
-                          $hoy = getdate();
-                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
-                          $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
-                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
-                          if ($rowVentasHoy['Ventas_Hoy']=="") {
-                            echo 'L. 0.00';
-                          } else {
-                            echo 'L. '.$rowVentasHoy['Ventas_Hoy'];
-                          }
+                      date_default_timezone_set('America/Tegucigalpa');                          
+                      $hoy = getdate();
+                      $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                      $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
+                      if ($rowVentasHoy['Ventas_Hoy']=="") {
+                        echo 'L. 0.00';
+                      } else {
+                        echo 'L. '.$rowVentasHoy['Ventas_Hoy'];
+                      }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
@@ -165,11 +166,12 @@
               <div class="card-body text-center text-primary">
                 <span class="text-muted">CANTIDAD VENTAS HOY</span>
                 <h1><?php 
-                          $hoy = getdate();
-                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
-                          $queryVentasHoy=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
-                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
-                          echo $rowVentasHoy['Num_Ventas_Hoy'];
+                      date_default_timezone_set('America/Tegucigalpa');                          
+                      $hoy = getdate();
+                      $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                      $queryVentasHoy=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
+                      echo $rowVentasHoy['Num_Ventas_Hoy'];
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  

@@ -4,6 +4,7 @@
   include ('util.php');
   #session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) {  
+    date_default_timezone_set('America/Tegucigalpa');
     $hoy = getdate();
     $fechaImpFullFormat = getNomDia($hoy['wday'])." ".$hoy['mday'].", ".getNomMes($hoy['mon'])." de ".$hoy['year'];
     $fechaHoyImpNum = $hoy['mday']."/".$hoy['mon']."/".$hoy['year'];

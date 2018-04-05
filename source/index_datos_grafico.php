@@ -8,6 +8,7 @@
         include ('util.php');
         $jsondata = array();
         $fechaDom = getFechaDom();
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         for ($i=0; $i <=6 ; $i++) { 
             $fecha = getSumFecha($fechaDom['ano'], $fechaDom['mes'],$fechaDom['dia'], $i);

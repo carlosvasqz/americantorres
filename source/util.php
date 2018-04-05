@@ -104,6 +104,7 @@
     }
 
     function getFechaDom(){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         $numDiaSem = $hoy['wday'];
         $numMes = $hoy['mon'];
@@ -154,6 +155,7 @@
     }
 
     function labelDay($i){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         // $hoyWDay = $hoy['wday']-1;
         $hoyWDay = $hoy['wday'];
