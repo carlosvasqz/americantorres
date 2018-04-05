@@ -142,10 +142,13 @@
     //2
     function getTotalVentas($fecha){
         include ('bd/conexion.php');
-        $sql = "SELECT SUM(Precio)-Descuento AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
-        $queryVentas=mysqli_query($db, $sql) or die(mysqli_error());
+        $sqlVentas = "SELECT SUM(Precio) AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
+        $queryVentas=mysqli_query($db, $sqlVentas) or die(mysqli_error());
         $rowVentas=mysqli_fetch_array($queryVentas);
-        $ventasDia = $rowVentas['Ventas_Dia'];
+        $sqlDescuentos = "SELECT SUM(Descuento) AS Descuentos_Dia FROM ventas WHERE Fecha='$fecha';";
+        $queryDescuentos=mysqli_query($db, $sqlDescuentos) or die(mysqli_error());
+        $rowDescuentos=mysqli_fetch_array($queryDescuentos);
+        $ventasDia = $rowVentas['Ventas_Dia'] - $rowDescuentos['Descuentos_Dia'];
         if(is_null($ventasDia)){
             return 0;
         }else{
