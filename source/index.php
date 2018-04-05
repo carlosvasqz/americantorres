@@ -149,7 +149,7 @@
                       date_default_timezone_set('America/Tegucigalpa');                          
                       $hoy = getdate();
                       $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
-                      $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio)-Descuento AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
                       $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
                       if ($rowVentasHoy['Ventas_Hoy']=="") {
                         echo 'L. 0.00';
