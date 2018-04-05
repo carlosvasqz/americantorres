@@ -153,7 +153,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Descripcion de articulo</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" rows="4" name="descripcion_articulo" id="descripcion_articulo" placeholder="<?php echo $descripcion_articulo;?>"></textarea>
+                      <textarea class="form-control" rows="4" name="descripcion_articulo" id="descripcion_articulo">  <?php echo $descripcion_articulo;?></textarea>
 
                       <input type="hidden" id="codigo_articulo" value="<?php echo $codigo_articulo ?>">
                     </div>
@@ -163,21 +163,21 @@
                <div class="form-group">
                     <label class="control-label col-md-3">Precio</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="precio_articulo" id="precio_articulo" placeholder="<?php echo $precio_articulo;?>">
+                      <input class="form-control" type="text" name="precio_articulo" id="precio_articulo" value="<?php echo $precio_articulo;?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="control-label col-md-3">Cantidad</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text"  name="cantidad_articulo" id="cantidad_articulo" placeholder="<?php echo $cantidad_articulo;?>">
+                      <input class="form-control" type="text"  name="cantidad_articulo" id="cantidad_articulo" value="<?php echo $cantidad_articulo;?>">
                   </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-3">Contenedor</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="contenedor_articulo" id="contenedor_articulo"  placeholder="<?php echo $contenedor_articulo;?>">
+                      <input class="form-control" type="text" name="contenedor_articulo" id="contenedor_articulo"  value="<?php echo $contenedor_articulo;?>">
                   </div>
                 </div>
 
@@ -241,7 +241,7 @@
                      <div class="form-group">
                     <label class="control-label col-md-3">Estado</label>
                     <div class="col-md-8">
-                      <select id="select" class="form-control">
+                      <select name="estado"id="estado" class="form-control">
                          <?php
                         if ($estado=='Nuevo') {
                           echo '<option value="Nuevo" selected>Nuevo</option>';
@@ -257,11 +257,16 @@
 
                 </form>
               </div>
-              
+              <div class="card-footer" align="center">
+                <button class="btn btn-primary icon-btn" type="button" id="modificar" name="modificar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
+              </div>
             
             </div>
           </div>
         </div>
+
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root", "DexScorp", "americantorres");
+$mysqli = new mysqli("localhost","root", "", "americantorres");
 
 $salida = "";
 $query = "SELECT * FROM articulos ORDER By Id_Articulo";
@@ -28,7 +28,7 @@ if ($resultado->num_rows > 0) {
 
 				while($fila = $resultado->fetch_assoc()){
 					$disponible = "";
-					if ($fila['Disponible']=="S") {
+					if ($fila['Disponible']=="1") {
 						$disponible = "Si";
 					}else{
 						$disponible = "No";
