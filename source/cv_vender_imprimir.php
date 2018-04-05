@@ -44,7 +44,10 @@
           }
           $countArtRows1D = count($arr_artRows1D);
           $arrArtData2D = array_1d_to_2d($arr_artRows1D, 6);
-          guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData, $arrArtData2D);
+          $valuesSQL = arrToStrArtsVenta($arrArtData2D);
+          guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData);
+          guardarDetalles($valuesSQL);
+          restarArts($arrArtData2D);
         ?>
         <div class="row">
 
@@ -53,7 +56,7 @@
             <section class="invoice">
               <div class="row">
                 <div class="col-xs-12">
-                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span></small></div>
+                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span> <?php echo $sqlUPDATES;?></small></div>
                   <h2 class="page-header"><i class="fa fa-globe"></i> American Torres<small class="pull-right">Fecha: <?php echo $arr_systData[0]; ?></small></h2>
                 </div>
               </div>

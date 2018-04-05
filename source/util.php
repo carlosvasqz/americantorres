@@ -104,6 +104,7 @@
     }
 
     function getFechaDom(){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         $numDiaSem = $hoy['wday'];
         $numMes = $hoy['mon'];
@@ -141,10 +142,13 @@
     //2
     function getTotalVentas($fecha){
         include ('bd/conexion.php');
-        $sql = "SELECT SUM(Precio) AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
-        $queryVentas=mysqli_query($db, $sql) or die(mysqli_error());
+        $sqlVentas = "SELECT SUM(Precio) AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
+        $queryVentas=mysqli_query($db, $sqlVentas) or die(mysqli_error());
         $rowVentas=mysqli_fetch_array($queryVentas);
-        $ventasDia = $rowVentas['Ventas_Dia'];
+        $sqlDescuentos = "SELECT SUM(Descuento) AS Descuentos_Dia FROM ventas WHERE Fecha='$fecha';";
+        $queryDescuentos=mysqli_query($db, $sqlDescuentos) or die(mysqli_error());
+        $rowDescuentos=mysqli_fetch_array($queryDescuentos);
+        $ventasDia = $rowVentas['Ventas_Dia'] - $rowDescuentos['Descuentos_Dia'];
         if(is_null($ventasDia)){
             return 0;
         }else{
@@ -154,6 +158,7 @@
     }
 
     function labelDay($i){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         // $hoyWDay = $hoy['wday']-1;
         $hoyWDay = $hoy['wday'];
@@ -254,35 +259,78 @@
         include ('bd/conexion.php');
         $sql = "SELECT Id_Usuario FROM usuarios WHERE Nombre='$nombre'";
         $queryUsser=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowUsserId=mysqli_fetch_array($queryUsser);
+        $rowUsserId=mysqli_fetch_array($queryUsser);
+        return $rowUsserId['Id_Usuario'];
     }
 
     function getLastSell(){
         include ('bd/conexion.php');
-        $sql = "SELECT MAX(Id_Venta) FROM ventas";
+        $sql = "SELECT MAX(Id_Venta) AS UltimoId FROM ventas";
         $queryLast=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowLastSell=mysqli_fetch_array($queryLast);
+        $rowLastSell=mysqli_fetch_array($queryLast);
+        return $rowLastSell['UltimoId'];
     }
 
-    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales, $datosArts){
+    function guardarDetalles($values){
+        include ('bd/conexion.php');
+        $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES $values";
+        $guardarDatos=mysqli_query($db, $sqlDetalles) or die(mysqli_error());
+        return true;
+    }
+
+    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales){
         include ('bd/conexion.php');
         $idUsuario = getIdUsser($nombreUsuario);
         $descuento;
         if ($totales[1]=="Valor") {
             $descuento = $totales[2];
         } else if ($totales[1]=="Porcentaje"){
-            $descuento = $totales[3]*($totales[2]/100);
+            $descuento = $totales[0]*($totales[2]/100);
         }
         $idVenta = getLastSell() + 1;
-        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, $fecha)";
+        $fecha = trim($fecha);
+        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, '$fecha')";
         $guardarDatos=mysqli_query($db, $sqlVenta) or die(mysqli_error());
         // $rowRespuesta=mysqli_fetch_array($guardarDatos);
-        if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
-            
-            $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES ($idVenta, , , , )";
-        }else{
+        // if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
+            // guardarDetalles();
+        // }else{
 
+        // }
+        // if ($rowRespuesta){
+            return true;
+        // }else{
+        //     return false;
+        // }
+    }
+
+    function arrToStrArtsVenta($arrArtData2D){
+        $values = "";
+        foreach($arrArtData2D as $count => $row){
+          $idVenta = getLastSell()+1;
+          $values = $values . "(" . $idVenta . ",";
+          for ($i=0; $i < 6; $i++) { 
+            if($i==1){
+              $values = $values . "'" . $arrArtData2D[$count][$i] . "',";
+            }else if($i==2||$i==4){
+            }else if ($i==5) {
+              $values = $values . $arrArtData2D[$count][$i];
+            }else{
+              $values = $values . $arrArtData2D[$count][$i] . ",";
+            }
+          }
+          $values = $values . "),";
         }
-        return true;
+        $valuesLength = strlen($values);
+        $valuesSQL = substr($values, 0, $valuesLength-1);
+        return $valuesSQL;
+    }
+
+    function restarArts($arrArtData2D){
+        include ('bd/conexion.php');
+        foreach($arrArtData2D as $index => $valor){
+            $sqlUPDATES = "UPDATE articulos SET Cantidad = Cantidad-$valor[3] WHERE Id_Articulo = '$valor[1]';";
+            $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
+        }
     }
 ?>
