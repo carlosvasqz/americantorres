@@ -183,6 +183,21 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body text-center text-warning">
+                <span class="text-muted">ARTICULOS BAJOS EN EXISTENCIAS</span>
+                <h1><?php 
+                      $queryArtsBajos=mysqli_query($db, "SELECT COUNT(*) AS Arts_Bajos FROM articulos WHERE Cantidad < 5") or die(mysqli_error());
+                      $rowArtsBajos=mysqli_fetch_array($queryArtsBajos);
+                      echo $rowArtsBajos['Arts_Bajos'];
+                    ?></h1>
+                <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
+              </div>  
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Javascripts-->
