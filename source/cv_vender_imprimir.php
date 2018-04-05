@@ -44,27 +44,10 @@
           }
           $countArtRows1D = count($arr_artRows1D);
           $arrArtData2D = array_1d_to_2d($arr_artRows1D, 6);
-          
-          $values = "";
-          foreach($arrArtData2D as $count => $row){
-            $idVenta = getLastSell()+1;
-            $values = $values . "(" . $idVenta . ",";
-            for ($i=0; $i < 6; $i++) { 
-              if($i==1){
-                $values = $values . "'" . $arrArtData2D[$count][$i] . "',";
-              }else if($i==2||$i==4){
-              }else if ($i==5) {
-                $values = $values . $arrArtData2D[$count][$i];
-              }else{
-                $values = $values . $arrArtData2D[$count][$i] . ",";
-              }
-            }
-            $values = $values . "),";
-          }
-          $valuesLength = strlen($values);
-          $valuesSQL = substr($values, 0, $valuesLength-1);
+          $valuesSQL = arrToStrArtsVenta($arrArtData2D);
           guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData);
           guardarDetalles($valuesSQL);
+          restarArts($arrArtData2D);
         ?>
         <div class="row">
 
@@ -73,7 +56,7 @@
             <section class="invoice">
               <div class="row">
                 <div class="col-xs-12">
-                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span></small></div>
+                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span> <?php echo $sqlUPDATES;?></small></div>
                   <h2 class="page-header"><i class="fa fa-globe"></i> American Torres<small class="pull-right">Fecha: <?php echo $arr_systData[0]; ?></small></h2>
                 </div>
               </div>
