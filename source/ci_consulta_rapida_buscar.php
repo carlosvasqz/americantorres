@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root", "DexScorp", "americantorres");
+$mysqli = new mysqli("localhost","root", "", "americantorres");
 
 $salida = "";
 $query = "SELECT * FROM articulos ORDER By Id_Articulo";
