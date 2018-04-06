@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-04-2018 a las 18:26:48
+-- Tiempo de generación: 06-04-2018 a las 21:07:07
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.11
 
@@ -87,6 +87,7 @@ CREATE TABLE `cierres_diarios` (
   `Fecha` date NOT NULL,
   `Hora` varchar(20) NOT NULL,
   `Ventas_dia` double(10,2) NOT NULL,
+  `Caja_Base_Dia_Sig` double(10,2) NOT NULL,
   `Coincidio` int(1) NOT NULL,
   `Diferencia` double(10,2) NOT NULL,
   `Descripcion_Diferencia` varchar(255) NOT NULL
