@@ -97,10 +97,7 @@
                     </div>
                   </div>
 
-              
-              
-
-               <div class="form-group">
+                  <div class="form-group">
                     <label class="control-label col-md-3">Costo de contenedor</label>
                     <div class="col-md-8">
                       <input class="form-control" type="text" name="costo_contenedor" id="costo_contenedor" placeholder="Ingresar costo de contenedor">
@@ -113,13 +110,13 @@
                       <input class="form-control" type="date" name="FI_contenedor" id="FI_contenedor" placeholder="Ingresar fecha en la que ingreso el contenedor">
                     </div>
                   </div>
-                  
 
                   <div class="form-group">
                     <label class="control-label col-md-3">Procedencia</label>
                     <div class="col-md-8">
                       <textarea class="form-control" rows="4" name="procedencia_contenedor" id="procedencia_contenedor" placeholder="Ingresar lugar de procedencia de contenedor"></textarea>
-
+                    </div>
+                  </div>
                 </form>
               </div>
               </div>
