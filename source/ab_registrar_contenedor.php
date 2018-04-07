@@ -120,7 +120,7 @@
                 </form>
               </div>
               </div>
-             <div class="card-footer" align="center">
+              <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="guardar_cargo" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
