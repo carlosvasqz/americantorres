@@ -202,7 +202,7 @@
       jQuery(document).ready(function (){
         function imprimir(){
           window.setTimeout('javascript:window.print();', 1500); 
-          window.setTimeout('cv_vender.php', 2000); 
+          window.setTimeout('location.href="cv_vender.php"', 2000);
         }
         imprimir();
       });
