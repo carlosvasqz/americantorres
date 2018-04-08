@@ -351,7 +351,7 @@
                                 </thead>
                                 <tbody id="rowsSeleccionRapida">
                                 <?php
-                                $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos") or die(mysqli_error());
+                                $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos WHERE Cantidad>0") or die(mysqli_error());
                                 while ($rowArticulo=mysqli_fetch_array($queryArticulo)) {
                                   echo '
                                     <tr id="listaId'.$rowArticulo['Id_Articulo'].'" class="rowBusqueda text-center">
