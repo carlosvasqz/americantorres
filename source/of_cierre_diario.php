@@ -309,8 +309,28 @@
             }
         });
       }
+      function estaVacio(){
+        var enCaja = $("#dinero_caja").val();
+        if (enCaja==="") {
+          return true;
+        } else {
+          return false;                    
+        }
+
+      }
       $("#comparar").click(function(){
-        showHtmlMessage($("#dinero_caja_dia_siguiente").val());
+        if (!estaVacio()) {
+          showHtmlMessage($("#dinero_caja_dia_siguiente").val());
+        } else {
+          document.getElementById("dinero_caja").focus();
+          $.notify({
+						title: "Error : ",
+						message: "Debe ingresar el monto que hay en caja para poder comparar.",
+						icon: 'fa fa-times' 
+					},{
+						type: "danger"
+					});
+        }
       });
       $("#registrar").click(function(){
         var fechaHoy = $("#fecha_hoy_db").val();
