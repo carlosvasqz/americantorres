@@ -103,10 +103,12 @@
                       $sql = "SELECT DISTINCT ventas.Id_Venta,ventas.Fecha,(SELECT usuarios.Nombre FROM usuarios WHERE ventas.Id_Usuario=usuarios.Id_Usuario) AS Vendedor,ventas.Cliente,(SELECT SUM(detalles_ventas.Cantidad) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta) AS Cantidad,(SELECT SUM(detalles_ventas.Precio) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta) AS Subtotal,ventas.Descuento,((SELECT SUM(detalles_ventas.Precio) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta)-(ventas.Descuento)) AS Total FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta;";
                       $queryVenta = mysqli_query($db, $sql) or die(mysqli_error());
                       while ($rowVenta=mysqli_fetch_array($queryVenta)) {
+                        $fecha = $rowVenta['Fecha'];
+                        $fecha = explode("-", $fecha);
                         echo '
                         <tr>
                           <td>'.$rowVenta['Id_Venta'].'</td>
-                          <td>'.$rowVenta['Fecha'].'</td>
+                          <td>'.$fecha[2].'/'.$fecha[1].'/'.$fecha[0].'</td>
                           <td>'.$rowVenta['Vendedor'].'</td>
                           <td>'.$rowVenta['Cliente'].'</td>
                           <td>'.$rowVenta['Cantidad'].'</td>
