@@ -433,4 +433,13 @@
             $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
         }
     }
+
+    function actualizarArts(){
+        include ('bd/conexion.php');
+        $queryArts=mysqli_query($db, "SELECT * FROM articulos WHERE Cantidad=0") or die(mysqli_error());
+        while($rowArts=mysqli_fetch_array($queryArts)){
+            $sqlUPDATES = "UPDATE articulos SET Disponible=0 WHERE Id_Articulo = '".$rowArts['Id_Articulo']."';";
+            $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
+        }
+    }
 ?>
