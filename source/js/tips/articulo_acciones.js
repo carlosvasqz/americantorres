@@ -97,10 +97,9 @@ $(document).ready(function () {
 			//success
 
 			success: function (data) {
-				//alert(data);
+				alert(data);
 				
 				if (data) {
-					//alert(data);
 					$.notify({
 						title: "Correcto : ",
 						message: "Datos de articulo guardado exitosamente!",
@@ -151,7 +150,7 @@ $(document).ready(function () {
 $('#modificar').click(function () {
 
 		// Obtener los valores de los objetos a traves de su id 
-var codigo_buscar=$('#codigo_buscar').val();
+var codigo_articulo=$('#codigo_articulo').val();
 		var descripcion_articulo=$('#descripcion_articulo').val();
 		var precio_articulo=$('#precio_articulo').val();
 		var cantidad_articulo=$('#cantidad_articulo').val();
@@ -161,14 +160,14 @@ var codigo_buscar=$('#codigo_buscar').val();
 		var estado=$('#estado').val();
 		var activo_disponible = $('input[name="disponible"]:checked').val();
 		
-	if (codigo_buscar=='') {
-			$("#codigo_buscar").attr('required',true);
-			document.getElementById("codigo_buscar").style.border="2px solid #a94442";
-			document.getElementById("codigo_buscar").focus();
+	if (codigo_articulo=='') {
+			$("#codigo_articulo").attr('required',true);
+			document.getElementById("codigo_articulo").style.border="2px solid #a94442";
+			document.getElementById("codigo_articulo").focus();
 			return false;
 		} else {
-			$("#codigo_buscar").attr('required',false);
-			document.getElementById("codigo_buscar").style.border="2px solid #3c763d";
+			$("#codigo_articulo").attr('required',false);
+			document.getElementById("codigo_articulo").style.border="2px solid #3c763d";
 		}
 
 		if (descripcion_articulo=='') {
@@ -225,13 +224,13 @@ var codigo_buscar=$('#codigo_buscar').val();
 		// Fin de las Validaciones
 		
 		// Variable con todos los valores necesarios para la consulta
-		var data = 'codigo_buscar=' + codigo_buscar + '&descripcion_articulo=' + descripcion_articulo + '&precio_articulo=' + precio_articulo + '&cantidad_articulo=' + cantidad_articulo + '&contenedor_articulo=' + contenedor_articulo + '&categoria_articulo=' + categoria_articulo +  '&activo_disponible=' + activo_disponible + '&estado=' + estado;
+		var data = 'codigo_articulo=' + codigo_articulo + '&descripcion_articulo=' + descripcion_articulo + '&precio_articulo=' + precio_articulo + '&cantidad_articulo=' + cantidad_articulo + '&contenedor_articulo=' + contenedor_articulo + '&categoria_articulo=' + categoria_articulo +  '&activo_disponible=' + activo_disponible + '&estado=' + estado;
 
-		alert(data);
+		//alert(data);
 		$.ajax({
 			
 			//Direccion destino
-			url: "articulos_modificar.php",
+			url: "articulo_modificar.php",
 
 			// Variable con los datos necesarios
 			data: data,
@@ -244,27 +243,31 @@ var codigo_buscar=$('#codigo_buscar').val();
 			
 			//success
 			success: function (data) {
-				//alert(data);
+				alert(data);
 				
 				if (data) {
+					
+
 					$.notify({
+
 						title: "Correcto : ",
-						message: "¡Datos de articulo se han modificado existosamente!",
+						message: "!Los datos de articulo se modificaron exitosamennte¡",
 						icon: 'fa fa-check' 
 					},{
 						type: "success"
 					});
-					$("#codigo_buscar").val("").value;
+					$("#codigo_articulo").val("").value;
 					$("#descripcion_articulo").val("").value;
 	                $("#precio_articulo").val("").value;
 	                $("#cantidad_articulo").val("").value;
 		            $("#contenedor_articulo").val("").value;
 		            $("#categoria_articulo").val("").value;
+		            $("#estado").val("").value;
 				}
 				if (!data) {
 					$.notify({
 						title: "Error : ",
-						message: "¡Codigo ingresado no existe!",
+						message: "!codigo ingresado no existe!",
 						icon: 'fa fa-times' 
 					},{
 						type: "danger"
@@ -294,8 +297,8 @@ var codigo_buscar=$('#codigo_buscar').val();
 	});	
 
 
-
 	});
+
 
 
 
