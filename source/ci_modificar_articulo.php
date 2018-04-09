@@ -184,7 +184,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Contenedor</label>
                     <div class="col-md-8">
-                      <select name="ontenedor_articulo" id="contenedor_articulo"  class="form-control" >
+                      <select name="contenedor_articulo" id="contenedor_articulo"  class="form-control" >
                 
                         <?php 
                           $queryListaDep=mysqli_query($db, "SELECT * FROM contenedores Order By Fecha_Ingreso Desc") or die(mysqli_error());
