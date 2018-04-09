@@ -67,6 +67,73 @@
         }
     }
 
+    function dayToDia($day){
+        switch ($day) {
+            case 'Sunday':
+                return 'Domingo';
+                break;
+            case 'Monday':
+                return 'Lunes';
+                break;
+            case 'Tuesday':
+                return 'Martes';
+                break;
+            case 'Wednesday':
+                return 'Miercoles';
+                break;
+            case 'Thursday':
+                return 'Jueves';
+                break;
+            case 'Friday':
+                return 'Viernes';
+                break;
+            case 'Saturday':
+                return 'Sabado';
+                break;
+        }
+    }
+
+    function monthToMes($mes){
+        switch ($mes) {
+            case 'January':
+                return 'Enero';
+                break;
+            case 'February':
+                return 'Febrero';
+                break;
+            case 'March':
+                return 'Marzo';
+                break;
+            case 'April':
+                return 'Abril';
+                break;
+            case 'May':
+                return 'Mayo';
+                break;
+            case 'June':
+                return 'Junio';
+                break;
+            case 'July':
+                return 'Julio';
+                break;
+            case 'August':
+                return 'Agosto';
+                break;
+            case 'September':
+                return 'Septiembre';
+                break;
+            case 'October':
+                return 'Octubre';
+                break;
+            case 'November':
+                return 'Noviembre';
+                break;
+            case 'December':
+                return 'Diciembre';
+                break;
+        }
+    }
+
     function esBis($ano){
         $dif = $ano - 4;
         if (($dif%4)!==0) {
@@ -77,23 +144,20 @@
     }
 
     function getDiaMax($numMes, $ano){
-        switch ($numMes) {
-            case 1 || 3 || 5 || 7 || 8 || 10 || 12:
-                return 31;
-                break;
-            case 4 || 6 || 9 || 11:
-                return 30;
-                break;
-            case 2:
-                if (esBis($ano)){
-                    return 29;
-                }else{
-                    return 28;
-                }
-                break;
-            default:
-                return false;
-                break;
+        $meses31 = array(1, 3, 5, 7, 8, 10, 12);
+        $meses30 = array(4, 6, 9, 11);
+        if (in_array($numMes, $meses31)) {
+            return 31;
+        } else if (in_array($numMes, $meses30)){
+            return 30;
+        } else if ($numMes==2){
+            if (esBis($ano)){
+                return 29;
+            }else{
+                return 28;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -155,6 +219,42 @@
             return $ventasDia;
         }
         
+    }
+
+    function getTotalVentasMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlVentas = "SELECT SUM(Ventas_dia) AS Ventas_Mes FROM cierres_diarios WHERE Fecha LIKE '$fechaMes%';";
+        $queryVentas=mysqli_query($db, $sqlVentas) or die(mysqli_error());
+        $rowVentas=mysqli_fetch_array($queryVentas);
+        if(is_null($rowVentas['Ventas_Mes'])){
+            return 0;
+        }else{
+            return $rowVentas['Ventas_Mes'];
+        }
+    }
+
+    function getTotalSPMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlSP = "SELECT SUM(Monto) AS Total_SP FROM pagos_servs_pubs WHERE Fecha LIKE '$fechaMes%';";
+        $querySP=mysqli_query($db, $sqlSP) or die(mysqli_error());
+        $rowSP=mysqli_fetch_array($querySP);
+        if(is_null($rowSP['Total_SP'])){
+            return 0;
+        }else{
+            return $rowSP['Total_SP'];
+        }
+    }
+
+    function getTotalNominasMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlNomina = "SELECT SUM(Monto) AS Nominas_Mes FROM nominas WHERE Fecha LIKE '$fechaMes%';";
+        $queryNomina=mysqli_query($db, $sqlNomina) or die(mysqli_error());
+        $rowNomina=mysqli_fetch_array($queryNomina);
+        if(is_null($rowNomina['Nominas_Mes'])){
+            return 0;
+        }else{
+            return $rowNomina['Nominas_Mes'];
+        }
     }
 
     function labelDay($i){
