@@ -110,9 +110,9 @@
                           <td>'.$rowVenta['Vendedor'].'</td>
                           <td>'.$rowVenta['Cliente'].'</td>
                           <td>'.$rowVenta['Cantidad'].'</td>
-                          <td>'.$rowVenta['Subtotal'].'</td>
-                          <td>'.$rowVenta['Descuento'].'</td>
-                          <td>'.$rowVenta['Total'].'</td>
+                          <td>'.number_format($rowVenta['Subtotal'], 2).'</td>
+                          <td>'.number_format($rowVenta['Descuento'], 2).'</td>
+                          <td>'.number_format($rowVenta['Total'], 2).'</td>
                         </tr>
                         ';
                       }
