@@ -184,7 +184,7 @@
                     </div>
                     <div class="panel-footer">
                       <div class="form-group has-info">
-                        <label class="control-label col-md-3">Utilidad total del mes</label>
+                        <label class="control-label col-md-3">Utilidad neta del mes</label>
                         <div class="col-md-8 input-group">
                           <span class="input-group-addon"><strong>L.</strong></span>
                           <input class="form-control" type="text" name="utilidad" id="utilidad" placeholder="Total utilidad del mes" value="<?php ?>" readonly>
