@@ -100,8 +100,7 @@
           $fechaFinalDB = $hoy['year']."-".$hoy['mon']."-".$diaMax;
           $diaFinalMes = mktime(0,0,0,$hoy['mon'],$diaMax,$hoy['year']);
           $diaFinalMesFullFormat = dayToDia(date("l", $diaFinalMes)) . " " . date("j", $diaFinalMes) . ", " . monthToMes(date("F", $diaFinalMes)) . " de " . date("Y", $diaFinalMes) ;
-
-          #...calcular si existe un cierre diario en la fecha de hoy...
+          
           $ventasMes = getTotalVentasMes($fechaMesHoyDB);
           $totalServPub = getTotalSPMes($fechaMesHoyDB);
           $totalNominas = getTotalNominasMes($fechaMesHoyDB);
