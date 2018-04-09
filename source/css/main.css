@@ -2513,10 +2513,16 @@ select[multiple].input-lg,
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+.has-info .form-control:focus {
+  border-color: #29576d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a8c5d0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a8c5d0;
+}
+
 .has-info .input-group-addon {
   color: #31708f;
   border-color: #31708f;
-  background-color: #f2dede;
+  background-color: #e0e9ee;
 }
 
 .has-info .form-control-feedback {
