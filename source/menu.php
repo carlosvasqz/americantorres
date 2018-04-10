@@ -53,7 +53,7 @@ function menuGeneral() {
               </li>
               <li class="treeview"><a href="#"><i class="fa fa-dollar"></i><span>Historiales</span><i class="fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                <li><a href="of_historial_inversion.php"><i class="fa fa-circle-o"></i>Historial de Inversiones</a></li>
+                <li><a href="of_historial_inversiones.php"><i class="fa fa-circle-o"></i>Historial de Inversiones</a></li>
                 <li><a href="of_historial_ventas.php"><i class="fa fa-circle-o"></i>Historial de Ventas </a></li>
                 </ul>
               </li>

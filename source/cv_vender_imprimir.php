@@ -48,6 +48,7 @@
           guardarVenta($arr_clntData, $arr_systData[4], $arr_systData[2], $arr_totlData);
           guardarDetalles($valuesSQL);
           restarArts($arrArtData2D);
+          actualizarArts();
         ?>
         <div class="row">
 
@@ -204,7 +205,17 @@
           window.setTimeout('javascript:window.print();', 1500); 
           window.setTimeout('location.href="cv_vender.php"', 2000);
         }
+        function imprimiendo(){
+          swal({
+            title: "<i class='fa fa-print fa-3x'></i>",
+            text: "<i>Imprimiendo...<i><br><div class='progress progress-striped active'><div class='progress-bar' style='width: 100%;'></div></div>.",
+            html: true,
+            showConfirmButton: false,
+            showCancelButton: false
+          });
+        }
         imprimir();
+        imprimiendo();
       });
     </script>
   </body>

@@ -10,7 +10,7 @@
 
         if (isset($_POST['filtro'])) {
             $filtro = $_POST['filtro'];
-            $sql = "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos WHERE Id_Articulo LIKE '%$filtro%' OR Descripcion LIKE '%$filtro%'";
+            $sql = "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos WHERE Id_Articulo LIKE '%$filtro%' OR Descripcion LIKE '%$filtro%' AND Cantidad>0";
         }
 
         $jsondata = array();

@@ -1,6 +1,7 @@
 <?php
   include ('constructor.php');
   include ('bd/conexion.php');
+  include ('util.php');
   #session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) {  
 ?>
@@ -79,7 +80,49 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-title">
+                <h3 class="card-title" align="center">Historial de Ventas</h3>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-condensed table-striped table-hover table-bordered" id="historialVentas">
+                    <thead>
+                      <tr class="text-uppercase">
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Cliente</th>
+                        <th>Articulos</th>
+                        <th>Subtotal (L.)</th>
+                        <th>Descuento (L.)</th>
+                        <th>Total (L.)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                      $sql = "SELECT DISTINCT ventas.Id_Venta,ventas.Fecha,(SELECT usuarios.Nombre FROM usuarios WHERE ventas.Id_Usuario=usuarios.Id_Usuario) AS Vendedor,ventas.Cliente,(SELECT SUM(detalles_ventas.Cantidad) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta) AS Cantidad,(SELECT SUM(detalles_ventas.Precio) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta) AS Subtotal,ventas.Descuento,((SELECT SUM(detalles_ventas.Precio) FROM detalles_ventas WHERE ventas.Id_Venta=detalles_ventas.Id_Venta)-(ventas.Descuento)) AS Total FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta;";
+                      $queryVenta = mysqli_query($db, $sql) or die(mysqli_error());
+                      while ($rowVenta=mysqli_fetch_array($queryVenta)) {
+                        $fecha = $rowVenta['Fecha'];
+                        $fecha = explode("-", $fecha);
+                        echo '
+                        <tr>
+                          <td>'.$rowVenta['Id_Venta'].'</td>
+                          <td>'.$fecha[2].'/'.$fecha[1].'/'.$fecha[0].'</td>
+                          <td>'.$rowVenta['Vendedor'].'</td>
+                          <td>'.$rowVenta['Cliente'].'</td>
+                          <td>'.$rowVenta['Cantidad'].'</td>
+                          <td>'.number_format($rowVenta['Subtotal'], 2).'</td>
+                          <td>'.number_format($rowVenta['Descuento'], 2).'</td>
+                          <td>'.number_format($rowVenta['Total'], 2).'</td>
+                        </tr>
+                        ';
+                      }
+                    ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -90,7 +133,13 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#historialVentas').DataTable();</script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript">
+      
+    </script>
     <script type="text/javascript">
       $('.alert').click(function(){
       	swal({

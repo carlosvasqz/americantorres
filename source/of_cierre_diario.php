@@ -80,21 +80,21 @@
           </div>
         </div>
         <div class="row">
-        <?php
-          date_default_timezone_set('America/Tegucigalpa');
-          $hoy = getdate();
-          $fechaImpFullFormat = getNomDia($hoy['wday'])." ".$hoy['mday'].", ".getNomMes($hoy['mon'])." de ".$hoy['year'];
-          $fechaHoyImpNum = $hoy['mday']."/".$hoy['mon']."/".$hoy['year'];
-          $fechaHoyImpNom = $hoy['mday']."/". getNomMes($hoy['mon'])."/".$hoy['year'];
-          $fechaHoyDB = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
-          $tiempoCierre = date("h:i A");
-          $tiempoCierreDB = date("H:i:s");
-          $dineroParaCaja = 1000.00;
-        ?>
+          <?php
+            date_default_timezone_set('America/Tegucigalpa');
+            $hoy = getdate();
+            $fechaImpFullFormat = getNomDia($hoy['wday'])." ".$hoy['mday'].", ".getNomMes($hoy['mon'])." de ".$hoy['year'];
+            $fechaHoyImpNum = $hoy['mday']."/".$hoy['mon']."/".$hoy['year'];
+            $fechaHoyImpNom = $hoy['mday']."/". getNomMes($hoy['mon'])."/".$hoy['year'];
+            $fechaHoyDB = $hoy['year']."-".$hoy['mon']."-".$hoy['mday'];
+            $tiempoCierre = date("h:i A");
+            $tiempoCierreDB = date("H:i:s");
+            $dineroParaCaja = 1000.00;
+          ?>
           <div class="col-md-12">
             <div class="card">
               <div class="card-title">
-               <h3 class="card-title" align="center">Datos de cierre</h3>
+               <h3 class="card-title" align="center">Datos del cierre diario</h3>
               </div>
               <div class="card-body">   
 
@@ -282,7 +282,7 @@
       }
       function showHtmlMessage(cambioCaja) {
         swal({
-            title: "<i class='fa fa-money fa-3x'></i>",
+            title: "<i class='fa fa-money fa-3x text-success'></i>",
             text: "Devuelva L." + cambioCaja + " a caja, que es la cantidad que ser&aacute; utilizada ma&ntilde;ana como cambio.",
             html: true,
             closeOnConfirm: false,
@@ -309,8 +309,28 @@
             }
         });
       }
+      function estaVacio(){
+        var enCaja = $("#dinero_caja").val();
+        if (enCaja==="") {
+          return true;
+        } else {
+          return false;                    
+        }
+
+      }
       $("#comparar").click(function(){
-        showHtmlMessage($("#dinero_caja_dia_siguiente").val());
+        if (!estaVacio()) {
+          showHtmlMessage($("#dinero_caja_dia_siguiente").val());
+        } else {
+          document.getElementById("dinero_caja").focus();
+          $.notify({
+						title: "Error : ",
+						message: "Debe ingresar el monto que hay en caja para poder comparar.",
+						icon: 'fa fa-times' 
+					},{
+						type: "danger"
+					});
+        }
       });
       $("#registrar").click(function(){
         var fechaHoy = $("#fecha_hoy_db").val();
@@ -393,7 +413,7 @@
                   $.notify({
                     title: "Error : ",
                     message: "Ya registro un cierre el dia de hoy.",
-                    icon: 'fa fa-check' 
+                    icon: 'fa fa-times' 
                   },{
                     type: "danger"
                   });        

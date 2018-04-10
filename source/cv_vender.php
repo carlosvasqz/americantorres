@@ -178,7 +178,7 @@
                     </thead>
                     <tbody id="rowLista">
                     <?php
-                      $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos") or die(mysqli_error());
+                      $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos WHERE Disponible=1") or die(mysqli_error());
                       // $i =1;
                       while ($rowArticulo=mysqli_fetch_array($queryArticulo)) {
                         echo '
@@ -351,24 +351,55 @@
                                 </thead>
                                 <tbody id="rowsSeleccionRapida">
                                 <?php
-                                $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos") or die(mysqli_error());
-                                while ($rowArticulo=mysqli_fetch_array($queryArticulo)) {
-                                  echo '
-                                    <tr id="listaId'.$rowArticulo['Id_Articulo'].'" class="rowBusqueda text-center">
-                                    <td>'.$rowArticulo['Id_Articulo'].'</td>
-                                    <td>'.$rowArticulo['Descripcion'].'</td>
-                                    <td>L. '.$rowArticulo['Precio'].'</td>
-                                    <td>'.$rowArticulo['Cantidad'].'</td>
-                                    <td>'.$rowArticulo['Estado'].'</td>
-                                    <td>
-                                      <a class="agregarRow" id="'.$rowArticulo['Id_Articulo'].'"><i class="fa fa-plus-circle fa-2x text-info"></i></a>
-                                    </td>
-                                    </tr>
-                                  ';
+                                $queryHayDisponibles=mysqli_query($db, "SELECT COUNT(*) AS Disponible FROM articulos WHERE Disponible=1") or die(mysqli_error());
+                                $rowHayDisponibles=mysqli_fetch_array($queryHayDisponibles);
+                                if ($rowHayDisponibles['Disponible']>0){
+                                    $queryArticulo=mysqli_query($db, "SELECT Id_Articulo, Descripcion, Precio, Cantidad, Estado FROM articulos WHERE Disponible=1") or die(mysqli_error());
+                                    while ($rowArticulo=mysqli_fetch_array($queryArticulo)) {
+                                    // foreach ($rowArticulo as $key => $value) {
+                                    echo '
+                                        <tr id="listaId'.$rowArticulo['Id_Articulo'].'" class="rowBusqueda text-center">
+                                        <td>'.$rowArticulo['Id_Articulo'].'</td>
+                                        <td>'.$rowArticulo['Descripcion'].'</td>
+                                        <td>L. '.$rowArticulo['Precio'].'</td>
+                                        <td>'.$rowArticulo['Cantidad'].'</td>
+                                        <td>'.$rowArticulo['Estado'].'</td>
+                                        <td>
+                                        <a class="agregarRow" id="'.$rowArticulo['Id_Articulo'].'"><i class="fa fa-plus-circle fa-2x text-info"></i></a>
+                                        </td>
+                                        </tr>
+                                    ';
+                                    } 
+                                    echo '
+                                    </tbody>
+                                    </table>
+                                    ';
+                                } else if ($rowHayDisponibles['Disponible']==0) {
+                                    echo '
+                                        </tbody>
+                                    </table>
+                                    ';
+                                    echo '
+                                        <div class="hidden-print col-md-12 text-center">
+                                            <i class="fa fa-info-circle text-info"></i>
+                                            <b class="text-info">No Hay art&iacute;culos disponibles</b>
+                                            <br><br>
+                                            <div class="col-xs-12 text-center" >
+                                                <a class="btn btn-primary btn-sm" href="ab_registrar_articulo.php">
+                                                    <i class="fa fa-check-circle"></i> 
+                                                    Registrar Articulos
+                                                </a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a class="btn btn-primary btn-sm" href="ci_catalogo.php">
+                                                    <i class="fa fa-check-circle"></i> 
+                                                    Ver Catalogo
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ';
                                 }
                                 ?>
-                                </tbody>
-                              </table>
+                              <!-- Cuidado con las etiquetas de cierre -->
                             </div>
                           </form>
                         </div>
