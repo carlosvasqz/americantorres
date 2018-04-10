@@ -117,9 +117,19 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Contenedor</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="contenedor_articulo" id="contenedor_articulo" placeholder="Ingresar numero de contenedor">
+                      <select name="contenedor_articulo" id="contenedor_articulo"  class="form-control" >
+                
+                        <?php 
+                          $queryListaDep=mysqli_query($db, "SELECT * FROM contenedores Order By Fecha_Ingreso Desc") or die(mysqli_error());
+                          while ($rowDep=mysqli_fetch_array($queryListaDep)) {
+                            echo '<option value="'.$rowDep['Id_Contenedor'].'">'.$rowDep['Fecha_Ingreso'].'</option>';  
+                          }
+                        ?>
+                     
+                      </select>
                   </div>
                 </div>
+
 
                 
                      <div class="form-group">
