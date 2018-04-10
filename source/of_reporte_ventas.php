@@ -75,7 +75,11 @@
               <li><a href="#"> Reporte de Ventas</a></li>
             </ul>
           </div>
+        
+
+         <div><!--<a class="btn btn-primary btn-flat" href="#"><i class="fa fa-lg fa-plus"></i></a>--><a class="btn btn-info btn-flat no-impr" href="of_reporte_ventas.php"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="javascript:window.print();"><i class="fa fa-lg fa-print"></i></a></div>
         </div>
+
        <div class="row" id="data-table">
           <div class="col-md-12">
             <div class="card">
@@ -93,8 +97,8 @@
                   </thead>
                   <tbody>
                     <?php
-                      $queryFullEmpleados=mysqli_query($db, "SELECT * FROM ventas") or die(mysqli_error());
-                      while ($rowVenta=mysqli_fetch_array($queryFullEmpleados)) {
+                      $queryFullVentas=mysqli_query($db, "SELECT * FROM ventas") or die(mysqli_error());
+                      while ($rowVenta=mysqli_fetch_array($queryFullVentas)) {
                         echo '
                           <tr>
                               <td>'.$rowVenta['Id_Venta'].'</td>
