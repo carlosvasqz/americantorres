@@ -38,7 +38,7 @@
                 $queryGuardar = mysqli_query($db, "UPDATE articulos SET Descripcion='$descripcion_articulo', Precio='$precio_articulo', Cantidad='$cantidad_articulo', Id_Contenedor='$contenedor_articulo', Id_Categoria='$categoria_articulo',  Disponible='$activo_disponible', Estado='$estado' WHERE Id_Articulo='$codigo_articulo'") or die(mysqli_error());
 
                 //Imprimir algo, para que el metodo .ajax(); de jQuery Funcione y sepa que YA se INSERTO
-                echo 'Modificado';
+                //"echo 'Modificado';"
             }
             //Si la variable anterior no contiene datos [no encontro registro con el mismo tipo y codigo ingresado]
       
