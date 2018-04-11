@@ -67,6 +67,73 @@
         }
     }
 
+    function dayToDia($day){
+        switch ($day) {
+            case 'Sunday':
+                return 'Domingo';
+                break;
+            case 'Monday':
+                return 'Lunes';
+                break;
+            case 'Tuesday':
+                return 'Martes';
+                break;
+            case 'Wednesday':
+                return 'Miercoles';
+                break;
+            case 'Thursday':
+                return 'Jueves';
+                break;
+            case 'Friday':
+                return 'Viernes';
+                break;
+            case 'Saturday':
+                return 'Sabado';
+                break;
+        }
+    }
+
+    function monthToMes($mes){
+        switch ($mes) {
+            case 'January':
+                return 'Enero';
+                break;
+            case 'February':
+                return 'Febrero';
+                break;
+            case 'March':
+                return 'Marzo';
+                break;
+            case 'April':
+                return 'Abril';
+                break;
+            case 'May':
+                return 'Mayo';
+                break;
+            case 'June':
+                return 'Junio';
+                break;
+            case 'July':
+                return 'Julio';
+                break;
+            case 'August':
+                return 'Agosto';
+                break;
+            case 'September':
+                return 'Septiembre';
+                break;
+            case 'October':
+                return 'Octubre';
+                break;
+            case 'November':
+                return 'Noviembre';
+                break;
+            case 'December':
+                return 'Diciembre';
+                break;
+        }
+    }
+
     function esBis($ano){
         $dif = $ano - 4;
         if (($dif%4)!==0) {
@@ -77,23 +144,20 @@
     }
 
     function getDiaMax($numMes, $ano){
-        switch ($numMes) {
-            case 1 || 3 || 5 || 7 || 8 || 10 || 12:
-                return 31;
-                break;
-            case 4 || 6 || 9 || 11:
-                return 30;
-                break;
-            case 2:
-                if (esBis($ano)){
-                    return 29;
-                }else{
-                    return 28;
-                }
-                break;
-            default:
-                return false;
-                break;
+        $meses31 = array(1, 3, 5, 7, 8, 10, 12);
+        $meses30 = array(4, 6, 9, 11);
+        if (in_array($numMes, $meses31)) {
+            return 31;
+        } else if (in_array($numMes, $meses30)){
+            return 30;
+        } else if ($numMes==2){
+            if (esBis($ano)){
+                return 29;
+            }else{
+                return 28;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -104,6 +168,7 @@
     }
 
     function getFechaDom(){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         $numDiaSem = $hoy['wday'];
         $numMes = $hoy['mon'];
@@ -141,10 +206,13 @@
     //2
     function getTotalVentas($fecha){
         include ('bd/conexion.php');
-        $sql = "SELECT SUM(Precio) AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
-        $queryVentas=mysqli_query($db, $sql) or die(mysqli_error());
+        $sqlVentas = "SELECT SUM(Precio) AS Ventas_Dia FROM ventas V INNER JOIN detalles_ventas DV ON V.Id_Venta=DV.Id_Venta WHERE V.Fecha='$fecha';";
+        $queryVentas=mysqli_query($db, $sqlVentas) or die(mysqli_error());
         $rowVentas=mysqli_fetch_array($queryVentas);
-        $ventasDia = $rowVentas['Ventas_Dia'];
+        $sqlDescuentos = "SELECT SUM(Descuento) AS Descuentos_Dia FROM ventas WHERE Fecha='$fecha';";
+        $queryDescuentos=mysqli_query($db, $sqlDescuentos) or die(mysqli_error());
+        $rowDescuentos=mysqli_fetch_array($queryDescuentos);
+        $ventasDia = $rowVentas['Ventas_Dia'] - $rowDescuentos['Descuentos_Dia'];
         if(is_null($ventasDia)){
             return 0;
         }else{
@@ -153,7 +221,44 @@
         
     }
 
+    function getTotalVentasMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlVentas = "SELECT SUM(Ventas_dia) AS Ventas_Mes FROM cierres_diarios WHERE Fecha LIKE '$fechaMes%';";
+        $queryVentas=mysqli_query($db, $sqlVentas) or die(mysqli_error());
+        $rowVentas=mysqli_fetch_array($queryVentas);
+        if(is_null($rowVentas['Ventas_Mes'])){
+            return 0;
+        }else{
+            return $rowVentas['Ventas_Mes'];
+        }
+    }
+
+    function getTotalSPMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlSP = "SELECT SUM(Monto) AS Total_SP FROM pagos_servs_pubs WHERE Fecha LIKE '$fechaMes%';";
+        $querySP=mysqli_query($db, $sqlSP) or die(mysqli_error());
+        $rowSP=mysqli_fetch_array($querySP);
+        if(is_null($rowSP['Total_SP'])){
+            return 0;
+        }else{
+            return $rowSP['Total_SP'];
+        }
+    }
+
+    function getTotalNominasMes($fechaMes){
+        include ('bd/conexion.php');
+        $sqlNomina = "SELECT SUM(Monto) AS Nominas_Mes FROM nominas WHERE Fecha LIKE '$fechaMes%';";
+        $queryNomina=mysqli_query($db, $sqlNomina) or die(mysqli_error());
+        $rowNomina=mysqli_fetch_array($queryNomina);
+        if(is_null($rowNomina['Nominas_Mes'])){
+            return 0;
+        }else{
+            return $rowNomina['Nominas_Mes'];
+        }
+    }
+
     function labelDay($i){
+        date_default_timezone_set('America/Tegucigalpa');        
         $hoy = getdate();
         // $hoyWDay = $hoy['wday']-1;
         $hoyWDay = $hoy['wday'];
@@ -254,35 +359,87 @@
         include ('bd/conexion.php');
         $sql = "SELECT Id_Usuario FROM usuarios WHERE Nombre='$nombre'";
         $queryUsser=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowUsserId=mysqli_fetch_array($queryUsser);
+        $rowUsserId=mysqli_fetch_array($queryUsser);
+        return $rowUsserId['Id_Usuario'];
     }
 
     function getLastSell(){
         include ('bd/conexion.php');
-        $sql = "SELECT MAX(Id_Venta) FROM ventas";
+        $sql = "SELECT MAX(Id_Venta) AS UltimoId FROM ventas";
         $queryLast=mysqli_query($db, $sql) or die(mysqli_error());
-        return $rowLastSell=mysqli_fetch_array($queryLast);
+        $rowLastSell=mysqli_fetch_array($queryLast);
+        return $rowLastSell['UltimoId'];
     }
 
-    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales, $datosArts){
+    function guardarDetalles($values){
+        include ('bd/conexion.php');
+        $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES $values";
+        $guardarDatos=mysqli_query($db, $sqlDetalles) or die(mysqli_error());
+        return true;
+    }
+
+    function guardarVenta($datosCliente, $nombreUsuario, $fecha, $totales){
         include ('bd/conexion.php');
         $idUsuario = getIdUsser($nombreUsuario);
         $descuento;
         if ($totales[1]=="Valor") {
             $descuento = $totales[2];
         } else if ($totales[1]=="Porcentaje"){
-            $descuento = $totales[3]*($totales[2]/100);
+            $descuento = $totales[0]*($totales[2]/100);
         }
         $idVenta = getLastSell() + 1;
-        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, $fecha)";
+        $fecha = trim($fecha);
+        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, '$fecha')";
         $guardarDatos=mysqli_query($db, $sqlVenta) or die(mysqli_error());
         // $rowRespuesta=mysqli_fetch_array($guardarDatos);
-        if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
-            
-            $sqlDetalles = "INSERT INTO detalles_ventas(Id_Venta, Num_Detalle, Id_Articulo, Cantidad, Precio) VALUES ($idVenta, , , , )";
-        }else{
+        // if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
+            // guardarDetalles();
+        // }else{
 
+        // }
+        // if ($rowRespuesta){
+            return true;
+        // }else{
+        //     return false;
+        // }
+    }
+
+    function arrToStrArtsVenta($arrArtData2D){
+        $values = "";
+        foreach($arrArtData2D as $count => $row){
+          $idVenta = getLastSell()+1;
+          $values = $values . "(" . $idVenta . ",";
+          for ($i=0; $i < 6; $i++) { 
+            if($i==1){
+              $values = $values . "'" . $arrArtData2D[$count][$i] . "',";
+            }else if($i==2||$i==4){
+            }else if ($i==5) {
+              $values = $values . $arrArtData2D[$count][$i];
+            }else{
+              $values = $values . $arrArtData2D[$count][$i] . ",";
+            }
+          }
+          $values = $values . "),";
         }
-        return true;
+        $valuesLength = strlen($values);
+        $valuesSQL = substr($values, 0, $valuesLength-1);
+        return $valuesSQL;
+    }
+
+    function restarArts($arrArtData2D){
+        include ('bd/conexion.php');
+        foreach($arrArtData2D as $index => $valor){
+            $sqlUPDATES = "UPDATE articulos SET Cantidad = Cantidad-$valor[3] WHERE Id_Articulo = '$valor[1]';";
+            $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
+        }
+    }
+
+    function actualizarArts(){
+        include ('bd/conexion.php');
+        $queryArts=mysqli_query($db, "SELECT * FROM articulos WHERE Cantidad=0") or die(mysqli_error());
+        while($rowArts=mysqli_fetch_array($queryArts)){
+            $sqlUPDATES = "UPDATE articulos SET Disponible=0 WHERE Id_Articulo = '".$rowArts['Id_Articulo']."';";
+            $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
+        }
     }
 ?>

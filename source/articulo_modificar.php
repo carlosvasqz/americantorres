@@ -12,10 +12,9 @@
          $activo_disponible = $_POST['activo_disponible'];
          $estado = $_POST['estado'];
 
-        // Variable que guarda el resultado de la consulta, para saber si existe
+        
         $queryVerificar = mysqli_query($db, "SELECT COUNT(*) as Existe FROM articulos WHERE Id_Articulo='$codigo_articulo'") or die(mysqli_error());
 
-        //Variable que guarda los datos obtenidos
         $rowExiste=mysqli_fetch_array($queryVerificar); 
 
         //Si la variable anterior no contiene datos [no lo encontro]
@@ -36,10 +35,10 @@
             //Si la variable anterior contiene datos [ya lo encontro]
             if ($rowExisteTipoYCodigo['Existe']!=0) {
                 // Guardar el resultado del CAMBIO en todos los campos menos el de tipo (que no se modifico)
-                $queryGuardar = mysqli_query($db, "UPDATE articulos SET Descripcion='$descripcion_articulo', Precio='$precio_articulo', Cantidad='$cantidad_articulo', Contenedor='$Id_Contenedor', Categoria='$categoria_articulo', Id_Categoria='$categoria_articulo',  Disponible='$activo_disponible', Estado='$estado' WHERE Id_Articulo='$codigo_articulo'") or die(mysqli_error());
+                $queryGuardar = mysqli_query($db, "UPDATE articulos SET Descripcion='$descripcion_articulo', Precio='$precio_articulo', Cantidad='$cantidad_articulo', Id_Contenedor='$contenedor_articulo', Id_Categoria='$categoria_articulo',  Disponible='$activo_disponible', Estado='$estado' WHERE Id_Articulo='$codigo_articulo'") or die(mysqli_error());
 
                 //Imprimir algo, para que el metodo .ajax(); de jQuery Funcione y sepa que YA se INSERTO
-                echo 'Modificado';
+                //"echo 'Modificado';"
             }
             //Si la variable anterior no contiene datos [no encontro registro con el mismo tipo y codigo ingresado]
       

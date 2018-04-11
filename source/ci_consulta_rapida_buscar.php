@@ -28,7 +28,7 @@ if ($resultado->num_rows > 0) {
 
 				while($fila = $resultado->fetch_assoc()){
 					$disponible = "";
-					if ($fila['Disponible']=="S") {
+					if ($fila['Disponible']=="1") {
 						$disponible = "Si";
 					}else{
 						$disponible = "No";

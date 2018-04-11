@@ -86,28 +86,28 @@
               </div>  
             </div></a>
           </div> -->
-          <div class="col-md-3"><a href="ab_registrar_contenedor.php">
+          <div class="col-md-3"><a href="ab_registrar_contenedor.php" title="Registrar un nuevo contenedor">
             <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
               <div class="info">
                 <h4>Registrar contenedor</h4>
               </div>
             </div></a>
           </div>
-          <div class="col-md-3"><a href="ab_registrar_articulo.php">
+          <div class="col-md-3"><a href="ab_registrar_articulo.php" title="Registrar un nuevo articulo">
             <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
               <div class="info">
                 <h4>Registrar articulo</h4>
               </div>
             </div></a>
           </div>
-          <div class="col-md-3"><a href="ci_catalogo.php">
+          <div class="col-md-3"><a href="ci_catalogo.php" title="Ir al catalogo de articulos">
             <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
               <div class="info">
                 <h4>Catalogo</h4>
               </div>
             </div></a>
           </div>
-          <div class="col-md-3"><a href="cv_vender.php">
+          <div class="col-md-3"><a href="cv_vender.php" title="Registrar una venta">
             <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
               <div class="info">
                 <h4>Registrar venta</h4>
@@ -131,11 +131,15 @@
                 <h1><?php 
                           $queryTotalVentas=mysqli_query($db, "SELECT SUM(Precio) AS Total_Ventas FROM detalles_ventas") or die(mysqli_error());
                           $rowTotalVentas=mysqli_fetch_array($queryTotalVentas); 
-                          if ($rowTotalVentas['Total_Ventas']=="") {
-                            echo 'L. 0.00';
-                          } else {
-                            echo 'L. '.$rowTotalVentas['Total_Ventas']; 
-                          }
+                          $queryTotalDescuentos=mysqli_query($db, "SELECT SUM(Descuento) AS Total_Descuentos FROM ventas") or die(mysqli_error());
+                          $rowTotalDescuentos=mysqli_fetch_array($queryTotalDescuentos); 
+                          $totalVentas = $rowTotalVentas['Total_Ventas'] - $rowTotalDescuentos['Total_Descuentos'];
+                          $totalVentas = number_format($totalVentas, 2);
+                          // if ($totalVentas==0) {
+                          //   echo 'L. 0.00';
+                          // } else {
+                            echo 'L. '.$totalVentas; 
+                          // }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
@@ -146,15 +150,22 @@
               <div class="card-body text-center text-primary">
                 <span class="text-muted">TOTAL VENTAS HOY </span>
                 <h1><?php 
-                          $hoy = getdate();
-                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
-                          $queryVentasHoy=mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
-                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
-                          if ($rowVentasHoy['Ventas_Hoy']=="") {
-                            echo 'L. 0.00';
-                          } else {
-                            echo 'L. '.$rowVentasHoy['Ventas_Hoy'];
-                          }
+                      date_default_timezone_set('America/Tegucigalpa');                          
+                      $hoy = getdate();
+                      $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                      $queryVentasHoy = mysqli_query($db, "SELECT SUM(Precio) AS Ventas_Hoy FROM ventas INNER JOIN detalles_ventas ON ventas.Id_Venta=detalles_ventas.Id_Venta WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $rowVentasHoy = mysqli_fetch_array($queryVentasHoy);
+
+                      $queryDescuentosHoy = mysqli_query($db, "SELECT SUM(Descuento) AS Descuentos_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $rowDescuentosHoy = mysqli_fetch_array($queryDescuentosHoy);
+
+                      $totalVentasHoy = $rowVentasHoy['Ventas_Hoy'] - $rowDescuentosHoy['Descuentos_Hoy'];
+                      $totalVentasHoy = number_format($totalVentasHoy, 2);
+                      // if ($rowVentasHoy['Ventas_Hoy']=="") {
+                      //   echo 'L. 0.00';
+                      // } else {
+                        echo 'L. '.$totalVentasHoy;
+                      // }
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  
@@ -165,11 +176,27 @@
               <div class="card-body text-center text-primary">
                 <span class="text-muted">CANTIDAD VENTAS HOY</span>
                 <h1><?php 
-                          $hoy = getdate();
-                          $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
-                          $queryVentasHoy=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
-                          $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
-                          echo $rowVentasHoy['Num_Ventas_Hoy'];
+                      date_default_timezone_set('America/Tegucigalpa');                          
+                      $hoy = getdate();
+                      $fechaHoy = $hoy['year']."-".$hoy['mon']."-".$hoy['mday']; 
+                      $queryVentasHoy=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas_Hoy FROM ventas WHERE Fecha = '$fechaHoy'") or die(mysqli_error());
+                      $rowVentasHoy=mysqli_fetch_array($queryVentasHoy);
+                      echo $rowVentasHoy['Num_Ventas_Hoy'];
+                    ?></h1>
+                <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body text-center text-warning">
+                <span class="text-muted">ARTICULOS BAJOS EN EXISTENCIAS</span>
+                <h1><?php 
+                      $queryArtsBajos=mysqli_query($db, "SELECT COUNT(*) AS Arts_Bajos FROM articulos WHERE Cantidad < 5") or die(mysqli_error());
+                      $rowArtsBajos=mysqli_fetch_array($queryArtsBajos);
+                      echo $rowArtsBajos['Arts_Bajos'];
                     ?></h1>
                 <!-- <i class="icon fa fa-plus-square fa-3x" tip="Add Item"></i> -->
               </div>  

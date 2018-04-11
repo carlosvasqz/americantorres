@@ -1,6 +1,7 @@
 <?php
   include ('constructor.php');
   include ('bd/conexion.php');
+  include ('util.php');
   #session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) {  
 ?>
@@ -78,8 +79,43 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+            <div class="card">              
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-condensed table-striped table-hover table-bordered" id="historialInversiones">
+                    <thead>
+                      <tr class="text-uppercase">
+                        <th>Id</th>
+                        <th>Descripci&oacute;n</th>
+                        <th>Fecha</th>
+                        <th>Procedencia</th>
+                        <th>Valor (L.)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                      $sql = "SELECT * FROM contenedores;";
+                      $queryContenedor = mysqli_query($db, $sql) or die(mysqli_error());
+                      while ($rowContenedor=mysqli_fetch_array($queryContenedor)) {
+                        $fecha = $rowContenedor['Fecha_Ingreso'];
+                        $fecha = explode("-", $fecha);
+                        $fechaDia = mktime(0,0,0,$fecha[1],$fecha[2],$fecha[0]);
+                        $nombreDia = dayToDia(date("l", $fechaDia));
+                        echo '
+                        <tr>
+                          <td>'.$rowContenedor['Id_Contenedor'].'</td>
+                          <td>'.$rowContenedor['Descripcion'].'</td>
+                          <td>'.$fecha[2].'/'.$fecha[1].'/'.$fecha[0].' ('.$nombreDia.')</td>
+                          <td>'.$rowContenedor['Procedencia'].'</td>
+                          <td>'.number_format($rowContenedor['Costo'], 2).'</td>
+                        </tr>
+                        ';
+                      }
+                    ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -90,6 +126,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#historialInversiones').DataTable();</script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){
