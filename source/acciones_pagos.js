@@ -1,13 +1,9 @@
 $(document).ready(function () {
 	$('#agregar').click(function () {
-		var codigo_articulo=$('#codigo_articulo').val();
-		var descripcion_articulo=$('#descripcion_articulo').val();
-		var precio_articulo=$('#precio_articulo').val();
-		var cantidad_articulo=$('#cantidad_articulo').val();
-		var contenedor_articulo=$('#contenedor_articulo').val();
-		var categoria_articulo=$('#categoria_articulo').val();
-		var valor=$('#disponible').val();
-		var estado=$('#estado').val();
+		var tipo_de_servicio=$('#tipo_de_servicio').val();
+		var monto_de_registro=$('#monto_de_registro').val();
+		var fecha_pago=$('#fecha_pago').val();
+		
 
 		var activo_disponible = $('input[name="disponible"]:checked').val();
 		
@@ -15,76 +11,46 @@ $(document).ready(function () {
 		
 	
 
-		if (codigo_articulo=='') {
-			$("#codigo_articulo").attr('required',true);
-			document.getElementById("codigo_articulo").style.border="2px solid #a94442";
-			document.getElementById("codigo_articulo").focus();
+		if (tipo_de_servicio=='') {
+			$("#tipo_de_servicio").attr('required',true);
+			document.getElementById("tipo_de_servicio").style.border="2px solid #a94442";
+			document.getElementById("tipo_de_servicio").focus();
 			return false;
 		} else {
-			$("#codigo_articulo").attr('required',false);
-			document.getElementById("codigo_articulo").style.border="2px solid #3c763d";
+			$("#tipo_de_servicio").attr('required',false);
+			document.getElementById("tipo_de_servicio").style.border="2px solid #3c763d";
 		}
 
-		if (descripcion_articulo=='') {
-			$("#descripcion_articulo").attr('required',true);
-			document.getElementById("descripcion_articulo").style.border="2px solid #a94442";
-			document.getElementById("descripcion_articulo").focus();
+		if (monto_de_registro=='') {
+			$("#monto_de_registro").attr('required',true);
+			document.getElementById("monto_de_registro").style.border="2px solid #a94442";
+			document.getElementById("monto_de_registro").focus();
 			return false;
 		} else {
-			$("#descripcion_articulo").attr('required',false);
-			document.getElementById("descripcion_articulo").style.border="2px solid #3c763d";
+			$("#monto_de_registro").attr('required',false);
+			document.getElementById("monto_de_registro").style.border="2px solid #3c763d";
 		}
 
-		if (precio_articulo=='') {
-			$("#precio_articulo").attr('required',true);
-			document.getElementById("precio_articulo").style.border="2px solid #a94442";
-			document.getElementById("precio_articulo").focus();
+		if (fecha_pago=='') {
+			$("#fecha_pago").attr('required',true);
+			document.getElementById("fecha_pago").style.border="2px solid #a94442";
+			document.getElementById("fecha_pago").focus();
 			return false;
 		} else {
-			$("#precio_articulo").attr('required',false);
-			document.getElementById("precio_articulo").style.border="2px solid #3c763d";
+			$("#fecha_pago").attr('required',false);
+			document.getElementById("fecha_pago").style.border="2px solid #3c763d";
 		}
 
-		if (cantidad_articulo=='') {
-			$("#cantidad_articulo").attr('required',true);
-			document.getElementById("cantidad_articulo").style.border="2px solid #a94442";
-			document.getElementById("cantidad_articulo").focus();
-			return false;
-		} else {
-			$("#cantidad_articulo").attr('required',false);
-			document.getElementById("cantidad_articulo").style.border="2px solid #3c763d";
-		}
-
-		if (contenedor_articulo=='') {
-			$("#contenedor_articulo").attr('required',true);
-			document.getElementById("contenedor_articulo").style.border="2px solid #a94442";
-			document.getElementById("contenedor_articulo").focus();
-			return false;
-		} else {
-			$("#contenedor_articulo").attr('required',false);
-			document.getElementById("contenedor_articulo").style.border="2px solid #3c763d";
-		}
-
-	
-
-		if (categoria_articulo=='') {
-			$("#categoria_articulo").attr('required',true);
-			document.getElementById("categoria_articulo").style.border="2px solid #a94442";
-			document.getElementById("categoria_articulo").focus();
-			return false;
-		} else {
-			$("#categoria_articulo").attr('required',false);
-			document.getElementById("categoria_articulo").style.border="2px solid #3c763d";
-		}
+		
 
 
 		
-		var data = 'codigo_articulo=' + codigo_articulo + '&descripcion_articulo=' + descripcion_articulo + '&precio_articulo=' + precio_articulo + '&cantidad_articulo=' + cantidad_articulo + '&contenedor_articulo=' + contenedor_articulo + '&categoria_articulo=' + categoria_articulo +  '&activo_disponible=' + activo_disponible + '&estado=' + estado;
+		var data = 'tipo_de_servicio=' + tipo_de_servicio + '&monto_de_registro=' + monto_de_registro + '&fecha_pago=' + fecha_pago;
 		//alert(data);
 		
 		$.ajax({
 			
-			url: "guardar_articulo.php",
+			url: "guardar_pago.php",
 
 			data: data,
 
@@ -103,23 +69,19 @@ $(document).ready(function () {
 					//alert(data);
 					$.notify({
 						title: "Correcto : ",
-						message: "Datos de articulo guardado exitosamente!",
+						message: "Ha realizado correctamente su pago!",
 						icon: 'fa fa-check' 
 					},{
 						type: "success"
 					});
-					$("#codigo_articulo").val("").value;
-					$("#descripcion_articulo").val("").value;
-	                $("#precio_articulo").val("").value;
-	                $("#cantidad_articulo").val("").value;
-		            $("#contenedor_articulo").val("").value;
-		            $("#categoria_articulo").val("").value;
-	                
+					$("#tipo_de_servicio").val("").value;
+					$("#monto_de_registro").val("").value;
+	                $("#fecha_pago").val("").value;
 				}
 				if (!data) {
 					$.notify({
 						title: "Error : ",
-						message: "Ya existe un articulo con este codigo",
+						message: "Ya ha realizado su pago",
 						icon: 'fa fa-times' 
 					},{
 						type: "danger"

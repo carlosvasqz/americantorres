@@ -87,7 +87,7 @@
         <div class="form-group">
                <label class="control-label col-md-3">Tipo De Servicios</label>
              <div class="col-md-8">
-              <select name="id_pago" id="id_pago" class="form-control">
+              <select name="nombre_pago" id="nombre_pago" class="form-control">
                   <option vale="" select></option>
                   <option vale="Nuevo">Internet</option>
                   <option vale="Nuevo">Cable</option>
