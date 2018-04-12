@@ -30,6 +30,12 @@ function menuGeneral() {
               <li><a href="ci_consultar_articulo.php"><i class="fa fa-circle-o"></i>Consultar Articulo</a></li>
               <li><a href="ci_modificar_articulo.php?codigo_buscar=null"><i class="fa fa-circle-o"></i>Modificar Articulo</a></li>
               <li><a href="ci_catalogo.php"><i class="fa fa-circle-o"></i>Catalago de Articulos</a></li>
+               <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Categorias</span><i class="fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="ic_agregar_categoria.php"><i class="fa fa-circle-o"></i>Agregar Categoria</a></li>
+              <li><a href="ci_consultar_categoria.php"><i class="fa fa-circle-o"></i>Consultar Categoria</a></li>
+              <li><a href="ci_modificar_categoria.php"><i class="fa fa-circle-o"></i>Modificar Categoria</a></li>
+           </ul>
             </ul>
           </li>
           <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>Control de Ventas</span><i class="fa fa-angle-right"></i></a>
