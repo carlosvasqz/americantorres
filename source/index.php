@@ -87,28 +87,28 @@
             </div></a>
           </div> -->
           <div class="col-md-3"><a href="ab_registrar_contenedor.php" title="Registrar un nuevo contenedor">
-            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+            <div class="widget-small primary"><i class="icon fa fa-truck fa-2x"></i>
               <div class="info">
                 <h4>Registrar contenedor</h4>
               </div>
             </div></a>
           </div>
           <div class="col-md-3"><a href="ab_registrar_articulo.php" title="Registrar un nuevo articulo">
-            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+            <div class="widget-small primary"><i class="icon fa fa-television fa-2x"></i>
               <div class="info">
                 <h4>Registrar articulo</h4>
               </div>
             </div></a>
           </div>
           <div class="col-md-3"><a href="ci_catalogo.php" title="Ir al catalogo de articulos">
-            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+            <div class="widget-small primary"><i class="icon fa fa-book fa-2x"></i>
               <div class="info">
                 <h4>Catalogo</h4>
               </div>
             </div></a>
           </div>
           <div class="col-md-3"><a href="cv_vender.php" title="Registrar una venta">
-            <div class="widget-small primary"><i class="icon fa fa-circle-o"></i>
+            <div class="widget-small primary"><i class="icon fa fa-cart-plus fa-2x"></i>
               <div class="info">
                 <h4>Registrar venta</h4>
               </div>
