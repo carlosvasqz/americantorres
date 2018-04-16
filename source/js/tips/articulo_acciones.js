@@ -97,7 +97,7 @@ $(document).ready(function () {
 			//success
 
 			success: function (data) {
-				alert(data);
+				//alert(data);
 				
 				if (data) {
 					$.notify({
@@ -243,7 +243,7 @@ var codigo_articulo=$('#codigo_articulo').val();
 			
 			//success
 			success: function (data) {
-				alert(data);
+				//alert(data);
 				
 				if (data) {
 					
