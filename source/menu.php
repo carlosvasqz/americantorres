@@ -34,7 +34,7 @@ function menuGeneral() {
             <ul class="treeview-menu">
               <li><a href="ic_agregar_categoria.php"><i class="fa fa-plus-square"></i>Agregar Categoria</a></li>
               <li><a href="ci_consultar_categoria.php"><i class="fa fa-search"></i>Consultar Categoria</a></li>
-              <li><a href="ci_modificar_categoria.php"><i class="fa fa-refresh"></i>Modificar Categoria</a></li>
+              <li><a href="ci_modificar_categoria.php?codigo_buscar=null"><i class="fa fa-refresh"></i>Modificar Categoria</a></li>
            </ul>
             </ul>
           </li>
