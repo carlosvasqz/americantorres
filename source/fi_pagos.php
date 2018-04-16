@@ -88,12 +88,12 @@
                <label class="control-label col-md-3">Tipo De Servicios</label>
              <div class="col-md-8">
               <select name="nombre_pago" id="nombre_pago" class="form-control">
-                  <option vale="" select></option>
-                  <option vale="Nuevo">Internet</option>
-                  <option vale="Nuevo">Cable</option>
-                  <option vale="Nuevo">Telefono</option>
-                  <option vale="Nuevo">Agua</option>
-                <option vale="Nuevo">Energia</option>
+                  <option value="" select></option>
+                  <option value="Internet">Internet</option>
+                  <option value="Cable">Cable</option>
+                  <option value="Telefono">Telefono</option>
+                  <option value="Agua">Agua</option>
+                <option value="Energia">Energia</option>
               </select>
             </div>
           </div>
@@ -105,22 +105,23 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Monto de Registro</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="descripcion_contenedor" id="Monto de Registro" placeholder="Ingresar Monto de Registro">
+                      <input class="form-control" type="text" name="monto_pago" id="monto_pago" placeholder="Ingresar Monto de Registro">
                     </div>
+                    <input type="text" name="mes" placeholder="<?php date("m")?>">
                   </div>
 
               
                   <div class="form-group">
                     <label class="control-label col-md-3">Fecha de Pago</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="date" name="FI_contenedor" id="FI_contenedor" placeholder="Ingresar fecha en la que ingreso el contenedor">
+                      <input class="form-control" type="date" name="fecha_pago" id="fecha_pago" placeholder="Ingresar fecha en la que ingreso el contenedor">
                     </div>
                   </div>
                   
 
                   
              <div class="card-footer" align="center">
-                <button class="btn btn-primary icon-btn" type="submit" form="guardar_pago" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>PAGAR</button>
+                <button class="btn btn-primary icon-btn" type="submit" form="guardar_pago" id="pago" name="pago"><i class="fa fa-fw fa-lg fa-check-circle"></i>Pago</button>
                 &nbsp;&nbsp;&nbsp;
                 
               </div>
@@ -134,7 +135,7 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/plugins/pace.min.js"></script>
       <script src="js/main.js"></script>
-      <script src="js/tips/contenedor_acciones.js"></script>
+      <script src="js/tips/realizar_pago.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
       <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
