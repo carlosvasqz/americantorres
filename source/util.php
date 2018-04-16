@@ -389,7 +389,8 @@
         }
         $idVenta = getLastSell() + 1;
         $fecha = trim($fecha);
-        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Id_Usuario, Descuento, Fecha) VALUES ($idVenta, '$datosCliente[0]', '$idUsuario', $descuento, '$fecha')";
+        $subtotal = $totales[3] + $descuento;
+        $sqlVenta = "INSERT INTO ventas(Id_Venta, Cliente, Direccion_Cliente, Telefono_Cliente, Id_Usuario, Descuento, Fecha, Subtotal, Total) VALUES ($idVenta, '$datosCliente[0]', '$datosCliente[1]', '$datosCliente[2]', '$idUsuario', $descuento, '$fecha', $subtotal, $totales[3])";
         $guardarDatos=mysqli_query($db, $sqlVenta) or die(mysqli_error());
         // $rowRespuesta=mysqli_fetch_array($guardarDatos);
         // if($rowRespuesta=mysqli_fetch_array($guardarDatos)){
