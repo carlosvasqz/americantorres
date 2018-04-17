@@ -82,13 +82,12 @@
                <!-- <h3 class="card-title" align="center">Formulario de registro</h3>-->
               </div>
               <div class="card-body">
-                <form class="form-horizontal" id="guardar_cargo">
+                <form class="form-horizontal" id="guardar_pago">
                   
         <div class="form-group">
                <label class="control-label col-md-3">Tipo De Servicios</label>
              <div class="col-md-8">
               <select name="nombre_pago" id="nombre_pago" class="form-control">
-                  <option value="" select></option>
                   <option value="Internet">Internet</option>
                   <option value="Cable">Cable</option>
                   <option value="Telefono">Telefono</option>
@@ -107,7 +106,7 @@
                     <div class="col-md-8">
                       <input class="form-control" type="text" name="monto_pago" id="monto_pago" placeholder="Ingresar Monto de Registro">
                     </div>
-                    <input type="text" name="mes" placeholder="<?php date("m")?>">
+                    
                   </div>
 
               
@@ -115,10 +114,13 @@
                     <label class="control-label col-md-3">Fecha de Pago</label>
                     <div class="col-md-8">
                       <input class="form-control" type="date" name="fecha_pago" id="fecha_pago" placeholder="Ingresar fecha en la que ingreso el contenedor">
+                      
                     </div>
-                  </div>
-                  
 
+                  </div>
+
+                  <div id="errores"> s</div>
+                  
                   
              <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="guardar_pago" id="pago" name="pago"><i class="fa fa-fw fa-lg fa-check-circle"></i>Pago</button>
@@ -135,7 +137,7 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/plugins/pace.min.js"></script>
       <script src="js/main.js"></script>
-      <script src="js/tips/realizar_pago.js"></script>
+      <script type="text/javascript" src="js/tips/realizar_pago.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
       <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
       <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
