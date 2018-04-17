@@ -533,4 +533,14 @@
         }
     }
 
+    function gastosMes($fecha){
+        include ('bd/conexion.php');
+        $queryGastosMes=mysqli_query($db, "SELECT (Total_Serv_Pub+Total_Planilla) AS Gastos FROM cierres_mensuales WHERE Fecha_Inicial='$fecha%'") or die(mysqli_error());
+        $rowGastosMes=mysqli_fetch_array($queryGastosMes);
+        if(is_null($rowGastosMes['Gastos'])){
+            return 0;
+        }else{
+            return $rowGastosMes['Gastos'];
+        }
+    }
 ?>
