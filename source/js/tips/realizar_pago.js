@@ -3,7 +3,7 @@ $(document).ready(function () {
 		var nombre_pago=$('#nombre_pago').val();
 		var monto_pago=$('#monto_pago').val();
 		var fecha_pago=$('#fecha_pago').val();
-		
+	
 
 		if (nombre_pago=='') {
 			$("#nombre_pago").attr('required',true);
@@ -35,9 +35,16 @@ $(document).ready(function () {
 			document.getElementById("fecha_pago").style.border="2px solid #3c763d";
 		}
 
+		var array_fecha = fecha_pago.split("-")  
+        var day = parseInt(array_fecha[2]); 
+		var month = (array_fecha[1]); 
+		var year  = parseInt(array_fecha[0]);
+	
+
 		
-		var data = 'nombre_pago=' + nombre_pago + '&monto_pago=' + monto_pago + '&fecha_pago=' + fecha_pago;
-		alert(data);
+		var data = 'nombre_pago=' + nombre_pago + '&fecha_pago=' + fecha_pago + '&monto_pago=' + monto_pago + '&month=' + month + '&year=' + year;
+		//alert(data);
+		
 		
 		$.ajax({
 			
@@ -54,8 +61,7 @@ $(document).ready(function () {
 			//success
 
 			success: function (data) {
-				alert(data);
-				
+				//$("#errores").html(data);
 				if (data) {
 					$.notify({
 						title: "Correcto : ",
@@ -81,7 +87,7 @@ $(document).ready(function () {
 			},
 
 			error : function(xhr, status) {
-				// alert('Disculpe, existió un problema');
+				//alert('Disculpe, existió un problema');
 			},
 
 			complete : function(xhr, status) {
@@ -93,9 +99,12 @@ $(document).ready(function () {
 				// 	},{
 				// 		type: "info"
 				// });
-	}
-      	});
 				
+	}
+
+      	});
+			
+	
 		return false;
 
 	});
