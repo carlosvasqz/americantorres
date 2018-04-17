@@ -64,12 +64,19 @@ function menuGeneral() {
                 <li><a href="of_historial_ventas.php"><i class="fa fa-money"></i>Historial de Ventas </a></li>
                 </ul>
               </li>
+
               <li class="treeview"><a href="#"><i class="fa fa-file-text-o"></i><span>Reportes</span><i class="fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                   <li><a href="of_reporte_ventas.php"><i class="fa fa-money"></i>Reporte de Ventas</a></li>
-                  <li><a href="of_reporte_general.php"><i class="fa fa-line-chart"></i>Reporte General</a></li>
+                  <li class="treeview"><a href="#"><i class="fa fa-line-chart"></i><span>Reportes Estadisticos</span><i class="fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="of_reporte_general.php"><i class="fa fa-line-chart"></i>General</a></li>
+                      <li><a href="of_estadisticas_ventas.php"><i class="fa fa-line-chart"></i>Ventas</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
+
             </ul>
           </li>  
           <li class="treeview"><a href="#"><i class="fa fa-cog"></i><span>Configuracion</span><i class="fa fa-angle-right"></i></a>
