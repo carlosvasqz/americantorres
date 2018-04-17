@@ -63,7 +63,7 @@ $(document).ready(function () {
 				//alert(data);
 				
 				if (data) {
-					alert(data);
+					//alert(data);
 					$.notify({
 						title: "Correcto : ",
 						message: "¡Datos de categoria guardado exitosamente!",
@@ -90,7 +90,7 @@ $(document).ready(function () {
 			},
 
 			error : function(xhr, status) {
-				 alert('Disculpe, existió un problema');
+				// alert('Disculpe, existió un problema');
 			},
 
 			complete : function(xhr, status) {
@@ -173,7 +173,7 @@ $(document).ready(function () {
 				//alert(data);
 				
 				if (data) {
-					alert(data);
+					//alert(data);
 					$.notify({
 						title: "Correcto : ",
 						message: "¡Datos de categoria guardado exitosamente!",
@@ -200,7 +200,7 @@ $(document).ready(function () {
 			},
 
 			error : function(xhr, status) {
-				 alert('Disculpe, existió un problema');
+				// alert('Disculpe, existió un problema');
 			},
 
 			complete : function(xhr, status) {
