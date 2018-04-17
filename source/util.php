@@ -522,4 +522,15 @@
         }
     }
 
+    function utilidadMes($fecha){
+        include ('bd/conexion.php');
+        $queryUtilidadMes=mysqli_query($db, "SELECT Utilidad FROM cierres_mensuales WHERE Fecha_Inicial='$fecha%'") or die(mysqli_error());
+        $rowUtilidadMes=mysqli_fetch_array($queryUtilidadMes);
+        if(is_null($rowUtilidadMes['Utilidad'])){
+            return 0;
+        }else{
+            return $rowUtilidadMes['Utilidad'];
+        }
+    }
+
 ?>
