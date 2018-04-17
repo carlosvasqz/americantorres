@@ -101,9 +101,9 @@
                           <tr>
                               <td>'.$rowVenta['Fecha'].'</td>
                               <td>'.$rowVenta['Hora'].'</td>
-                              <td>'.$rowVenta['Ventas_Dia'].'</td>
+                              <td>'.$rowVenta['Ventas_dia'].'</td>
                               <td>'.$rowVenta['Caja_Base_Dia_Sig'].'</td>
-                              <td>'.$rowVenta['Coindicio'].'</td>
+                              <td>'.$rowVenta['Coincidio'].'</td>
                               <td>'.$rowVenta['Diferencia'].'</td>
                               <td>'.$rowVenta['Descripcion_Diferencia'].'</td>
 
