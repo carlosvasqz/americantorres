@@ -121,7 +121,7 @@
              <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="form_buscar" id="buscar" name="buscar"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
+                <button class="btn btn-default icon-btn" type="button" onclick="limpiarBuscar()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
               </div>
             </div>
           </div>

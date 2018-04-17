@@ -2,7 +2,7 @@
   include ('constructor.php');
   include ('bd/conexion.php');
   include ('util.php');
-  session_start();
+  //session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) {  
 
 ?>

@@ -298,6 +298,42 @@ var codigo_articulo=$('#codigo_articulo').val();
 
 
 	});
+$('#limpiarTodo').click(function (){
+ 	
+		
+
+		 $('#codigo_articulo').val("").value;
+		 $('#descripcion_articulo').val("").value;
+		 $('#precio_articulo').val("").value;
+		 $('#cantidad_articulo').val("").value;
+		 $('#contenedor_articulo').val("").value;
+		 $('#categoria_articulo').val("").value;
+	     $('#disponible').val("").value;
+		 $('#estado').val("").value;
+           
+	});
+
+	function limpiarTodo(){
+		 $('#codigo_articulo').val("").value;
+		 $('#descripcion_articulo').val("").value;
+		 $('#precio_articulo').val("").value;
+		 $('#cantidad_articulo').val("").value;
+		 $('#contenedor_articulo').val("").value;
+		 $('#categoria_articulo').val("").value;
+	     $('#disponible').val("").value;
+		 $('#estado').val("").value;
+	}
+
+
+ $('#limpiarBuscar').click(function (){
+ 	 $("#codigo_buscar").val("").value;
+	
+	});
+
+	function limpiarBuscar(){
+		 $("#codigo_buscar").val("").value;
+		
+	}
 
 
 

@@ -87,7 +87,6 @@
                       <th>Hora</th>
                       <th>Ventas D&iacute;a</th>
                       <th>Dinero Base </th>
-                      <th>Coindicio</th>
                       <th>Diferencia</th>
                       <th>Descripcion de Diferencia</th>
                      
@@ -96,14 +95,17 @@
                   <tbody>
                     <?php
                       $queryFullVentas=mysqli_query($db, "SELECT * FROM cierres_diarios") or die(mysqli_error());
+                        
+
                       while ($rowVenta=mysqli_fetch_array($queryFullVentas)) {
+
+                        
                         echo '
                           <tr>
                               <td>'.$rowVenta['Fecha'].'</td>
                               <td>'.$rowVenta['Hora'].'</td>
-                              <td>'.$rowVenta['Ventas_Dia'].'</td>
+                              <td>'.$rowVenta['Ventas_dia'].'</td>
                               <td>'.$rowVenta['Caja_Base_Dia_Sig'].'</td>
-                              <td>'.$rowVenta['Coindicio'].'</td>
                               <td>'.$rowVenta['Diferencia'].'</td>
                               <td>'.$rowVenta['Descripcion_Diferencia'].'</td>
 
@@ -112,7 +114,8 @@
                           </tr>
                         ';
                       }
-                    ?>
+                    
+                      ?>
                   </tbody>
                 </table>
               </div>

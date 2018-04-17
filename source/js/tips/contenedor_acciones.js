@@ -130,6 +130,34 @@ $(document).ready(function () {
 
 	});
 
+$('#limpiarTodo').click(function (){
+
+		 $('#codigo_contenedor').val("").value;
+	     $('#descripcion_contenedor').val("").value;
+	     $('#costo_contenedor').val("").value;
+	     $('#FI_contenedor').val("").value;
+	     $('#procedencia_contenedor').val("").value;
+           
+	});
+
+	function limpiarTodo(){
+		 $('#codigo_contenedor').val("").value;
+	     $('#descripcion_contenedor').val("").value;
+	     $('#costo_contenedor').val("").value;
+	     $('#FI_contenedor').val("").value;
+	     $('#procedencia_contenedor').val("").value;;
+	}
+
+
+ $('#limpiarBuscar').click(function (){
+ 	 $("#codigo_buscar").val("").value;
+	
+	});
+
+	function limpiarBuscar(){
+		 $("#codigo_buscar").val("").value;
+		
+	}
 
 
 
