@@ -76,10 +76,46 @@
             </ul>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="data-table">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-body">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Fecha Inicial</th>
+                      <th>Fecha Final</th>
+                      <th>Fecha Cierre</th>
+                      <th>Hora Cierre</th>
+                      <th>Total Ventas del Mes </th>
+                      <th>Utilidad</th>
+                      
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $queryFullVentas=mysqli_query($db, "SELECT * FROM cierres_mensuales") or die(mysqli_error());
+                      while ($rowVenta=mysqli_fetch_array($queryFullVentas)) {
+                        echo '
+                          <tr>
+                              <td>'.$rowVenta['Fecha_Inicial'].'</td>
+                              <td>'.$rowVenta['Fecha_Final'].'</td>
+                              <td>'.$rowVenta['Fecha_Cierre'].'</td>
+                              <td>'.$rowVenta['Hora_Cierre'].'</td>
+                              <td>'.$rowVenta['Total_Ventas_Mes'].'</td>
+                              <td>'.$rowVenta['Utilidad'].'</td>
+                              
+
+                            
+                            </form>
+                          </tr>
+                        ';
+                      }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -90,6 +126,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       $('.alert').click(function(){
