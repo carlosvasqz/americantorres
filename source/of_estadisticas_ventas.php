@@ -133,17 +133,27 @@
         }).done(function( ventas, textStatus, jqXHR ){
           console.log(ventas);
 
-            // $.ajax({
-            //   type: "POST",
-            //   url: "of_reporte_general_ganancias.php",
-            //   data: "data",
-            //   dataType: "json",
-            // }).done(function( ganancias, textStatus, jqXHR ){
-            //   console.log("Total en ganancias = " + ganancias);
+            $.ajax({
+              type: "POST",
+              url: "of_estadisticas_gastos_meses.php",
+              data: "data",
+              dataType: "json",
+            }).done(function( gastos, textStatus, jqXHR ){
+              console.log(gastos);
 
               var data = {
                 labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                 datasets: [
+                  {
+                    label: "Gastos por mes",
+                    fillColor: "rgba(187, 105, 105, 0.685)",
+                    strokeColor: "rgba(187, 105, 105, 0.685)",
+                    pointColor: "rgba(187, 105, 105, 0.685)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
+                    data: [gastos.mes1, gastos.mes2, gastos.mes3, gastos.mes4, gastos.mes5, gastos.mes6, gastos.mes7, gastos.mes8, gastos.mes9, gastos.mes10, gastos.mes11, gastos.mes12]
+                  },
                   {
                     label: "Ventas por mes",
                     fillColor: "rgba(105, 154, 187, 0.685)",
@@ -159,10 +169,10 @@
               var ctxb = $("#graficoContenedores").get(0).getContext("2d");
               var barChart = new Chart(ctxb).Line(data);
               
-            // }).fail(function( json, textStatus, jqXHR ){
-            //   console.log(json);
-            //   alert(".fail");
-            // });
+            }).fail(function( json, textStatus, jqXHR ){
+              console.log(json);
+              alert(".fail");
+            });
 
         }).fail(function( json, textStatus, jqXHR ){
           console.log(json);
