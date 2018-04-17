@@ -84,7 +84,7 @@
               <div class="card-body">
                 <form class="form-horizontal" id="">
                   <div class="form-group">
-                    <label for ="input_busqueda" class="control-label col-md-3">Codigo de categoria</label>
+                    <label for ="input_busqueda" class="control-label col-md-3">Parametro de b&uacute;squeda</label>
                     <div class="col-md-8">
                       <input class="form-control" type="text"  name="input_busqueda" id="input_busqueda" placeholder="">
                     </div>
