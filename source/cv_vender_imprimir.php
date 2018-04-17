@@ -57,7 +57,7 @@
             <section class="invoice">
               <div class="row">
                 <div class="col-xs-12">
-                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span> <?php echo $sqlUPDATES;?></small></div>
+                  <div class="text-center"><small><span class="agregarRow">RECIBO DE PAGO</span></small></div>
                   <h2 class="page-header"><i class="fa fa-globe"></i> American Torres<small class="pull-right">Fecha: <?php echo $arr_systData[0]; ?></small></h2>
                 </div>
               </div>
