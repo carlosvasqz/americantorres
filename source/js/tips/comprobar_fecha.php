@@ -12,7 +12,8 @@
     	if ($rowRealizado['Realizado']==1) {
     		echo 'Realizado'; // Si devueve 1 es porque ya se ha realizado el pago
     	}
-if ($rowRealizado['Realizado']==0) {
+		if ($rowRealizado['Realizado']==0) {
+		}
             //
     } else {
         header('location: page_denegado.php');
