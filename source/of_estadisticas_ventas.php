@@ -83,76 +83,31 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-title">
-              <h3 class="card-title" align="center">Reporte General</h3>
+              <h3 class="card-title" align="center">Reporte Estadistico de Ventas</h3>
             </div>
 
             <div class="card-body">
               <div class="bs-component" id="tabs">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#general" data-toggle="tab">General</a></li>                  
+                  <li class="active"><a href="#ventas" data-toggle="tab">Ventas</a></li>                  
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade active in" id="general">
-                    <br>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card col-md-5">
-                          <!-- <h3 class="card-title">Bar Chart</h3> -->
-                          <div class="embed-responsive embed-responsive-16by9">
-                            <canvas class="embed-responsive-item" id="graficoGanancias"></canvas>
-                          </div>
-                        </div>
-                        <div class="col-md-7 pull-right">
-                          <div class="panel panel-info">    
-                            <div class="panel-heading">
-                              <h3 class="panel-title">Inversiones</h3>
-                            </div>
-                            <div class="panel-body">
-                              <p><b>Contenedores registrados:</b> <?php echo contarContenedores(); ?></p>
-                              <p><b>Articulos registrados:</b> <?php echo contarArticulos(); ?></p>
-                            </div>   
-                          </div>
-                          <div class="panel panel-primary">    
-                            <div class="panel-heading">
-                              <h3 class="panel-title">Ganancias</h3>
-                            </div>
-                            <div class="panel-body">
-                              <p><b>Ventas registradas:</b> <?php echo getNumVentas(); ?></p>
-                              <p><b>Total en ventas registradas:</b> <?php echo number_format(totalEnVentas(),2); ?></p>
-                            </div>   
-                          </div>
-                          <div class="panel panel-danger">    
-                            <div class="panel-heading">
-                              <h3 class="panel-title">Gastos</h3>
-                            </div>
-                            <div class="panel-body">
-                              <p><b>Total en descuentos realizados:</b> L. <?php echo number_format(totalDescuentos(), 2); ?></p>
-                              <p><b>Total en pagos a Servicios Publicos:</b> L. <?php echo number_format(totalServPub(), 2); ?></p>
-                              <p><b>Total en pagos de planillas:</b> <?php echo number_format(totalPlanillas(), 2); ?></p>
-                            </div>   
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="inversiones">
+                  <div class="tab-pane fade active in" id="inversiones">
                   <br>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="card col-md-5">
+                        <div class="">
                           <!-- <h3 class="card-title">Bar Chart</h3> -->
-                          <div class="embed-responsive embed-responsive-16by9">
-                            <canvas class="embed-responsive-item" id="graficoContenedores"></canvas>
-                          </div>
+                          <!-- <div class="embed-responsive embed-responsive-16by9"> -->
+                            <canvas class="embed-responsive-item" id="graficoContenedores" width="900" height="200"></canvas>
+                          <!-- </div> -->
                         </div>
-                        
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -169,55 +124,45 @@
       $('body').removeClass("sidebar-mini").addClass("sidebar-collapse");
     jQuery(document).ready(function(){
 
-      function datosGenerales() {
+      function datosContenedores() {
         $.ajax({
           type: "POST",
-          url: "of_reporte_general_inversiones.php",
+          url: "of_estadisticas_ventas_meses.php",
           data: "data",
           dataType: "json",
-        }).done(function( inversion, textStatus, jqXHR ){
-          console.log("Total en inversiones = " + inversion);
+        }).done(function( ventas, textStatus, jqXHR ){
+          console.log(ventas);
 
-            $.ajax({
-              type: "POST",
-              url: "of_reporte_general_ganancias.php",
-              data: "data",
-              dataType: "json",
-            }).done(function( ganancias, textStatus, jqXHR ){
-              console.log("Total en ganancias = " + ganancias);
+            // $.ajax({
+            //   type: "POST",
+            //   url: "of_reporte_general_ganancias.php",
+            //   data: "data",
+            //   dataType: "json",
+            // }).done(function( ganancias, textStatus, jqXHR ){
+            //   console.log("Total en ganancias = " + ganancias);
 
               var data = {
-                labels: ["Inversiones - Ganancias"],
+                labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                 datasets: [
                   {
-                    label: "Inversiones",
+                    label: "Ventas por mes",
                     fillColor: "rgba(105, 154, 187, 0.685)",
                     strokeColor: "rgba(105, 154, 187, 0.685)",
                     pointColor: "rgba(105, 154, 187, 0.685)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
-                    data: [inversion]
-                  },
-                  {
-                    label: "Ganancias",
-                    fillColor: "rgba(151, 205, 151, 0.705)",
-                    strokeColor: "rgba(151, 205, 151, 0.705)",
-                    pointColor: "rgba(151, 205, 151, 0.705)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgb(151, 205, 156)",
-                    data: [ganancias]
+                    data: [ventas.mes1, ventas.mes2, ventas.mes3, ventas.mes4, ventas.mes5, ventas.mes6, ventas.mes7, ventas.mes8, ventas.mes9, ventas.mes10, ventas.mes11, ventas.mes12]
                   }
                 ]
               };
-              var ctxb = $("#graficoGanancias").get(0).getContext("2d");
-              var barChart = new Chart(ctxb).Bar(data);
+              var ctxb = $("#graficoContenedores").get(0).getContext("2d");
+              var barChart = new Chart(ctxb).Line(data);
               
-            }).fail(function( json, textStatus, jqXHR ){
-              console.log(json);
-              alert(".fail");
-            });
+            // }).fail(function( json, textStatus, jqXHR ){
+            //   console.log(json);
+            //   alert(".fail");
+            // });
 
         }).fail(function( json, textStatus, jqXHR ){
           console.log(json);
@@ -225,11 +170,7 @@
         });
       }
 
-      datosGenerales();
-      // datosContenedores();
-
-      // $("#tabs").tabs("load", "of_reporte_general_tab_inversiones.php");
-
+      datosContenedores();
     });
     </script>
     <script type="text/javascript">
