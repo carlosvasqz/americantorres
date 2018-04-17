@@ -159,7 +159,7 @@
                   <span class="cliente"><span id="direccionClienteTexto"></span><br></span>
                   <span class="cliente"><strong>Telefono: </strong><span id="telefonoClienteTexto"></span></span>
                 </div>
-                <div class="col-xs-4"><b>Recibo de venta:</b> #<span id="numRecData"><?php echo getNumVentas()+1;?></span><br><br><b>Vendedor:</b> <span id="usserData"><?php echo $_SESSION['username'];?></span><br><b>Forma de pago:</b> Contado</div>
+                <div class="col-xs-4"><b>Recibo de venta:</b> #<span id="numRecData"><?php echo getLastSell()+1;?></span><br><br><b>Vendedor:</b> <span id="usserData"><?php echo $_SESSION['username'];?></span><br><b>Forma de pago:</b> Contado</div>
               </div>
               <br><br>
               <div class="row">
@@ -429,7 +429,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group has-warning">
+                            <div class="form-group has-warning" id="divMontoDePago">
                                 <label class="control-label">Monto de pago</label>
                                 <div class="input-group">
                                   <span class="input-group-addon input-lg"><strong>L.</strong></span>
@@ -450,7 +450,7 @@
                         <div class="modal-footer">
                           <!-- <div class="col-xs-12 center-block"> -->
                             <button type="button" class="btn btn-link waves-effect col-xs-5 pull-left" data-dismiss="modal"><i class="fa fa-times-circle fa-3x text-danger" ></i></button>
-                            <button type="submit" class="btn btn-link waves-effect col-xs-5 pull-right" form="formCambio"><i class="fa fa-check-circle fa-3x" ></i></button>
+                            <button type="button" class="btn btn-link waves-effect col-xs-5 pull-right" id="aceptarCambio"><i class="fa fa-check-circle fa-3x" ></i></button>
                           <!-- </div> -->
                         </div>
                     </div>
@@ -483,7 +483,7 @@
     <script type="text/javascript">
     // jQuery(document).ready(function (){
       $("#TelefonoCliente").mask("(999) 9999-9999");
-      $('body').removeClass("sidebar-mini").addClass("sidebar-collapse");
+      // $('body').removeClass("sidebar-mini").addClass("sidebar-collapse");
       
       function rellenarSystData() {
         tmp = $("#dateData").html() + ":" + $("#fechaRecibo").html() + ":" + $("#dateDB").html() + ":" + $("#numRecData").html() + ":" + $("#usserData").html();
@@ -600,11 +600,13 @@
       });
 
       clienteVacio();
+
       $("#btn-datosCliente").click(function(){
         $("#NombreCliente").val($("#nombreClienteTexto").html()).val;
         $("#DireccionCliente").val($("#direccionClienteTexto").html()).val;
         $("#TelefonoCliente").val($("#telefonoClienteTexto").html()).val;
       });
+
       $("#btn-aceptarCliente").click(function(){
         $("#divNombreCliente").removeClass("has-success");
         $("#divDireccionCliente").removeClass("has-success");
@@ -614,10 +616,11 @@
         var DireccionCliente = $("#DireccionCliente").val();
         var TelefonoCliente = $("#TelefonoCliente").val();
         // alert( "Nombre: " + NombreCliente + " con length " + NombreCliente.length + ", Direccion: " + DireccionCliente + " con length " + DireccionCliente.length + " Telefono: " + TelefonoCliente + " con length " + TelefonoCliente.length + "" );
-        if (NombreCliente.length==0&&DireccionCliente.length==0&&TelefonoCliente.length!==15) {
+        // if (NombreCliente.length==0&&DireccionCliente.length==0&&TelefonoCliente.length!==15) {
+        if (NombreCliente.length==0) {
           $("#divNombreCliente").addClass("has-error");
-          $("#divDireccionCliente").addClass("has-error");
-          $("#divTelefonoCliente").addClass("has-error");
+          // $("#divDireccionCliente").addClass("has-error");
+          // $("#divTelefonoCliente").addClass("has-error");
           $("#NombreCliente").attr('required', true) ;
           return false;
         }else {
@@ -625,8 +628,8 @@
           $("#divDireccionCliente").removeClass("has-error");
           $("#divTelefonoCliente").removeClass("has-error");
           if(NombreCliente.length!==0){
-            if (DireccionCliente.length!==0) {
-              if (TelefonoCliente.length==15) {                
+            // if (DireccionCliente.length!==0) {
+              if (TelefonoCliente.length==15||TelefonoCliente.length==0) {                
                 clienteLleno();
                 $("#nombreClienteTexto").html($("#NombreCliente").val());
                 $("#direccionClienteTexto").html($("#DireccionCliente").val());
@@ -639,11 +642,11 @@
                 $("#divTelefonoCliente").addClass("has-error");
                 return false;
               }
-            }else{
-              $("#DireccionCliente").attr('required',true);
-              $("#divDireccionCliente").addClass("has-error");
-              return false;
-            }
+            // }else{
+            //   $("#DireccionCliente").attr('required',true);
+            //   $("#divDireccionCliente").addClass("has-error");
+            //   return false;
+            // }
           }else{
             $("#divNombreCliente").addClass("has-error");
             $("#NombreCliente").attr('required',true);
@@ -809,9 +812,13 @@
               }else{
                 $("#Descuento").attr('max', parseFloat($("#Subtotal").val()));
                 SubTotal = parseFloat(SubTotalStr);
-                Descuento = parseFloat($("#Descuento").val());
-                Total = SubTotal-Descuento;
-                $("#Total").val(Total.toFixed(2)).value;
+                if ($("#Descuento").val()=="") {
+                  $("#Total").val("Error").value;
+                } else {
+                  Descuento = parseFloat($("#Descuento").val());
+                  Total = SubTotal-Descuento;  
+                  $("#Total").val(Total.toFixed(2)).value;
+                }
                 $("#sumaTotal").html(Total.toFixed(2));
                 $("#cantTotalVenta").val(Total.toFixed(2)).value;
               }
@@ -822,9 +829,13 @@
               } else {
                 $("#Descuento").attr('max', 100);
                 SubTotal = parseFloat(SubTotalStr);
-                Descuento = parseFloat($("#Descuento").val());
-                Total = SubTotal-(SubTotal*(Descuento/100));
-                $("#Total").val(Total.toFixed(2)).value;
+                if ($("#Descuento").val()=="") {
+                  $("#Total").val("Error").value;
+                } else {
+                  Descuento = parseFloat($("#Descuento").val());
+                  Total = SubTotal-(SubTotal*(Descuento/100));
+                  $("#Total").val(Total.toFixed(2)).value;
+                }
                 $("#sumaTotal").html(Total.toFixed(2));
                 $("#cantTotalVenta").val(Total.toFixed(2)).value;
               }
@@ -942,27 +953,32 @@
       }
       contarArts();
 
-      function calcCambio(){
-        var total = parseFloat($("#cantTotalVenta").val());
-        var monto = parseFloat($("#montoDePago").val());
-        var cambio = monto-total;
-        $("#cambio").val(cambio.toFixed(2)).val;
-      }
-
       $("#btn-Vender").click(function(){
-        if (($("#nombreClienteTexto").html()!=="")&&($("#direccionClienteTexto").html()!=="")&&($("#telefonoClienteTexto").html()!=="")) {
+        // if (($("#nombreClienteTexto").html()!=="")&&($("#direccionClienteTexto").html()!=="")&&($("#telefonoClienteTexto").html()!=="")) {
+        if ($("#nombreClienteTexto").html()!=="") {
           if ($("#Subtotal").val()!=='0.00') {
-            rellenarArtsData();
-            rellenarTotlData($("#Subtotal").val(), $("#tipoDescuento").val(), $("#Descuento").val(), $("#Total").val());
-            $('#cancelarVenta').modal('show');
+            if ($("#Total").val()!="Error") {
+              rellenarArtsData();
+              rellenarTotlData($("#Subtotal").val(), $("#tipoDescuento").val(), $("#Descuento").val(), $("#Total").val());
+              $('#cancelarVenta').modal('show');
+            } else {
+              $("#Descuento").attr('required',true);
+              $.notify({
+                title: "Error : ",
+                message: "Debe insertar una cantidad de descuento valida.",
+                icon: 'fa fa-times' 
+              },{
+                type: "danger"
+              });
+            }
           } else {
             $.notify({
-            title: "Error : ",
-            message: "Debe agregar al menos un articulo a la lista de venta.",
-            icon: 'fa fa-times' 
-          },{
-            type: "danger"
-          });
+              title: "Error : ",
+              message: "Debe agregar al menos un articulo a la lista de venta.",
+              icon: 'fa fa-times' 
+            },{
+              type: "danger"
+            });
           }
         } else {
           $.notify({
@@ -974,9 +990,28 @@
           });
         }
       });
-      
-      
-      
+
+      function calcCambio(){
+        var total = parseFloat($("#cantTotalVenta").val());
+        var monto = parseFloat($("#montoDePago").val());
+        var cambio = monto-total;
+        $("#cambio").val(cambio.toFixed(2)).val;
+      }
+
+      $("#aceptarCambio").click(function(){
+        var cantTotalVenta = parseFloat(document.getElementById("cantTotalVenta").value);
+        var montoDePago = parseFloat(document.getElementById("montoDePago").value);
+        var cambio = document.getElementById("cambio").value;
+        if (document.getElementById("montoDePago").value==""||montoDePago<cantTotalVenta||cambio<0) {
+          $("#montoDePago").attr('required',true);
+          $("#montoDePago").focus();
+          $("#divMontoDePago").removeClass('has-warning').addClass("has-error");
+        } else {
+          $("#divMontoDePago").removeClass('has-error').addClass("has-warning");
+          $("#formCambio").submit();
+        }
+      });
+
     </script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">

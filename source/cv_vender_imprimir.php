@@ -199,23 +199,45 @@
     <!-- <script src="js/tips/vender_busqueda_rapida.js"></script> -->
     <script src="js/igorescobar-jQuery-Mask-Plugin/jquery.mask.min.js"></script>
     <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
       jQuery(document).ready(function (){
+
         function imprimir(){
-          window.setTimeout('javascript:window.print();', 1500); 
-          window.setTimeout('location.href="cv_vender.php"', 2000);
+          window.setTimeout('javascript:window.print();', 500); 
+          window.setTimeout('location.href="cv_vender.php"', 1000);
         }
-        function imprimiendo(){
+
+        // function imprimiendo(){
+        //   swal({
+        //     title: "<i class='fa fa-print fa-3x hidden-print'></i>",
+        //     text: "<br><i class='hidden-print'>Imprimiendo...<i><br><br><div class='progress progress-striped active hidden-print'><div class='progress-bar hidden-print' style='width: 100%;'></div></div>.",
+        //     html: true,
+        //     timer: 2000,
+        //     showConfirmButton: false,
+        //     showCancelButton: false
+        //   });
+        // }
+
+        function confirmar(){
           swal({
-            title: "<i class='fa fa-print fa-3x'></i>",
-            text: "<i>Imprimiendo...<i><br><div class='progress progress-striped active'><div class='progress-bar' style='width: 100%;'></div></div>.",
-            html: true,
-            showConfirmButton: false,
-            showCancelButton: false
+            title: "¿Desea imprimir un recibo?",
+            type: "warning",
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Si",
+            cancelButtonText: "No",
+            closeOnCancel: true
+          }, function(isConfirm) {
+            if (isConfirm) {
+              imprimir();
+            } else {
+              $(location).attr('href', 'cv_vender.php');
+            }
           });
         }
-        imprimir();
-        imprimiendo();
+
+        confirmar();
       });
     </script>
   </body>
