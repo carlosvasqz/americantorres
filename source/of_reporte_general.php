@@ -1,6 +1,7 @@
 <?php
   include ('constructor.php');
   include ('bd/conexion.php');
+  include ('util.php');
   #session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) {  
 ?>
@@ -24,6 +25,9 @@
     -->
   </head>
   <body class="sidebar-mini fixed">
+    <?php
+      //Codigo
+    ?>
     <div class="wrapper">
       <!-- Navbar-->
       <header class="main-header hidden-print"><a class="logo" href="index.php">American Torres</a>
@@ -76,79 +80,168 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-              <h3 class="card-title">Reporte General</h3>
-              <div class="embed-responsive embed-responsive-16by9">
-                <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-title">
+              <h3 class="card-title" align="center">Reporte Estadistico</h3>
+            </div>
+
+            <div class="card-body">
+              <div class="bs-component" id="tabs">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#general" data-toggle="tab">General</a></li>
+                  <li><a href="#inversiones" data-toggle="tab" id="linkInv">Inversiones</a></li>
+                  <li><a href="#articulos" data-toggle="tab">Articulos</a></li>
+                  <li><a href="#ventas" data-toggle="tab">Ventas</a></li>
+                  
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade active in" id="general">
+                    <br>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card col-md-5">
+                          <!-- <h3 class="card-title">Bar Chart</h3> -->
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <canvas class="embed-responsive-item" id="graficoGanancias"></canvas>
+                          </div>
+                        </div>
+                        <div class="col-md-7 pull-right">
+                          <div class="panel panel-info">    
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Inversiones</h3>
+                            </div>
+                            <div class="panel-body">
+                              <p><b>Contenedores registrados:</b> <?php echo contarContenedores(); ?></p>
+                              <p><b>Articulos registrados:</b> <?php echo contarArticulos(); ?></p>
+                            </div>   
+                          </div>
+                          <div class="panel panel-primary">    
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Ganancias</h3>
+                            </div>
+                            <div class="panel-body">
+                              <p><b>Ventas registradas:</b> <?php echo getNumVentas(); ?></p>
+                              <p><b>Total en ventas registradas:</b> <?php echo number_format(totalEnVentas(),2); ?></p>
+                            </div>   
+                          </div>
+                          <div class="panel panel-danger">    
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Gastos</h3>
+                            </div>
+                            <div class="panel-body">
+                              <p><b>Total en descuentos realizados:</b> L. <?php echo number_format(totalDescuentos(), 2); ?></p>
+                              <p><b>Total en pagos a Servicios Publicos:</b> L. <?php echo number_format(totalServPub(), 2); ?></p>
+                              <p><b>Total en pagos de planillas:</b> <?php echo number_format(totalPlanillas(), 2); ?></p>
+                            </div>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="inversiones">
+                  <br>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card col-md-5">
+                          <!-- <h3 class="card-title">Bar Chart</h3> -->
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <canvas class="embed-responsive-item" id="graficoContenedores"></canvas>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="articulos">
+                    Articulos
+                  </div>
+                  <div class="tab-pane fade" id="ventas">
+                    Ventas
+                  </div>
+                </div>
               </div>
             </div>
+            
           </div>
+        </div>
       </div>
     </div>
     <!-- Javascripts-->
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
-     <script type="text/javascript" src="js/plugins/chart.js"></script>
+    <script type="text/javascript" src="js/plugins/chart.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
-      var data = {
-        <?php
+      $('body').removeClass("sidebar-mini").addClass("sidebar-collapse");
+    jQuery(document).ready(function(){
 
-       echo ' labels: ["January", "February", "March", "April", "May"],
-        datasets: [
-          {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56]
-          },
-          {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86]
-          }
-        ]
-      };
-      var pdata = [
-        {
-          value: 300,
-          color:"#F7464A",
-          highlight: "#FF5A5E",
-          label: "Red"
-        },
-        {
-          value: 50,
-          color: "#46BFBD",
-          highlight: "#5AD3D1",
-          label: "Green"
-        },
-        {
-          value: 100,
-          color: "#FDB45C",
-          highlight: "#FFC870",
-          label: "Yellow"
-        }
-      ]
-      
-     
-      
-      var ctxb = $("#barChartDemo").get(0).getContext("2d");
-      var barChart = new Chart(ctxb).Bar(data); ';
-      ?>
-      </script>
-      
+      function datosGenerales() {
+        $.ajax({
+          type: "POST",
+          url: "of_reporte_general_inversiones.php",
+          data: "data",
+          dataType: "json",
+        }).done(function( inversion, textStatus, jqXHR ){
+          console.log("Total en inversiones = " + inversion);
+
+            $.ajax({
+              type: "POST",
+              url: "of_reporte_general_ganancias.php",
+              data: "data",
+              dataType: "json",
+            }).done(function( ganancias, textStatus, jqXHR ){
+              console.log("Total en ganancias = " + ganancias);
+
+              var data = {
+                labels: ["Inversiones - Ganancias"],
+                datasets: [
+                  {
+                    label: "Inversiones",
+                    fillColor: "rgba(105, 154, 187, 0.685)",
+                    strokeColor: "rgba(105, 154, 187, 0.685)",
+                    pointColor: "rgba(105, 154, 187, 0.685)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
+                    data: [inversion]
+                  },
+                  {
+                    label: "Ganancias",
+                    fillColor: "rgba(151, 205, 151, 0.705)",
+                    strokeColor: "rgba(151, 205, 151, 0.705)",
+                    pointColor: "rgba(151, 205, 151, 0.705)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgb(151, 205, 156)",
+                    data: [ganancias]
+                  }
+                ]
+              };
+              var ctxb = $("#graficoGanancias").get(0).getContext("2d");
+              var barChart = new Chart(ctxb).Bar(data);
+              
+            }).fail(function( json, textStatus, jqXHR ){
+              console.log(json);
+              alert(".fail");
+            });
+
+        }).fail(function( json, textStatus, jqXHR ){
+          console.log(json);
+          alert(".fail");
+        });
+      }
+
+      datosGenerales();
+      // datosContenedores();
+
+      $("#tabs").tabs("load", "of_reporte_general_tab_inversiones.php");
+
+    });
+    </script>
     <script type="text/javascript">
       $('.alert').click(function(){
       	swal({

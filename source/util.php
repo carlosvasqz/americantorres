@@ -298,7 +298,11 @@
         include ('bd/conexion.php');
         $queryNumVentas=mysqli_query($db, "SELECT COUNT(*) AS Num_Ventas FROM ventas") or die(mysqli_error());
         $rowNumVentas=mysqli_fetch_array($queryNumVentas);
-        return $rowNumVentas['Num_Ventas'];
+        if(is_null($rowNumVentas['Num_Ventas'])){
+            return 0;
+        }else{
+            return $rowNumVentas['Num_Ventas'];
+        }
     }
 
     function getArticulo($id){
@@ -443,4 +447,79 @@
             $actualizarArts=mysqli_query($db, $sqlUPDATES) or die(mysqli_error());
         }
     }
+
+    function contarContenedores(){
+        include ('bd/conexion.php');
+        $sqlCantContenedores = "SELECT COUNT(*) AS Cantidad FROM contenedores;";
+        $queryCantContenedores=mysqli_query($db, $sqlCantContenedores) or die(mysqli_error());
+        $rowCantContenedores=mysqli_fetch_array($queryCantContenedores);
+        if(is_null($rowCantContenedores['Cantidad'])){
+            return 0;
+        }else{
+            return $rowCantContenedores['Cantidad'];
+        }
+    }
+
+    function contarArticulos(){
+        include ('bd/conexion.php');
+        $sqlCantArticulos = "SELECT COUNT(*) AS Cantidad FROM articulos;";
+        $queryCantArticulos=mysqli_query($db, $sqlCantArticulos) or die(mysqli_error());
+        $rowCantArticulos=mysqli_fetch_array($queryCantArticulos);
+        if(is_null($rowCantArticulos['Cantidad'])){
+            return 0;
+        }else{
+            return $rowCantArticulos['Cantidad'];
+        }
+    }
+
+    function totalDescuentos(){
+        include ('bd/conexion.php');
+        $sqlCantDescuentos = "SELECT SUM(Descuento) AS Total_Descuento FROM ventas;";
+        $queryCantDescuentos=mysqli_query($db, $sqlCantDescuentos) or die(mysqli_error());
+        $rowCantDescuentos=mysqli_fetch_array($queryCantDescuentos);
+        if(is_null($rowCantDescuentos['Total_Descuento'])){
+            return 0;
+        }else{
+            return $rowCantDescuentos['Total_Descuento'];
+        }
+    }
+
+    function totalServPub(){
+        include ('bd/conexion.php');
+        $sqlCantServPub = "SELECT SUM(Monto) AS Total_Serv_Pub FROM pagos_servs_pubs;";
+        $queryCantServPub=mysqli_query($db, $sqlCantServPub) or die(mysqli_error());
+        $rowCantServPub=mysqli_fetch_array($queryCantServPub);
+        if(is_null($rowCantServPub['Total_Serv_Pub'])){
+            return 0;
+        }else{
+            return $rowCantServPub['Total_Serv_Pub'];
+        }
+    }
+
+    function totalPlanillas(){
+        include ('bd/conexion.php');
+        $sqlCantPlanillas = "SELECT SUM(Total_Planilla) AS Total_Planilla FROM cierres_mensuales;";
+        $queryCantPlanillas=mysqli_query($db, $sqlCantPlanillas) or die(mysqli_error());
+        $rowCantPlanillas=mysqli_fetch_array($queryCantPlanillas);
+        if(is_null($rowCantPlanillas['Total_Planilla'])){
+            return 0;
+        }else{
+            return $rowCantPlanillas['Total_Planilla'];
+        }
+    }
+
+    function totalEnVentas(){
+        include ('bd/conexion.php');
+        $queryTotalVentas=mysqli_query($db, "SELECT SUM(Precio) AS Total_Ventas FROM detalles_ventas") or die(mysqli_error());
+        $rowTotalVentas=mysqli_fetch_array($queryTotalVentas); 
+        $queryTotalDescuentos=mysqli_query($db, "SELECT SUM(Descuento) AS Total_Descuentos FROM ventas") or die(mysqli_error());
+        $rowTotalDescuentos=mysqli_fetch_array($queryTotalDescuentos); 
+        $totalVentas = $rowTotalVentas['Total_Ventas'] - $rowTotalDescuentos['Total_Descuentos'];
+        if(is_null($totalVentas)){
+            return 0;
+        }else{
+            return $totalVentas;
+        }
+    }
+
 ?>

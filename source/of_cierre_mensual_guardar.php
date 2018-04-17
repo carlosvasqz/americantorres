@@ -21,7 +21,7 @@
             } else {
                 $queryInsert = "INSERT INTO cierres_mensuales(Fecha_Inicial, Fecha_Final, Fecha_Cierre, Hora_Cierre, Total_Ventas_Mes, Total_Serv_Pub, Total_Planilla, Utilidad) VALUES ('$fechaInicial', '$fechaFinal', '$fechaCierre', '$horaCierre', $ventasMes, $servPubMes, $nominasMes, $utilidad);";
                 $queryGuardar = mysqli_query($db, $queryInsert) or die(mysqli_error());
-                $rowGuardar = mysqli_fetch_array($queryGuardar);
+                // $rowGuardar = mysqli_fetch_array($queryGuardar);
                 echo 'Guardado';
             }
         } else {

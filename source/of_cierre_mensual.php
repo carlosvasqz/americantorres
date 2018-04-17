@@ -103,7 +103,7 @@
           
           $ventasMes = getTotalVentasMes($fechaMesHoyDB);
           $totalServPub = getTotalSPMes($fechaMesHoyDB);
-          $totalNominas = getTotalNominasMes($fechaMesHoyDB);
+          // $totalNominas = getTotalNominasMes($fechaMesHoyDB);
         ?>
         <div class="col-md-12">
           <div class="card">
@@ -172,11 +172,11 @@
                           <span class="input-group-addon"><strong><i>-</i> Pasivo</strong></span>
                         </div>
                       </div>
-                      <div class="form-group has-warning">
+                      <div class="form-group has-warning" id="divNominas">
                         <label class="control-label col-md-3">Total N&oacute;minas empleados</label>
                         <div class="col-md-8 input-group">
                           <span class="input-group-addon"><strong>L.</strong></span>
-                          <input class="form-control" type="text" name="nominas_formato" id="nominas_formato" placeholder="Total nominas de empleados" value="<?php echo number_format($totalNominas, 2); ?>" readonly>
+                          <input class="form-control" type="number" min="0" step="0.01" name="nominas" id="nominas" placeholder="Total nominas de empleados" value="">
                           <span class="input-group-addon"><strong><i>-</i> Pasivo</strong></span>
                         </div>
                       </div>
@@ -213,7 +213,6 @@
     <input type="hidden" id="fecha_final_db" value="<?php echo $fechaFinalDB;?>">
     <input type="hidden" id="ventas_mes" value="<?php echo $ventasMes; ?>">
     <input type="hidden" id="serv_pub" value="<?php echo $totalServPub; ?>">
-    <input type="hidden" id="nominas" value="<?php echo $totalNominas; ?>">
     <input type="hidden" id="fecha_mes_db" value="<?php echo $fechaMesHoyDB; ?>">
     <!-- Javascripts-->
     <script src="js/jquery-2.1.4.min.js"></script>
@@ -234,51 +233,15 @@
         var utilidad = ventasMes - servPubMes - nominasMes;
         $("#utilidad").val(utilidad.toFixed(2)).value;
       }
-      calcUtilidad();
-      $("#registrar").click(function(){
-        var fechaHoy = $("#fecha_hoy_db").val();
-        var tiempoCierre = $("#tiempo_cierre_db").val();
-        var fechaInicial = $("#fecha_inicial_db").val();
-        var fechaFinal = $("#fecha_final_db").val();
-        var ventasMes = $("#ventas_mes").val();
-        var servPubMes = $("#serv_pub").val();
-        var nominasMes = $("#nominas").val();
-        var utilidad = $("#utilidad").val();
-        var fechaMesDB = $("#fecha_mes_db").val();
-        ventasMes = parseFloat(ventasMes);
-        servPubMes = parseFloat(servPubMes);
-        nominasMes = parseFloat(nominasMes); 
-        utilidad = parseFloat(utilidad);
-        var data = "fechaCierre=" + fechaHoy + "&horaCierre=" + tiempoCierre + "&fechaInicial=" + fechaInicial + "&fechaFinal=" + fechaFinal + "&ventasMes=" + ventasMes + "&servPubMes=" + servPubMes + "&nominasMes=" + nominasMes + "&utilidad=" + utilidad + "&fechaMesDB=" + fechaMesDB;
-        if (fechaHoy===fechaFinal) {
-          registrarCierreMensual(data);
-        } else {
-          swal({
-            title: "¿Est&aacute; seguro?",
-            text: "Hoy no es el d&iacute;a final del mes.<br>Se recomienda realizar los cierres mensuales el ultimo d&iacute;a del mes.",
-            type: "warning",
-            html: true,
-            closeOnConfirm: true,
-            showCancelButton: true,
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-          }, function (isConfirm) {
-              if (isConfirm) {
-                  registrarCierreMensual(data);
-                  return false;
-              }
-          });
-        }
-      });
+      
       function hacerCierreHoy(){
         swal({
           title: "Error",
           text: "Debe registrar el cierre del dia de hoy antes de registrar el cierre mensual.",
           type: "error",
-          html: true,
           closeOnConfirm: false,
           showCancelButton: true,
-          confirmButtonText: "Registrar Cierre Diario",
+          confirmButtonText: "Registrar Cierre Diario"
         }, function (isConfirm) {
             if (isConfirm) {
               window.setTimeout('location.href="of_cierre_diario.php"', 1);
@@ -288,6 +251,7 @@
 
       function registrarCierreMensual(data){
         // alert(data);
+        // hacerCierreHoy();
         $.ajax({
           url: "of_cierre_mensual_guardar.php",
           data: data,
@@ -296,8 +260,22 @@
           //cache: false,
           //success
           success: function (data) {
+            // alert(data.trim());
+            console.log(data.trim());
+            if (data.trim()==="NoExisteCierreDiaHoy") {
+              hacerCierreHoy();              
               // alert(data.trim());
-            // console.log(data.trim());
+            }
+            if (data.trim()=="ExisteCierreMensual") {
+              //alert(data);
+              $.notify({
+                title: "Error : ",
+                message: "Ya ha registrado un cierre para este mes.",
+                icon: 'fa fa-times' 
+              },{
+                type: "danger"
+              });   
+            }
             if (data.trim()=="Guardado") {
               // alert(data);
               $.notify({
@@ -308,20 +286,6 @@
                 type: "success"
               });
               // window.setTimeout('location.href="of_cierre_mensual.php"', 2000);
-            }
-            if (data.trim()=="ExisteCierreMensual") {
-              //alert(data);
-              $.notify({
-                title: "Error : ",
-                message: "Ya ha registrado un cierre para este mes.",
-                icon: 'fa fa-times' 
-              },{
-                type: "danger"
-              });
-              // swal("¡Error!", "Ya ha registrado un cierre para este mes.", "error");     
-            }
-            if (data.trim()=="NoExisteCierreDiaHoy") {
-              hacerCierreHoy();
             }
           },
           //error
@@ -337,6 +301,67 @@
           }
         });
       }
+
+      
+      // calcUtilidad();
+      $("#nominas").focus();
+
+      $("#nominas").on('change', function () {
+        calcUtilidad();
+      });
+
+      $("#nominas").keyup(function () {
+        calcUtilidad();
+      });
+
+      $("#registrar").click(function(){
+        var fechaHoy = $("#fecha_hoy_db").val();
+        var tiempoCierre = $("#tiempo_cierre_db").val();
+        var fechaInicial = $("#fecha_inicial_db").val();
+        var fechaFinal = $("#fecha_final_db").val();
+        var ventasMes = $("#ventas_mes").val();
+        var servPubMes = $("#serv_pub").val();
+        var nominasMes = $("#nominas").val();
+        var utilidad = $("#utilidad").val();
+        var fechaMesDB = $("#fecha_mes_db").val();
+        ventasMes = parseFloat(ventasMes);
+        servPubMes = parseFloat(servPubMes);
+        nominasMes = parseFloat(nominasMes); 
+        utilidad = parseFloat(utilidad);
+        if (nominasMes<=0||$("#nominas").val()=="") {
+          $("#nominas").attr('reuired', true);
+          $("#nominas").focus();
+          $.notify({
+            title: "Error : ",
+            message: "Debe ingresar una cantidad valida.",
+            icon: 'fa fa-times' 
+          },{
+            type: "danger"
+          });
+        } else {
+          var data = "fechaCierre=" + fechaHoy + "&horaCierre=" + tiempoCierre + "&fechaInicial=" + fechaInicial + "&fechaFinal=" + fechaFinal + "&ventasMes=" + ventasMes + "&servPubMes=" + servPubMes + "&nominasMes=" + nominasMes + "&utilidad=" + utilidad + "&fechaMesDB=" + fechaMesDB;
+          if (fechaHoy===fechaFinal) {
+            registrarCierreMensual(data);
+          } else {
+            swal({
+              title: "¿Est&aacute; seguro?",
+              text: "Hoy no es el d&iacute;a final del mes.<br>Se recomienda realizar los cierres mensuales el ultimo d&iacute;a del mes.",
+              type: "warning",
+              html: true,
+              closeOnConfirm: true,
+              showCancelButton: true,
+              confirmButtonText: "Aceptar",
+              cancelButtonText: "Cancelar",
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    registrarCierreMensual(data);
+                    return false;
+                }
+            });
+          } 
+        }
+
+      });
     });
     </script>
     <script type="text/javascript">
@@ -353,11 +378,7 @@
       	}, function(isConfirm) {
       		if (isConfirm) {
             $(location).attr('href', 'page-logout.php');
-            //$('#alert').html.attr('href', 'logout.php');
-      			//swal("Deleted!", "Your imaginary file has been deleted.", "success");
       		} else {
-            //return false;
-      			//swal("Cancelled", "Your imaginary file is safe :)", "error");
       		}
       	});
       });
