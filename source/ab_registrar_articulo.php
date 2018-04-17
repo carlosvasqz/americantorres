@@ -102,15 +102,21 @@
                <div class="form-group">
                     <label class="control-label col-md-3">Precio</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="money" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
-                    </div>
+                       <div class="input-group">
+                      <span class="input-group-addon" >L</span>
+                      <input class="form-control" type="number" min="0" step="0.01" name="precio_articulo" id="precio_articulo" placeholder="Ingresar precio del articulo">
+                  </div>  
+                  </div>
                   </div>
 
                   <div class="form-group">
                     <label class="control-label col-md-3">Cantidad</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="cantidad_articulo" id="cantidad_articulo" placeholder="Ingresar cantidad de disponibles">
+                      <div class="input-group">
+                        <span class="input-group-addon" >Unidades</span>
+                      <input class="form-control" type="number" min="0" name="cantidad_articulo" id="cantidad_articulo" placeholder="Ingresar cantidad de disponibles">
                   </div>
+                </div>
                 </div>
 
 
