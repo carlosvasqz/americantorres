@@ -100,8 +100,11 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Costo de contenedor</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="costo_contenedor" id="costo_contenedor" placeholder="Ingresar costo de contenedor">
+                    <div class="input-group">
+                      <span class="input-group-addon" >L</span>
+                      <input class="form-control" type="number" min="0" step="0.01" name="costo_contenedor" id="costo_contenedor" placeholder="Ingresar costo de contenedor">
                     </div>
+                  </div>
                   </div>
 
                   <div class="form-group">
