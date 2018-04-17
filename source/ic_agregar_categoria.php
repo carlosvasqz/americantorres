@@ -106,18 +106,14 @@
                       <input class="form-control" type="text" name="descripcion_categoria" id="descripcion_categoria" placeholder="Descripcion de categoria">
                     </div>
                   </div>
-
-                 
-                  
-
-                  
                 </form>
               </div>
-              </div>
+              
              <div class="card-footer" align="center">
                 <button class="btn btn-primary icon-btn" type="submit" form="" id="agregar" name="agregar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default icon-btn" type="button" onclick="limpiarTodo()"><i class="fa fa-fw fa-lg fa-times-circle"></i>Limpiar</button>
+                </div>
               </div>
             </div>
           </div>

@@ -225,11 +225,13 @@ $(document).ready(function () {
 
 
 
+	function limpiarTodo(){
+	 $('#codigo_categoria').val("").value;
+	 $('#nombre_categoria').val("").value;
+	 $('#descripcion_categoria').val("").value;
+	}
 
-
-
-
-
-
-
-
+	function limpiarBuscar(){
+		 $("#codigo_buscar").val("").value;
+		
+	}
