@@ -102,11 +102,15 @@
 
 
                   <div class="form-group">
+                    
+
                     <label class="control-label col-md-3">Monto de Registro</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" name="monto_pago" id="monto_pago" placeholder="Ingresar Monto de Registro">
+                      <div class="input-group">
+                      <span class="input-group-addon" >L</span>
+                      <input class="form-control" type="number" name="monto_pago" min="0" id="monto_pago" placeholder="Ingresar Monto de Registro">
                     </div>
-                    
+                    </div>
                   </div>
 
               
@@ -119,7 +123,7 @@
 
                   </div>
 
-                  <div id="errores"> s</div>
+                  <!--<div id="errores"> s</div>-->
                   
                   
              <div class="card-footer" align="center">
