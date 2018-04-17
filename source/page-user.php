@@ -64,24 +64,24 @@
         <div class="row user">
           <div class="col-md-12">
             <div class="profile">
-              <div class="info"><img class="user-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
-                <h4>John Doe</h4>
-                <p>FrontEnd Developer</p>
+              <div class="info"><img class="user-img" src="images/user.png">
+                <h4><?php echo $_SESSION['username']; ?></h4>
+                <p><?php echo $_SESSION['type']; ?></p>
               </div>
-              <div class="cover-image"></div>
+              <div class="cover-image" src="images/nature.jpeg"></div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="card p-0">
               <ul class="nav nav-tabs nav-stacked user-tabs">
-                <li class="active"><a href="#user-timeline" data-toggle="tab">Timeline</a></li>
-                <li><a href="#user-settings" data-toggle="tab">Settings</a></li>
+                <!-- <li class="active"><a href="#user-timeline" data-toggle="tab">Timeline</a></li> -->
+                <li class="active"><a href="#user-settings" data-toggle="tab">Perfil</a></li>
               </ul>
             </div>
           </div>
           <div class="col-md-9">
             <div class="tab-content">
-              <div class="tab-pane active" id="user-timeline">
+              <!-- <div class="tab-pane fade" id="user-timeline">
                 <div class="timeline">
                   <div class="post">
                     <div class="post-media"><a href="#"><img src="images/user.png"></a>
@@ -116,48 +116,61 @@
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="user-settings">
+              </div> -->
+              <div class="tab-pane active" id="user-settings">
                 <div class="card user-settings">
-                  <h4 class="line-head">Settings</h4>
-                  <form>
-                    <div class="row mb-20">
-                      <div class="col-md-4">
-                        <label>First Name</label>
-                        <input class="form-control" type="text">
-                      </div>
-                      <div class="col-md-4">
-                        <label>Last Name</label>
-                        <input class="form-control" type="text">
+                  <h4 class="line-head">Editar Perfil de Usuario</h4>
+                  <!-- <form method="POST" action="usuario_modificar_self.php" id="userform"> -->
+                    <div class="row m-10">
+                      <div class="col-md-6">
+                        <label>Codigo de Usuario:</label>
+                        <input class="form-control" type="text" id="codigoUser" name="codigoUser" value="<?php echo $_SESSION['idUsuario']; ?>" disabled />
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-8 mb-20">
-                        <label>Email</label>
-                        <input class="form-control" type="text">
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="col-md-8 mb-20">
-                        <label>Mobile No</label>
-                        <input class="form-control" type="text">
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="col-md-8 mb-20">
-                        <label>Office Phone</label>
-                        <input class="form-control" type="text">
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="col-md-8 mb-20">
-                        <label>Home Phone</label>
-                        <input class="form-control" type="text">
+                    <br />
+                    <div class="row m-10">
+                      <div class="panel panel-warning">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Cambio de Nombre de Usuario</h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="row m-10">
+                            <div class="col-md-6" id="divUserName">
+                              <label>Nombre de Usuario:</label>
+                              <input class="form-control col-lg-6" type="text" id="userName" name="userName" placeholder="Ingrese su/sus nombres" value="<?php echo $_SESSION['username']; ?>" required>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <div class="row m-10">
+                      <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Cambio de Contrase&ntilde;a</h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="row m-10">
+                            <div class="col-md-6" id="divOldPass">
+                              <label>Contrase&ntilde;a antigua:</label>
+                              <input class="form-control col-lg-6" type="text" id="oldPass" name="oldPass" placeholder="Ingrese su contrase&ntilde;a" value="" required>
+                              <input type="hidden" id="sessionPass" name="sessionPass" value="<?php echo $_SESSION['pass']; ?>">
+                            </div>
+                            <div class="col-md-6" id="divNewPass">
+                              <label>Contrase&ntilde;a nueva <i class="text-danger small text-uppercase">(Proceda con precaucion)</i>:</label>
+                              <input class="form-control col-lg-6" type="text" id="newPass" name="newPass" placeholder="Ingrese su nueva contrase&ntilde;a" required>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="row mb-10">
                       <div class="col-md-12">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                        <!--type="submit"-->
+                        <button class="btn btn-primary" id="guardar" type="button" onclik=""><i class="fa fa-fw fa-lg fa-check-circle"></i> Guardar</button>
                       </div>
                     </div>
-                  </form>
+                  <!-- </form> -->
                 </div>
               </div>
             </div>
@@ -171,6 +184,107 @@
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/plugins/bootstrap-notify.min.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function (){        
+        $("#guardar").click(function(){
+          var codigoUser = document.getElementById("codigoUser").value;
+          var userName = document.getElementById("userName").value;
+          var oldPass = document.getElementById("oldPass").value;
+          var sessionPass = document.getElementById("sessionPass").value;
+          var newPass = document.getElementById("newPass").value;
+          if (userName.length==0) {
+            $("#divUserName").removeClass("has-error");
+            $("#divOldPass").removeClass("has-error");
+            $("#divNewPass").removeClass("has-error");
+            $("#divUserName").addClass("has-error");
+            $("#userName").focus();
+            $.notify({
+              title: "Error : ",
+              message: "Por favor complete todos los campos.",
+              icon: 'fa fa-times' 
+            },{
+              type: "danger"
+            });
+          } else if (oldPass.length==0) {
+            $("#divUserName").removeClass("has-error");
+            $("#divOldPass").removeClass("has-error");
+            $("#divNewPass").removeClass("has-error");
+            $("#divOldPass").addClass("has-error");
+            $("#oldPass").focus();
+            $.notify({
+              title: "Error : ",
+              message: "Por favor complete todos los campos.",
+              icon: 'fa fa-times' 
+            },{
+              type: "danger"
+            });
+          } else if (newPass.length==0){
+            $("#divUserName").removeClass("has-error");
+            $("#divOldPass").removeClass("has-error");
+            $("#divNewPass").removeClass("has-error");
+            $("#divNewPass").addClass("has-error");
+            $("#newPass").focus();
+            $.notify({
+              title: "Error : ",
+              message: "Por favor complete todos los campos.",
+              icon: 'fa fa-times' 
+            },{
+              type: "danger"
+            });
+          } else {
+            if (oldPass!==sessionPass) {
+              $("#divUserName").removeClass("has-error");
+              $("#divOldPass").removeClass("has-error");
+              $("#divNewPass").removeClass("has-error");
+              $("#divOldPass").addClass("has-error");
+              $("#oldPass").focus();
+              $.notify({
+                title: "Error : ",
+                message: "La contrase&ntilde;a antigua es incorrecta.",
+                icon: 'fa fa-times' 
+              },{
+                type: "danger"
+              });
+            } else {
+              $("#divUserName").removeClass("has-error");
+              $("#divOldPass").removeClass("has-error");
+              $("#divNewPass").removeClass("has-error");
+              $.post(
+                "page-user-actualizar.php",
+                {
+                  Id_Usuario: codigoUser,
+                  Nombre: userName,
+                  Contrasenia: newPass
+                },
+                function (data){
+                  console.log(data.trim());
+                  if (data.trim()=="No existe") {
+                    $.notify({
+                      title: "Error : ",
+                      message: "No se ha encontrado el usuario.",
+                      icon: 'fa fa-times' 
+                    },{
+                      type: "danger"
+                    });
+                  } else if (data.trim()=="Actualizado") {
+                    $.notify({
+                      title: "Info : ",
+                      message: "Sus datos de usuario han sido actualizados.",
+                      icon: 'fa fa-check' 
+                    },{
+                      type: "info"
+                    });
+                    window.setTimeout('location.href="page-logout.php"', 1500); 
+                  }
+                }
+              );
+
+            }
+          }
+        });
+      });
+    </script>
     <script type="text/javascript">
       $('.alert').click(function(){
       	swal({
