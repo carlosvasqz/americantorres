@@ -70,7 +70,7 @@ function menuGeneral() {
                   <li><a href="of_reporte_ventas.php"><i class="fa fa-money"></i>Reporte de Ventas</a></li>
                   <li class="treeview"><a href="#"><i class="fa fa-line-chart"></i><span>Reportes Estadisticos</span><i class="fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
-                      <li><a href="of_reporte_general.php"><i class="fa fa-line-chart"></i>General</a></li>
+                      <li><a href="of_reporte_general.php"><i class="fa fa-bar-chart"></i>General</a></li>
                       <li><a href="of_estadisticas_ventas.php"><i class="fa fa-line-chart"></i>Ventas</a></li>
                     </ul>
                   </li>
