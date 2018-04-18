@@ -524,7 +524,7 @@
 
     function utilidadMes($fecha){
         include ('bd/conexion.php');
-        $queryUtilidadMes=mysqli_query($db, "SELECT Utilidad FROM cierres_mensuales WHERE Fecha_Inicial='$fecha%'") or die(mysqli_error());
+        $queryUtilidadMes=mysqli_query($db, "SELECT Utilidad FROM cierres_mensuales WHERE Fecha_Inicial = '$fecha'") or die(mysqli_error());
         $rowUtilidadMes=mysqli_fetch_array($queryUtilidadMes);
         if(is_null($rowUtilidadMes['Utilidad'])){
             return 0;
@@ -535,7 +535,7 @@
 
     function gastosMes($fecha){
         include ('bd/conexion.php');
-        $queryGastosMes=mysqli_query($db, "SELECT (Total_Serv_Pub+Total_Planilla) AS Gastos FROM cierres_mensuales WHERE Fecha_Inicial='$fecha%'") or die(mysqli_error());
+        $queryGastosMes=mysqli_query($db, "SELECT (Total_Serv_Pub+Total_Planilla) AS Gastos FROM cierres_mensuales WHERE Fecha_Inicial = '$fecha'") or die(mysqli_error());
         $rowGastosMes=mysqli_fetch_array($queryGastosMes);
         if(is_null($rowGastosMes['Gastos'])){
             return 0;

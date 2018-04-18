@@ -145,16 +145,6 @@
                 labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                 datasets: [
                   {
-                    label: "Gastos por mes",
-                    fillColor: "rgba(187, 105, 105, 0.685)",
-                    strokeColor: "rgba(187, 105, 105, 0.685)",
-                    pointColor: "rgba(187, 105, 105, 0.685)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
-                    data: [gastos.mes1, gastos.mes2, gastos.mes3, gastos.mes4, gastos.mes5, gastos.mes6, gastos.mes7, gastos.mes8, gastos.mes9, gastos.mes10, gastos.mes11, gastos.mes12]
-                  },
-                  {
                     label: "Ventas por mes",
                     fillColor: "rgba(105, 154, 187, 0.685)",
                     strokeColor: "rgba(105, 154, 187, 0.685)",
@@ -163,6 +153,16 @@
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
                     data: [ventas.mes1, ventas.mes2, ventas.mes3, ventas.mes4, ventas.mes5, ventas.mes6, ventas.mes7, ventas.mes8, ventas.mes9, ventas.mes10, ventas.mes11, ventas.mes12]
+                  },
+                  {
+                    label: "Gastos por mes",
+                    fillColor: "rgba(187, 105, 105, 0.685)",
+                    strokeColor: "rgba(187, 105, 105, 0.685)",
+                    pointColor: "rgba(187, 105, 105, 0.685)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(105, 154, 187, 0.685)",
+                    data: [gastos.mes1, gastos.mes2, gastos.mes3, gastos.mes4, gastos.mes5, gastos.mes6, gastos.mes7, gastos.mes8, gastos.mes9, gastos.mes10, gastos.mes11, gastos.mes12]
                   }
                 ]
               };
