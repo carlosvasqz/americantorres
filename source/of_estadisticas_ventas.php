@@ -104,6 +104,14 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <br>
+                        <h4>Leyenda</h4>
+                        <p class="text-info"><b>Utilidad neta del mes</b></p>
+                        <p class="text-danger"><b>Gastos netos del mes</b></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
