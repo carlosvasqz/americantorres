@@ -131,7 +131,7 @@
           data: "data",
           dataType: "json",
         }).done(function( ventas, textStatus, jqXHR ){
-          console.log(ventas);
+          console.log("VENTAS" + ventas);
 
             $.ajax({
               type: "POST",
@@ -139,7 +139,7 @@
               data: "data",
               dataType: "json",
             }).done(function( gastos, textStatus, jqXHR ){
-              console.log(gastos);
+              console.log("Gastos" + gastos);
 
               var data = {
                 labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
