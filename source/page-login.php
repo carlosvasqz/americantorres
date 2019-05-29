@@ -1,5 +1,5 @@
 <?php
-  include('/bd/conexion.php');
+  include('bd/conexion.php');
   //session_start();
   if (isset($_SESSION['username'])&&($_SESSION['type'])) { 
     header('location: index.php');       
